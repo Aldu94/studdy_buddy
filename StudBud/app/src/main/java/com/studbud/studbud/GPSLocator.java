@@ -24,7 +24,7 @@ public class GPSLocator extends MainActivity {
     private ProgressBar progress;
 
     private LocationManager locManager;
-    private LocationListener locListener = new MyLocationListener();
+    //private LocationListener locListener = new MyLocationListener();
 
     private boolean gps_enabled = false;
     private boolean network_enabled = false;
@@ -85,7 +85,7 @@ public class GPSLocator extends MainActivity {
             }
             locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locListener);
         }
-    }*/
+    }
 
     class MyLocationListener extends Context implements LocationListener {
         @Override
@@ -127,5 +127,5 @@ public class GPSLocator extends MainActivity {
         @Override
         public void sendOrderedBroadcast(Intent intent, String receiverPermission) {
 
-        }
+        }*/
     }

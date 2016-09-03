@@ -40,7 +40,8 @@
         android:textColor="#1abc9c"
         android:backgroundTint="#1abc9c"
         android:layout_alignRight="@+id/start_time"
-        android:layout_alignEnd="@+id/start_time" />
+        android:layout_alignEnd="@+id/start_time"
+        android:singleLine="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,7 +70,8 @@
         android:layout_alignEnd="@+id/start_time"
         android:textColor="#1abc9c"
         android:backgroundTint="#1abc9c"
-        app:layout_widthPercent = "45%"/>
+        app:layout_widthPercent = "45%"
+        android:singleLine="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -100,7 +102,8 @@
         android:layout_toEndOf="@+id/start_time_text"
         android:layout_alignLeft="@+id/end_time"
         android:layout_alignStart="@+id/end_time"
-        app:layout_widthPercent = "45%"/>
+        app:layout_widthPercent = "45%"
+        android:singleLine="true"/>
 
     <Spinner
         android:layout_width="wrap_content"
@@ -139,7 +142,8 @@
         android:layout_alignRight="@+id/end_time"
         android:layout_alignEnd="@+id/end_time"
         android:layout_toRightOf="@+id/course_title"
-        android:layout_toEndOf="@+id/course_title" />
+        android:layout_toEndOf="@+id/course_title"
+        android:singleLine="true"/>
 
     <TextView
         android:layout_width="wrap_content"
