@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         onProfileClicked();
         onPreferencesClicked();
         db.open();
-        //
+        
         db.close();
 
 
