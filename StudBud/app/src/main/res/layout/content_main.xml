@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.aldu.studbud.MainActivity"
+    android:background="#050505">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Study Buddy"
+        android:id="@+id/headLine"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:layout_marginTopPercent="4%"
+        android:textAlignment="center"
+        android:textColor="#050505"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:background="#1abc9c" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_profile_button"
+        android:id="@+id/profile_button"
+        android:background="@drawable/rounded_button"
+        app:layout_widthPercent ="45%"
+        app:layout_heightPercent ="30%"
+        android:layout_alignTop="@+id/preferences_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_schedule_button"
+        android:id="@+id/schedule_button"
+        android:background="@drawable/rounded_button"
+        app:layout_widthPercent ="45%"
+        app:layout_heightPercent ="30%"
+        android:layout_alignTop="@+id/calculator_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/title_preferences_button"
+    android:id="@+id/preferences_button"
+    android:background="@drawable/rounded_button"
+        app:layout_widthPercent ="45%"
+        app:layout_heightPercent ="30%"
+        app:layout_marginTopPercent ="2%"
+        android:layout_below="@+id/schedule_button"
+        android:layout_alignLeft="@+id/calculator_button"
+        android:layout_alignStart="@+id/calculator_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_calculator_button"
+        android:id="@+id/calculator_button"
+        android:background="@drawable/rounded_button"
+        app:layout_widthPercent ="45%"
+        app:layout_heightPercent ="30%"
+        app:layout_marginTopPercent ="10%"
+        android:layout_below="@+id/headLine"
+        android:layout_alignRight="@+id/headLine"
+        android:layout_alignEnd="@+id/headLine" />
+
+</android.support.percent.PercentRelativeLayout>

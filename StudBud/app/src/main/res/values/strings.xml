@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">StudBud</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_stundenplan">Schedule</string>
+    <string name="title_activity_notenrechner">Marks Calculator</string>
+    <string name="title_activity_profil">Profile</string>
+    <string name="title_activity_preferences">Preferences</string>
+    <string name="title_activity_result">ResultActivity</string>
+
+
+    <string name="title_schedule_button">Schedule</string>
+    <string name="title_calculator_button">Calculator</string>
+    <string name="title_profile_button">Profile</string>
+    <string name="title_preferences_button">Preferences</string>
+    <string name="title_activity_add_course_to_schedule">addCourseToSchedule</string>
+
+
+    <string name="title_course_title">Course title</string>
+    <string name="title_start_time">Start time</string>
+    <string name="title_end_time">End time</string>
+    <string name="title_add_course">Add</string>
+    <string name="title_room">Room</string>
+    <string name="title_day">Day</string>
+
+
+    <string name="title_result">Your marks</string>
+
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+
+</resources>
