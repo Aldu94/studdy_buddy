@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -12,19 +15,7 @@
     tools:context=".MarksCalculator"
     tools:showIn="@layout/activity_markscalculator">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/mark1"
-        android:layout_toStartOf="@+id/mark1"
-        android:layout_alignBottom="@+id/mark1"
-        android:layout_alignParentRight="false"
-        android:layout_alignTop="@+id/mark1">
 
-    </ScrollView>
 
     <EditText
         android:layout_width="wrap_content"
@@ -34,24 +25,20 @@
         android:id="@+id/mark1"
         android:width="75dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="77dp" />
+        app:layout_marginTopPercent = "20%"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Informationstechnische Grundlagen"
         android:id="@+id/course2"
-        android:layout_below="@+id/scrollView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/mark1"
-        android:layout_toStartOf="@+id/mark1"
-        android:layout_marginTop="15dp"
-        android:layout_alignBottom="@+id/mark2"
         android:textStyle="bold"
-        android:textSize="16dp" />
+        android:textSize="16dp"
+        app:layout_marginTopPercent ="20%"
+        android:layout_alignBottom="@+id/mark1"
+        android:layout_alignParentStart="true" />
+
 
     <EditText
         android:layout_width="wrap_content"
@@ -60,20 +47,16 @@
         android:ems="10"
         android:id="@+id/mark2"
         android:width="75dp"
-        android:layout_below="@+id/scrollView"
-        android:layout_toRightOf="@+id/scrollView"
-        android:layout_toEndOf="@+id/scrollView" />
+         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CALCULATE"
         android:id="@+id/calculateButton"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/mark2"
-        android:layout_alignEnd="@+id/mark2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:layout_marginTopPercent = "40%"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,6 +68,9 @@
         android:textStyle="bold"
         android:layout_above="@+id/course2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        app:layout_marginTopPercent = "15%"/>
 
-</RelativeLayout>
+
+</android.support.percent.PercentRelativeLayout>
+</ScrollView>
