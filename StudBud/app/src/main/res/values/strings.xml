@@ -33,4 +33,30 @@
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
 
+    <string-array name="header_titles">
+        <item>Informationswissenschaft</item>
+        <item>Medieninformatik</item>
+        <item>Bachelorarbeit</item>
+    </string-array>
+
+    <string-array name="courses_titles">
+        <item>INF_M01</item>
+        <item>INF_M02</item>
+        <item>INF_M04</item>
+        <item>INF_M05</item>
+        <item>INF_M06</item>
+        <item>INF_M07</item>
+        <item>MEI_M01</item>
+        <item>MEI_M03</item>
+        <item>MEI_M04</item>
+        <item>MEI_M05</item>
+        <item>MEI_M08</item>
+        <item>MEI_M10</item>
+    </string-array>
+
+    <string-array name="INF_M01">
+        <item>Einführung Informationswissenschaft</item>
+        <item>Informationstechnische Grundlagen</item>
+    </string-array>
+
 </resources>

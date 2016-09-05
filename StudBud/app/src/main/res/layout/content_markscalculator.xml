@@ -16,39 +16,6 @@
     tools:showIn="@layout/activity_markscalculator">
 
 
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/mark1"
-        android:width="75dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        app:layout_marginTopPercent = "20%"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Informationstechnische Grundlagen"
-        android:id="@+id/course2"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        app:layout_marginTopPercent ="20%"
-        android:layout_alignBottom="@+id/mark1"
-        android:layout_alignParentStart="true" />
-
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/mark2"
-        android:width="75dp"
-         />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,20 +23,32 @@
         android:id="@+id/calculateButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        app:layout_marginTopPercent = "40%"/>
+        app:layout_marginTopPercent = "80%"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
-    <TextView
+    <ExpandableListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Einführung Informationswissenschaft"
-        android:id="@+id/course1"
-        android:textSize="16dp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:layout_above="@+id/course2"
-        android:layout_alignParentLeft="true"
+        android:layout_height="match_parent"
+        android:id="@+id/Informationswissenschaft"
         android:layout_alignParentStart="true"
-        app:layout_marginTopPercent = "15%"/>
+        android:layout_alignParentTop="true" />
+
+    <ExpandableListView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/Medieninfo"
+        android:layout_below="@+id/Informationswissenschaft"
+        android:layout_alignParentStart="true" />
+
+    <ExpandableListView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/Bachelorarbeit"
+        android:layout_below="@+id/Medieninfo"
+        android:layout_alignParentEnd="true" />
+
+
 
 
 </android.support.percent.PercentRelativeLayout>
