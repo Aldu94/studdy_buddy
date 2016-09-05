@@ -1,7 +1,12 @@
 package com.studbud.studbud;
 
+import android.Manifest.permission;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,10 +21,9 @@ public class MainActivity extends AppCompatActivity {
     private Button calculatorButton;
     private Button profileButton;
     private Button preferencesButton;
-
     private Database db = new Database(MainActivity.this);
-    private CourseItem INF1 = new CourseItem("INF-M01.1","bestanden","2.3");
-
+    private CourseItem INF1 = new CourseItem("INF-M01.1", "bestanden", "2.3");
+    private View permLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +34,44 @@ public class MainActivity extends AppCompatActivity {
         onCalculatorClicked();
         onProfileClicked();
         onPreferencesClicked();
-        db.open();
-
-        db.close();
-
-
+        updateLocation();
     }
+
+    private void updateLocation(){
+        if(!hasPermission(permission.ACCESS_FINE_LOCATION)){
+            ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION}, 12);
+        }
+    }
+
+    private boolean hasPermission(String perm) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
+            return(PackageManager.PERMISSION_GRANTED==checkSelfPermission(perm));
+        }
+        return false;
+    }
+
+ /*   private void collectGamePoints(){
+        Log.i("MainActivity", "asking for GPS permission!");
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)) != PackageManager.PERMISSION_GRANTED){
+            requestGpsPermission();
+        }
+        else{
+            Log.i("MainActivity", "GPS permission granted");
+        }
+    }
+    private void requestGpsPermission(){
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
+        Snackbar.make(permLayout, "GPS muss für die Gaming Funktion eingeschaltet sein", Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener()){
+            @Override
+                    public void onClick(View view){
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},0);
+            }
+        }
+        }
+     else {
+        ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION}, 0);
+        }
+    }*/
 
     // setup buttons on main screen
     private void setupUI(){
