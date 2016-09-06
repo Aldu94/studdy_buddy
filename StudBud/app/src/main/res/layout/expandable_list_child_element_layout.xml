@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
-
+    android:layout_height="55dip"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/child_item"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Habedere"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="10dp"
-        android:background="#000000"
-        android:textColor="#ffffff" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dip"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_widthPercent ="80%"/>
 
-</LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:layout_marginRight="5dp"
+        app:layout_widthPercent ="20%"
+        android:layout_toRightOf="@id/child_item"
+        android:inputType="number" />
+
+</android.support.percent.PercentRelativeLayout>

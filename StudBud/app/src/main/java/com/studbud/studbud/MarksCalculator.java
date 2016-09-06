@@ -19,6 +19,10 @@ import java.util.List;
 public class MarksCalculator extends AppCompatActivity {
 
     private ExpandableListView informationswissenschaft;
+    private ExpandableListAdapter listAdapter;
+    private List<String> listHeadings;
+    private HashMap<String, List<String>> childList;
+
 
     private int subjectID;
     private User user;
@@ -38,7 +42,7 @@ public class MarksCalculator extends AppCompatActivity {
         user = new User("Karl",0,3);
         subjectID = user.getMainSubjectID();
         calculator = new Calculator();
-        onCalClick();
+       // onCalClick();
 
     }
 
@@ -54,31 +58,11 @@ public class MarksCalculator extends AppCompatActivity {
 
 
     private void setupUI() {
-        calculateButton = (Button)findViewById(R.id.calculateButton);
+
         informationswissenschaft = (ExpandableListView)findViewById(R.id.Informationswissenschaft);
-        List<String> headings = new ArrayList<String>();
-        List<String> L1 = new ArrayList<String>();
-        List<String> L2 = new ArrayList<String>();
-        HashMap<String,List<String>> childList = new HashMap<String,List<String>>();
-        String[] headingItems = getResources().getStringArray(R.array.header_titles);
-        String[] l1 = getResources().getStringArray(R.array.courses_titles);
-        String[] l2 = getResources().getStringArray(R.array.INF_M01);
 
-        for (String title : headingItems){
-            headings.add(title);
-        }
-
-        for (String title : l1){
-            L1.add(title);
-        }
-        for (String title : l2){
-            L2.add(title);
-        }
-
-        childList.put(headings.get(0),L1);
-        childList.put(headings.get(1),L2);
-
-        ExpandableListAdapter adapter = new ExpandableListAdapter(this, headings,childList);
+        addListData();
+        ExpandableListAdapter adapter = new ExpandableListAdapter(this, listHeadings,childList);
         informationswissenschaft.setAdapter(adapter);
     }
 
@@ -93,6 +77,68 @@ public class MarksCalculator extends AppCompatActivity {
                 startActivity(resultPageIntent);
             }
         });
+    }
+
+    private void addListData(){
+        listHeadings = new ArrayList<String>();
+        childList = new HashMap<String,List<String>>();
+
+        listHeadings.add("Informationswissenschaft");
+        listHeadings.add("Medieninformatik");
+        listHeadings.add("Bachelorarbeit");
+        listHeadings.add("a");
+        listHeadings.add("b");
+        listHeadings.add("c");
+        listHeadings.add("d");
+        listHeadings.add("e");
+        listHeadings.add("f");
+        listHeadings.add("g");
+        listHeadings.add("h");
+        listHeadings.add("i");
+        listHeadings.add("j");
+
+
+        List<String> informationsWissenschaft = new ArrayList<String>();
+        informationsWissenschaft.add("Einführung in die Informationswissenschaft");
+        List<String> medienInformatik = new ArrayList<String>();
+        medienInformatik.add("Einführung in die Informatik");
+        List<String> bachelorArbeit= new ArrayList<String>();
+        bachelorArbeit.add("Bachelorarbeit");
+        List<String> a= new ArrayList<String>();
+        a.add("Bachelorarbeit");
+        List<String> b= new ArrayList<String>();
+        b.add("Bachelorarbeit");
+        List<String> c= new ArrayList<String>();
+        c.add("Bachelorarbeit");
+        List<String> d= new ArrayList<String>();
+        d.add("Bachelorarbeit");
+        List<String> e= new ArrayList<String>();
+        e.add("Bachelorarbeit");
+        List<String> f= new ArrayList<String>();
+        f.add("Bachelorarbeit");
+        List<String> g= new ArrayList<String>();
+        g.add("Bachelorarbeit");
+        List<String> h= new ArrayList<String>();
+        h.add("Bachelorarbeit");
+        List<String> i= new ArrayList<String>();
+        i.add("Bachelorarbeit");
+        List<String> j= new ArrayList<String>();
+        j.add("Bachelorarbeit");
+
+
+        childList.put(listHeadings.get(0), informationsWissenschaft);
+        childList.put(listHeadings.get(1),medienInformatik);
+        childList.put(listHeadings.get(2),bachelorArbeit);
+        childList.put(listHeadings.get(3),a);
+        childList.put(listHeadings.get(4),b);
+        childList.put(listHeadings.get(5),c);
+        childList.put(listHeadings.get(6),d);
+        childList.put(listHeadings.get(7),e);
+        childList.put(listHeadings.get(8),f);
+        childList.put(listHeadings.get(9),g);
+        childList.put(listHeadings.get(10),h);
+        childList.put(listHeadings.get(11),i);
+        childList.put(listHeadings.get(12),j);
     }
 
 

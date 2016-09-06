@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content" > -->
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,17 +16,6 @@
     tools:showIn="@layout/activity_markscalculator">
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CALCULATE"
-        android:id="@+id/calculateButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        app:layout_marginTopPercent = "80%"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
-
     <ExpandableListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -34,22 +23,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 
-    <ExpandableListView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/Medieninfo"
-        android:layout_below="@+id/Informationswissenschaft"
-        android:layout_alignParentStart="true" />
-
-    <ExpandableListView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/Bachelorarbeit"
-        android:layout_below="@+id/Medieninfo"
-        android:layout_alignParentEnd="true" />
-
 
 
 
 </android.support.percent.PercentRelativeLayout>
-</ScrollView>
+<!--</ScrollView>-->
