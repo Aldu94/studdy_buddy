@@ -21,6 +21,7 @@
         android:layout_marginRight="5dp"
         app:layout_widthPercent ="20%"
         android:layout_toRightOf="@id/child_item"
-        android:inputType="number" />
+        android:inputType="number"
+        android:id="@+id/markField" />
 
 </android.support.percent.PercentRelativeLayout>
