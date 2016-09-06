@@ -32,12 +32,12 @@ public class Database {
     public static final int COLUMN_STATUS_INDEX = 2;
     public static final int COLUMN_RATING_INDEX = 3;
 
-    private FoodieDBOpenHelper dbHelper;
+    private CourseDBOpenHelper dbHelper;
     private SQLiteDatabase db;
     public String[] referenceArray;
 
     public Database(Context context) {
-        dbHelper = new FoodieDBOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
+        dbHelper = new CourseDBOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     /* ermöglicht es anderen Klassen, die Datenbank zu öffnen */
     public void open() throws SQLException {
@@ -52,7 +52,7 @@ public class Database {
         db.close();
     }
 
-    /* Legt ein FoodieItem in der Datenbank mit den Informationen KEY_NAME, KEY_PATH, KEY_RATING ab */
+    /* Legt ein CourseItem in der Datenbank mit den Informationen KEY_NAME, KEY_PATH, KEY_RATING ab */
     public long addCourseItem(CourseItem item) {
         ContentValues newCourseValue = new ContentValues();
 
@@ -62,8 +62,24 @@ public class Database {
 
         return db.insert(DATABASE_TABLE, null, newCourseValue);
     }
+
+    /* prüft, ob ein Eintrag mit dem gewünschten Wert bereits in der Datenbank liegt */
+    public boolean checkForExistingEntry(String dbField, String fieldValue){
+        open();
+        String Query = "Select * from " + DATABASE_NAME + "where " + dbField + " = " + fieldValue;
+        Cursor cursor = db.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        close();
+        return true;
+    }
+
     /*gibt eine ArrayList mit allen FoodieItems und den entsprechenden Werten aus der Datenbank zurück*/
     public ArrayList<CourseItem> getAllCourseItems() {
+        open();
         ArrayList<CourseItem> courseItems = new ArrayList<CourseItem>();
         Cursor cursor = db.query(DATABASE_TABLE, new String[] { KEY_ID, KEY_NAME, KEY_STATUS, KEY_RATING }, null, null, null, null, null);
 
@@ -77,10 +93,12 @@ public class Database {
             } while (cursor.moveToNext());
         }
         cursor.close();
+        close();
         return courseItems;
     }
     /*Erstellt einen String Array, der die Pfade der in der Datenbank abgelegten Bilder speichert*/
     public String[] referenceArray(){
+        open();
         Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_STATUS}, null, null, null, null, null);
         cursor.moveToFirst();
         for(int i = 0; i <= getNumberOfImages()-1; i++){
@@ -89,12 +107,18 @@ public class Database {
             cursor.moveToNext();
         }
         cursor.close();
+        close();
         return referenceArray;
     }
 
-//    public long updateRating(String foodieItemID, float rating) {
-//        return 0;
-//    }
+    public void updateMark(CourseItem course, float mark) {
+        if(checkForExistingEntry(course.getName(), Float.toString(mark)) == true){
+            ContentValues cv = new ContentValues();
+            cv.put(KEY_RATING, Float.toString(mark));
+            db.update(DATABASE_TABLE, cv, KEY_ID + " = ?", new String[]{String.valueOf(course.getName())});
+        }
+        addCourseItem(course);
+    }
 
     //    public long updateTitle(String foodieItemID, String title) {
 //        return 0;
@@ -107,20 +131,22 @@ public class Database {
     }
     /* Gibt die Anzahl der Datenbankeinträge zurück*/
     public int getNumberOfImages(){
+        open();
         String countQuery = "Select * FROM " + DATABASE_TABLE;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
-        //cursor.close();
-
-        return cursor.getCount();
+        int x = cursor.getCount();
+        cursor.close();
+        close();
+        return x;
     }
 
-    /* Der FoodieDBOpenHelper erstellt eine Datenbank mit den gewünschten Spalten und dem Datenbanknamen*/
-    private class FoodieDBOpenHelper extends SQLiteOpenHelper {
+    /* Der CourseDBOpenHelper erstellt eine Datenbank mit den gewünschten Spalten und dem Datenbanknamen*/
+    private class CourseDBOpenHelper extends SQLiteOpenHelper {
         private static final String DATABASE_CREATE = "create table "
                 + DATABASE_TABLE + " (" +KEY_ID + " integer primary key autoincrement, " + KEY_NAME + " text," + KEY_STATUS + " text," + KEY_RATING + " text);";
 
-        public FoodieDBOpenHelper(Context context, String dbname, SQLiteDatabase.CursorFactory factory, int version){
+        public CourseDBOpenHelper(Context context, String dbname, SQLiteDatabase.CursorFactory factory, int version){
             super(context, dbname, factory, version);
         }
         /* Hier wird die Datenbank generiert */
