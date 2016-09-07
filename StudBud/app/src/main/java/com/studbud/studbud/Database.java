@@ -21,16 +21,21 @@ public class Database {
 
     private static final String DATABASE_TABLE = "courseItems";
 
-    private static final String KEY_PATH = "path";
+    private static final String KEY_USER = "user";
+    private static final String KEY_MODULE = "module";
+    private static final String KEY_SUBMODULE = "submodule";
     private static final String KEY_NAME = "name";
     private static final String KEY_ID = "_id";
-    private static final String KEY_RATING = "rating";
+    private static final String KEY_MARK = "rating";
     private static final String KEY_STATUS ="status";
 
     /* Hier werden die Spalten Nummern vergeben */
-    public static final int COLUMN_NAME_INDEX = 1;
-    public static final int COLUMN_STATUS_INDEX = 2;
-    public static final int COLUMN_RATING_INDEX = 3;
+    public static final int COLUMN_USER_INDEX = 1;
+    public static final int COLUMN_MODULE_INDEX = 2;
+    public static final int COLUMN_SUBMODULE_INDEX = 3;
+    public static final int COLUMN_NAME_INDEX = 4;
+    public static final int COLUMN_STATUS_INDEX = 5;
+    public static final int COLUMN_MARK_INDEX = 6;
 
     private CourseDBOpenHelper dbHelper;
     private SQLiteDatabase db;
@@ -52,13 +57,13 @@ public class Database {
         db.close();
     }
 
-    /* Legt ein CourseItem in der Datenbank mit den Informationen KEY_NAME, KEY_PATH, KEY_RATING ab */
+    /* Legt ein CourseItem in der Datenbank mit den Informationen KEY_NAME, KEY_STATUS, KEY_RATING ab */
     public long addCourseItem(CourseItem item) {
         ContentValues newCourseValue = new ContentValues();
 
         newCourseValue.put(KEY_NAME, item.getName());
         newCourseValue.put(KEY_STATUS, item.getStatus());
-        newCourseValue.put(KEY_RATING, item.getRating());
+        newCourseValue.put(KEY_MARK, item.getMark());
 
         return db.insert(DATABASE_TABLE, null, newCourseValue);
     }
@@ -77,19 +82,22 @@ public class Database {
         return true;
     }
 
-    /*gibt eine ArrayList mit allen FoodieItems und den entsprechenden Werten aus der Datenbank zurück*/
+    /*gibt eine ArrayList mit allen CourseItems und den entsprechenden Werten aus der Datenbank zurück*/
     public ArrayList<CourseItem> getAllCourseItems() {
         open();
         ArrayList<CourseItem> courseItems = new ArrayList<CourseItem>();
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] { KEY_ID, KEY_NAME, KEY_STATUS, KEY_RATING }, null, null, null, null, null);
+        Cursor cursor = db.query(DATABASE_TABLE, new String[] { KEY_ID, KEY_USER, KEY_MODULE, KEY_SUBMODULE, KEY_NAME, KEY_STATUS, KEY_MARK }, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
             do {
+                String user = cursor.getString(COLUMN_USER_INDEX);
+                String module = cursor.getString(COLUMN_MODULE_INDEX);
+                String submodule = cursor.getString(COLUMN_SUBMODULE_INDEX);
                 String name = cursor.getString(COLUMN_NAME_INDEX);
                 String status = cursor.getString(COLUMN_STATUS_INDEX);
-                String rating = cursor.getString(COLUMN_RATING_INDEX);
+                String mark = cursor.getString(COLUMN_MARK_INDEX);
 
-                courseItems.add(new CourseItem(name, status, rating));
+                courseItems.add(new CourseItem(module, submodule, name, status, mark));
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -114,7 +122,7 @@ public class Database {
     public void updateMark(CourseItem course, float mark) {
         if(checkForExistingEntry(course.getName(), Float.toString(mark)) == true){
             ContentValues cv = new ContentValues();
-            cv.put(KEY_RATING, Float.toString(mark));
+            cv.put(KEY_MARK, Float.toString(mark));
             db.update(DATABASE_TABLE, cv, KEY_ID + " = ?", new String[]{String.valueOf(course.getName())});
         }
         addCourseItem(course);
@@ -144,7 +152,8 @@ public class Database {
     /* Der CourseDBOpenHelper erstellt eine Datenbank mit den gewünschten Spalten und dem Datenbanknamen*/
     private class CourseDBOpenHelper extends SQLiteOpenHelper {
         private static final String DATABASE_CREATE = "create table "
-                + DATABASE_TABLE + " (" +KEY_ID + " integer primary key autoincrement, " + KEY_NAME + " text," + KEY_STATUS + " text," + KEY_RATING + " text);";
+                + DATABASE_TABLE + " (" +KEY_ID + " integer primary key autoincrement, " + KEY_USER + " text," + KEY_MODULE + " text," + KEY_SUBMODULE + " text," +
+                KEY_NAME + " text," + KEY_STATUS + " text," + KEY_MARK + " text);";
 
         public CourseDBOpenHelper(Context context, String dbname, SQLiteDatabase.CursorFactory factory, int version){
             super(context, dbname, factory, version);

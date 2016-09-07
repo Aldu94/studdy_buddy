@@ -5,15 +5,18 @@ package com.studbud.studbud.domain;
  */
 
 public class CourseItem implements Comparable<CourseItem>{
-    private String rating;
+    private String mark;
     private String name;
-    private String path;
+    private String module;
     private String status;
+    private String submodule;
 
-    public CourseItem(String name, String status, String rating){
+    public CourseItem(String module, String submodule, String name, String status, String mark){
         this.name = name;
-        this.path = status;
-        this.rating = rating;
+        this.status = status;
+        this.mark = mark;
+        this.module = module;
+        this.submodule = submodule;
     }
 
     /* gibt dem Nutzer den Namen des CourseItems zurück */
@@ -26,24 +29,41 @@ public class CourseItem implements Comparable<CourseItem>{
         this.name = name;
     }
 
-    /* Hier lässt sich das Rating des CourseItems speichern, wenn es geändert wurde */
-    public void setRating(String rating){
-        this.rating = rating;
+    /* Hier lässt sich die Note des CourseItems speichern, wenn es geändert wurde */
+    public void setMark(String mark){
+        this.mark = mark;
     }
 
-    /* Die methode gibt das aktuelle Rating des Courseitem zurück */
-    public String getRating() {
-        return rating;
+    /* Die methode gibt die Note des Courseitem zurück */
+    public String getMark() {
+        return mark;
+    }
+    public String getModule(){
+        return module;
     }
 
-    /* Mit dieser Methode kann die App die CourseItems anhand der Namen vergleichen. Kann für die Sortierung der FoodieItems innerhalb der Gallery verwendet werden */
+    public void setModule(String module){
+        this.module = module;
+    }
+
+    public String getSubmodule(){
+        return submodule;
+    }
+
+    public void setSubmodule(String submodule){
+        this.submodule = submodule;
+    }
+    /* Mit dieser Methode kann die App die CourseItems anhand der Namen vergleichen. Kann für die Sortierung der CourseItems verwendet werden */
     @Override
     public int compareTo(CourseItem another){
-        return getName().compareTo(another.getName());
+        return getModule().compareTo(another.getModule());
     }
 
     public String getStatus() {
         return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
 

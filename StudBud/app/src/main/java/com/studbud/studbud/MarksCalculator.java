@@ -125,7 +125,6 @@ public class MarksCalculator extends AppCompatActivity {
         List<String> j= new ArrayList<String>();
         j.add("Bachelorarbeit");
 
-
         childList.put(listHeadings.get(0), informationsWissenschaft);
         childList.put(listHeadings.get(1),medienInformatik);
         childList.put(listHeadings.get(2),bachelorArbeit);
@@ -139,8 +138,13 @@ public class MarksCalculator extends AppCompatActivity {
         childList.put(listHeadings.get(10),h);
         childList.put(listHeadings.get(11),i);
         childList.put(listHeadings.get(12),j);
+
+    //    testPersistence();
     }
 
+     //   private void testPersistence(){
+     //       Log.i("course name: ", childList.toString());
+    //    }
 
     /*private void checkForEmptyEditText(){
         if (editTextOne.length() < 1  || editTextTwo.length() < 1){

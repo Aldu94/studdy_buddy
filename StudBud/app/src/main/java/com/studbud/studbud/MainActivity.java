@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button profileButton;
     private Button preferencesButton;
     private Database db = new Database(MainActivity.this);
-    private CourseItem INF1 = new CourseItem("INF-M01.1", "bestanden", "2.3");
+    private CourseItem INF1 = new CourseItem("INF-M01","01","ADP", "bestanden", "2.3");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
