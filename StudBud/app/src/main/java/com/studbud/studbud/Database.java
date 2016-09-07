@@ -37,6 +37,7 @@ public class Database {
     public static final int COLUMN_STATUS_INDEX = 5;
     public static final int COLUMN_MARK_INDEX = 6;
 
+    private User karl = new User("Karl", 0, 2);
     private CourseDBOpenHelper dbHelper;
     private SQLiteDatabase db;
     public String[] referenceArray;
@@ -58,20 +59,24 @@ public class Database {
     }
 
     /* Legt ein CourseItem in der Datenbank mit den Informationen KEY_NAME, KEY_STATUS, KEY_RATING ab */
-    public long addCourseItem(CourseItem item) {
+    public void addCourseItem(CourseItem item, String user) {
         ContentValues newCourseValue = new ContentValues();
 
         newCourseValue.put(KEY_NAME, item.getName());
         newCourseValue.put(KEY_STATUS, item.getStatus());
         newCourseValue.put(KEY_MARK, item.getMark());
-
-        return db.insert(DATABASE_TABLE, null, newCourseValue);
+        newCourseValue.put(KEY_MODULE, item.getModule());
+        newCourseValue.put(KEY_SUBMODULE, item.getSubmodule());
+        newCourseValue.put(KEY_USER, user);
+        open();
+        db.insertWithOnConflict(DATABASE_TABLE, null, newCourseValue, SQLiteDatabase.CONFLICT_REPLACE);
+        close();
     }
 
     /* prüft, ob ein Eintrag mit dem gewünschten Wert bereits in der Datenbank liegt */
     public boolean checkForExistingEntry(String dbField, String fieldValue){
         open();
-        String Query = "Select * from " + DATABASE_NAME + "where " + dbField + " = " + fieldValue;
+        String Query = "Select * from " + DATABASE_TABLE + " where " + dbField + " = " + fieldValue;
         Cursor cursor = db.rawQuery(Query, null);
         if(cursor.getCount() <= 0){
             cursor.close();
@@ -125,12 +130,55 @@ public class Database {
             cv.put(KEY_MARK, Float.toString(mark));
             db.update(DATABASE_TABLE, cv, KEY_ID + " = ?", new String[]{String.valueOf(course.getName())});
         }
-        addCourseItem(course);
+        addCourseItem(course, karl.getName());
     }
 
-    //    public long updateTitle(String foodieItemID, String title) {
-//        return 0;
-//    }
+     public void createSet() {
+        ArrayList<CourseItem> itemSet = new ArrayList<CourseItem>();
+         //Kurse der Medieninformatik
+         itemSet.add(new CourseItem("MEI-M01", "01", "EIMI", null, null ));
+         itemSet.add(new CourseItem("MEI-M01", "02", "Propäd.", null, null ));
+         itemSet.add(new CourseItem("MEI-M02", "01", "Mathe I", null, null ));
+         itemSet.add(new CourseItem("MEI-M02", "02", "Mathe II", null, null ));
+         itemSet.add(new CourseItem("MEI-M03", "01", "OOP", null, null ));
+         itemSet.add(new CourseItem("MEI-M03", "02", "ADP", null, null ));
+         itemSet.add(new CourseItem("MEI-M03", "03", "Android", null, null ));
+         itemSet.add(new CourseItem("MEI-M04", "01", "MMT", null, null ));
+         itemSet.add(new CourseItem("MEI-M04", "02", "MIDBS", null, null ));
+         itemSet.add(new CourseItem("MEI-M04", "03", "MME", null, null ));
+         itemSet.add(new CourseItem("MEI-M05", "01", "HCI", null, null ));
+         itemSet.add(new CourseItem("MEI-M05", "02", "Usability", null, null ));
+         itemSet.add(new CourseItem("MEI-M05", "03", "Med.Gest.", null, null ));
+         itemSet.add(new CourseItem("MEI-M10", "01", "Anw.Schw.", null, null ));
+         itemSet.add(new CourseItem("MEI-M10", "02", "Anw.Modul", null, null ));
+         itemSet.add(new CourseItem("MEI-M10", "03", "Projektsem.", null, null ));
+         //Kurse der Informationswissenschaft
+         itemSet.add(new CourseItem("INF-M01", "01", "a", null, null ));
+         itemSet.add(new CourseItem("INF-M01", "02", "b", null, null ));
+         itemSet.add(new CourseItem("INF-M02", "01", "c", null, null ));
+         itemSet.add(new CourseItem("INF-M02", "02", "d", null, null ));
+         itemSet.add(new CourseItem("INF-M03", "01", "e", null, null ));
+         itemSet.add(new CourseItem("INF-M03", "02", "f", null, null ));
+         itemSet.add(new CourseItem("INF-M03", "03", "g", null, null ));
+         itemSet.add(new CourseItem("INF-M04", "01", "h", null, null ));
+         itemSet.add(new CourseItem("INF-M04", "02", "i", null, null ));
+         itemSet.add(new CourseItem("INF-M04", "03", "j", null, null ));
+         itemSet.add(new CourseItem("INF-M05", "01", "k", null, null ));
+         itemSet.add(new CourseItem("INF-M05", "02", "l", null, null ));
+         itemSet.add(new CourseItem("INF-M05", "03", "m", null, null ));
+         itemSet.add(new CourseItem("INF-M10", "01", "n", null, null ));
+         itemSet.add(new CourseItem("INF-M10", "02", "o", null, null ));
+         itemSet.add(new CourseItem("INF-M10", "03", "p", null, null ));
+
+         addSetToDb(itemSet);
+    }
+
+    /* Erstellt pro User einen Datenbanksatz*/
+    private void addSetToDb(ArrayList<CourseItem> set){
+        for(CourseItem item: set){
+                addCourseItem(item, karl.getName());
+        }
+    }
     /* Löscht einen Eintrag aus der Datenbank, wenn die Methode aufgerufen wird*/
     public long deleteCourseItem(String courseItemID) {
         String whereClause = KEY_ID + " = '" + courseItemID;
@@ -147,6 +195,9 @@ public class Database {
         cursor.close();
         close();
         return x;
+    }
+    public void deleteDB (){
+        dbHelper.deleteDatabase(db, DATABASE_TABLE);
     }
 
     /* Der CourseDBOpenHelper erstellt eine Datenbank mit den gewünschten Spalten und dem Datenbanknamen*/
@@ -167,6 +218,11 @@ public class Database {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        }
+
+        public void deleteDatabase(SQLiteDatabase db, String table){
+            db.execSQL("DELETE FROM" + table);
+            db.close();
         }
 
     }

@@ -8,6 +8,7 @@ import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button profileButton;
     private Button preferencesButton;
     private Database db = new Database(MainActivity.this);
+    private User karl = new User("Karl",0,3);
     private CourseItem INF1 = new CourseItem("INF-M01","01","ADP", "bestanden", "2.3");
 
     @Override
@@ -34,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
         onProfileClicked();
         onPreferencesClicked();
         updateLocation();
+        //db.createSet();
+        showArray();
+        //this.deleteDatabase("courseData.db");
+    }
+
+    private void showArray(){
+        for(CourseItem member: db.getAllCourseItems()){
+            Log.i("Member name: ", member.getModule());
+        }
     }
 
     private void updateLocation(){

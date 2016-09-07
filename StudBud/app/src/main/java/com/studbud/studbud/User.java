@@ -5,6 +5,7 @@ package com.studbud.studbud;
  */
 public class User {
 
+    private Database db;
     private String name;
     private int mainSubjectID;
     private int numberOfSemester;
@@ -20,6 +21,8 @@ public class User {
         return name;
     }
 
+    public void setName(String name) {this.name = name;}
+
     //gibt ID des Hauptfachs zurück (1/0)
     public int getMainSubjectID(){
         return mainSubjectID;
@@ -29,4 +32,5 @@ public class User {
     public int getNumberOfSemester(){
         return numberOfSemester;
     }
+
 }
