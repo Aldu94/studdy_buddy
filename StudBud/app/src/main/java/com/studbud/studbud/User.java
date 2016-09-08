@@ -5,30 +5,39 @@ package com.studbud.studbud;
  */
 public class User {
 
-    private Database db;
     private String name;
-    private int mainSubjectID;
+    private long mainSubjectID;
     private int numberOfSemester;
 
-    public User(String name, int mainSubjectID, int numberOfSemester){
+
+    public User(String name, int numberOfSemester, long mainSubjectID){
         this.name = name;
         this.mainSubjectID = mainSubjectID;
         this.numberOfSemester = numberOfSemester;
     }
 
+
     //gibt Namen des Nutzers zurück
+
     public String getName(){
         return name;
     }
 
-    public void setName(String name) {this.name = name;}
 
-    //gibt ID des Hauptfachs zurück (1/0)
-    public int getMainSubjectID(){
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    //gibt ID des Hauptfachs zurück (0/1)
+
+    public long getMainSubjectID(){
         return mainSubjectID;
     }
 
+
     //gibt Semesteranzahl zurück
+
     public int getNumberOfSemester(){
         return numberOfSemester;
     }

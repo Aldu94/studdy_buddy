@@ -37,15 +37,15 @@ public class MainActivity extends AppCompatActivity {
         onPreferencesClicked();
         updateLocation();
         //db.createSet();
-        showArray();
+       // showArray();
         //this.deleteDatabase("courseData.db");
     }
 
-    private void showArray(){
+    /*private void showArray(){
         for(CourseItem member: db.getAllCourseItems()){
             Log.i("Member name: ", member.getModule());
         }
-    }
+    }*/
 
     private void updateLocation(){
         if(!hasPermission(permission.ACCESS_FINE_LOCATION)){

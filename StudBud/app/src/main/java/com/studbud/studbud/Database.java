@@ -88,7 +88,7 @@ public class Database {
     }
 
     /*gibt eine ArrayList mit allen CourseItems und den entsprechenden Werten aus der Datenbank zurück*/
-    public ArrayList<CourseItem> getAllCourseItems() {
+  /*  public ArrayList<CourseItem> getAllCourseItems() {
         open();
         ArrayList<CourseItem> courseItems = new ArrayList<CourseItem>();
         Cursor cursor = db.query(DATABASE_TABLE, new String[] { KEY_ID, KEY_USER, KEY_MODULE, KEY_SUBMODULE, KEY_NAME, KEY_STATUS, KEY_MARK }, null, null, null, null, null);
@@ -109,6 +109,7 @@ public class Database {
         close();
         return courseItems;
     }
+    */
     /*Erstellt einen String Array, der die Pfade der in der Datenbank abgelegten Bilder speichert*/
     public String[] referenceArray(){
         open();

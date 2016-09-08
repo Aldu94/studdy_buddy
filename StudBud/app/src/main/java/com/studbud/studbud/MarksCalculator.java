@@ -25,7 +25,7 @@ public class MarksCalculator extends AppCompatActivity {
     private HashMap <String,List<String>> grandChildList;
 
 
-    private int subjectID;
+    private long subjectID;
     private User user;
     private Calculator calculator;
     public double markOne;
@@ -76,6 +76,8 @@ public class MarksCalculator extends AppCompatActivity {
 
     }
 */
+
+    // method to fill the expandable listview with data out of the strings
 
     private void addListData(){
         listHeadings = new ArrayList<String>();
