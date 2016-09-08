@@ -32,7 +32,9 @@
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
-
+    
+    
+    
     <string-array name="header_titles">
         <item>Informationswissenschaft</item>
         <item>Medieninformatik</item>

@@ -9,5 +9,10 @@
         <item>@string/saturday</item>
         <item>@string/sunday</item>
     </string-array>
+
+    <string-array name="main_subject">
+        <item>Informationswissenschaft</item>
+        <item>Medieninformatik</item>
+    </string-array>
     
 </resources>
