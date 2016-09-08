@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".AddCourseToSchedule"
     tools:showIn="@layout/activity_add_course_to_schedule"
-    android:background="#000000">
+    android:background="#ffffff">
 
     <TextView
         android:layout_width="wrap_content"

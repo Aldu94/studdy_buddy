@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by Der Bar.de on 08.09.2016.
  */
-public class SecondLevelAdapter extends BaseExpandableListAdapter{
+class SecondLevelAdapter extends BaseExpandableListAdapter{
 
     private final Context context;
         private final List<String> headLine;
