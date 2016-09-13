@@ -1,7 +1,10 @@
 package com.studbud.studbud;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -60,14 +63,33 @@ public class Profile extends AppCompatActivity {
 
     // method to get the user input from the whole window
 
-    private User getUserInputAndCreateItem(){
+    private User getUserInputAndCreateItem() {
         String nameOfUser = name.getText().toString();
         int semesterOfUser = Integer.parseInt(semester.getText().toString());
         long subjectId = mainSubjectSpinner.getSelectedItemId();
 
-        User user = new User(nameOfUser,semesterOfUser,subjectId);
+        if (TextUtils.isDigitsOnly(semester.getText().toString())) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(Profile.this);
+            builder1.setMessage("Please tell me your semester!");
+            builder1.setCancelable(true);
 
+            builder1.setPositiveButton(
+                    "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
+
+        User user = new User(nameOfUser, semesterOfUser, subjectId);
         return user;
+
+
     }
+
 
 }
