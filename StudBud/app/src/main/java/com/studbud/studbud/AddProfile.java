@@ -51,37 +51,46 @@ public class AddProfile extends AppCompatActivity {
 
 
     // method to fire an OnClick-event while the safe button is clicked
-    // create new user object and safe it in the database
+    // create intent and put all parameters
+    // give intent-data to Profile-Activity (in Profile: create user object and safe in database)
     // go back to profile-screen and show the profile
 
     private void onSafeButtonClicked(){
         safeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = getUserInputAndCreateItem();
-                //safe User in database
+                String userName = getNameInput();
+                int userSemester = getSemesterInput();
+                long userMainSubjectID = getSubjectInput();
+
                 Intent intent = new Intent(AddProfile.this, Profile.class);
+                intent.putExtra("username",userName);
+                intent.putExtra("semester",userSemester);
+                intent.putExtra("subjectID",userMainSubjectID);
                 startActivity(intent);
             }
         });
     }
 
 
-    // method to get the user input from the whole window
-    // create new user object and give parameters
-    // give back an user object
+    // method to get the user input for the name
 
-    private User getUserInputAndCreateItem() {
-        String nameOfUser = name.getText().toString();
-        int semesterOfUser = Integer.parseInt(semester.getText().toString());
-        long subjectId = mainSubjectSpinner.getSelectedItemId();
-
-
-        User user = new User(nameOfUser, semesterOfUser, subjectId);
-        return user;
-
-
+    private String getNameInput(){
+        return name.getText().toString();
     }
 
+
+    // method to get the user input for the semester
+
+    private int getSemesterInput() {
+        return Integer.parseInt(semester.getText().toString());
+    }
+
+
+    // method to get the user input for the subject id
+
+    private long getSubjectInput(){
+        return mainSubjectSpinner.getSelectedItemId();
+    }
 
 }

@@ -11,12 +11,13 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Profile"
     tools:showIn="@layout/activity_add_profile"
-    android:backgroundTint="#e5802c">
+    android:backgroundTint="#e5802c"
+    android:background="#000000">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="@string/profile_name"
         android:id="@+id/name_textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
@@ -26,7 +27,7 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:paddingTop="15dp"
-        android:background="@drawable/back"
+        android:background="#71373535"
         />
 
     <EditText
@@ -41,7 +42,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Semester"
+        android:text="@string/profile_semester"
         android:layout_below="@+id/name_editText"
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="true"
@@ -52,7 +53,7 @@
         android:textSize="20sp"
         android:id="@+id/semester_textView"
         android:paddingTop="15dp"
-        android:background="@drawable/back"/>
+        android:background="#71373535" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -60,12 +61,14 @@
         android:id="@+id/semester_editText"
         android:layout_alignBottom="@+id/semester_textView"
         android:layout_toEndOf="@+id/semester_textView"
-        app:layout_widthPercent="25%"/>
+        app:layout_widthPercent="25%"
+        android:singleLine="true"
+        android:inputType="numberDecimal"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Main Subject"
+        android:text="@string/profile_main_subject"
         android:layout_below="@+id/semester_textView"
         app:layout_marginTopPercent ="5%"
         app:layout_heightPercent="10%"
@@ -74,7 +77,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:paddingTop="15dp"
-        android:background="@drawable/back"
+        android:background="#71373535"
         android:id="@+id/main_subject_textView" />
 
     <ImageButton

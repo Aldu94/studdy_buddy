@@ -34,6 +34,11 @@
     <string name="sunday">Sunday</string>
 
 
+    <string name="profile_name">Name</string>
+    <string name="profile_semester">Semester</string>
+    <string name="profile_main_subject">Main Subject</string>
+
+
 
     <string-array name="header_titles">
         <item>Informationswissenschaft</item>

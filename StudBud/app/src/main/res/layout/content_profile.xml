@@ -11,7 +11,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Profile"
     tools:showIn="@layout/activity_profile"
-    android:backgroundTint="#e5802c">
+    android:backgroundTint="#e5802c"
+    android:background="#000000">
 
 
 
@@ -20,10 +21,87 @@
     android:layout_height="wrap_content"
     android:id="@+id/new_profile_button"
     app:layout_marginTopPercent ="85%"
-    app:layout_marginLeftPercent ="90%"
-    app:layout_widthPercent ="20%"
-    app:layout_heightPercent = "20%"
+    app:layout_marginLeftPercent ="85%"
+    app:layout_widthPercent ="25%"
+    app:layout_heightPercent = "25%"
     android:src="@drawable/plus"
     android:background="#00ffffff"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent ="100%"
+        app:layout_heightPercent ="10%"
+        android:id="@+id/profile_name_title"
+        android:text="@string/profile_name"
+        android:textAlignment="center"
+        android:paddingTop="12dp"
+        android:textSize="25sp"
+        android:background="#71373535"
+        app:layout_marginTopPercent="5%"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent ="100%"
+        app:layout_heightPercent ="10%"
+        android:layout_below="@+id/profile_name_title"
+        android:id="@+id/profile_name"
+        android:paddingTop="12dp"
+        android:textSize="25sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent ="100%"
+        app:layout_heightPercent ="10%"
+        android:id="@+id/profile_semester_title"
+        android:text="@string/profile_semester"
+        android:layout_below="@+id/profile_name"
+        android:textAlignment="center"
+        android:paddingTop="12dp"
+        android:textSize="25sp"
+        android:background="#71373535"
+        app:layout_marginTopPercent="5%"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent ="100%"
+        app:layout_heightPercent ="10%"
+        android:layout_below="@+id/profile_semester_title"
+        android:id="@+id/profile_semester"
+        android:paddingTop="12dp"
+        android:textSize="25sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent ="100%"
+        app:layout_heightPercent ="10%"
+        android:id="@+id/profile_main_subject_title"
+        android:text="@string/profile_main_subject"
+        android:layout_below="@+id/profile_semester"
+        android:textAlignment="center"
+        android:paddingTop="12dp"
+        android:textSize="25sp"
+        android:background="#71373535"
+        app:layout_marginTopPercent="5%"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent ="100%"
+        app:layout_heightPercent ="10%"
+        android:layout_below="@+id/profile_main_subject_title"
+        android:id="@+id/profile_main_subject"
+        android:paddingTop="12dp"
+        android:textSize="25sp"
+        android:textAlignment="center" />
+
+
+
 
 </android.support.percent.PercentRelativeLayout>
