@@ -32,9 +32,8 @@
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
-    
-    
-    
+
+
     <string-array name="header_titles">
         <item>Informationswissenschaft</item>
         <item>Medieninformatik</item>
@@ -67,5 +66,6 @@
         <item>Einführung Informationswissenschaft</item>
         <item>Informationstechnische Grundlagen</item>
     </string-array>
+    <string name="title_activity_add_profile">AddProfile</string>
 
 </resources>
