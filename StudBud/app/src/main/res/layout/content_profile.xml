@@ -15,10 +15,15 @@
 
 
 
-<Button
+<ImageButton
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="weiter"
-    android:id="@+id/weiter_button" />
+    android:id="@+id/new_profile_button"
+    app:layout_marginTopPercent ="85%"
+    app:layout_marginLeftPercent ="90%"
+    app:layout_widthPercent ="20%"
+    app:layout_heightPercent = "20%"
+    android:src="@drawable/plus"
+    android:background="#00ffffff"/>
 
 </android.support.percent.PercentRelativeLayout>

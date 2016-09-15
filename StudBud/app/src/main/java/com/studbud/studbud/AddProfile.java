@@ -1,10 +1,8 @@
 package com.studbud.studbud;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -25,13 +23,13 @@ public class AddProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_add_profile);
         setupUI();
         onSafeButtonClicked();
     }
 
 
-    // method to setup the user interface to work with user input
+    // method to setup the user interface for all elements in the activity
 
     private void setupUI(){
         name = (EditText)findViewById(R.id.name_editText);
@@ -39,29 +37,39 @@ public class AddProfile extends AppCompatActivity {
         mainSubjectSpinner = (Spinner)findViewById(R.id.main_subject_spinner);
         safeButton = (ImageButton)findViewById(R.id.safe_button);
 
-        spinnerAdapter = ArrayAdapter.createFromResource(this,
-                R.array.main_subject, android.R.layout.simple_spinner_item);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-       // mainSubjectSpinner.setAdapter(spinnerAdapter);
+        connectSpinnerAdapter();
     }
 
 
-    // method to fire an onClick-event for the safe button
-    // safe UserItem in database to get values for calculation
+    // method to connect the main subject spinner with the spinner adapter
+
+    private void connectSpinnerAdapter(){
+        spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.main_subject,android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mainSubjectSpinner.setAdapter(spinnerAdapter);
+    }
+
+
+    // method to fire an OnClick-event while the safe button is clicked
+    // create new user object and safe it in the database
+    // go back to profile-screen and show the profile
 
     private void onSafeButtonClicked(){
         safeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 User user = getUserInputAndCreateItem();
-                Toast.makeText(AddProfile.this, String.valueOf(user.getName()) + " ist im " + String.valueOf(user.getNumberOfSemester()) + ". Semester und studiert den Studiengang mit der ID: " + String.valueOf(user.getMainSubjectID()), Toast.LENGTH_SHORT).show();
-                //db.saveUserItem(user)
+                //safe User in database
+                Intent intent = new Intent(AddProfile.this, Profile.class);
+                startActivity(intent);
             }
         });
     }
 
 
     // method to get the user input from the whole window
+    // create new user object and give parameters
+    // give back an user object
 
     private User getUserInputAndCreateItem() {
         String nameOfUser = name.getText().toString();
