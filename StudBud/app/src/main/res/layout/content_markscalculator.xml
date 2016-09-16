@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" > -->
+    android:layout_height="wrap_content" >
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,10 +22,10 @@
     android:layout_height="wrap_content"
     android:id="@+id/informationswissenschaft_text_view"
     android:text="Informationswissenschaft"
-    android:textSize="20sp"
+    android:textSize="18sp"
     android:textAlignment="center"
     app:layout_widthPercent ="75%"
-    app:layout_heightPercent ="10%"
+    app:layout_heightPercent ="7%"
         android:background="#71373535"/>
 
     <TextView
@@ -34,11 +34,11 @@
         android:id="@+id/medieninformatik_text_view"
         android:layout_below="@+id/informationswissenschaft_text_view"
         android:text="Medieninformatik"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textAlignment="center"
         app:layout_widthPercent ="75%"
-        app:layout_heightPercent ="10%"
-        app:layout_marginTopPercent="2%"
+        app:layout_heightPercent ="7%"
+        app:layout_marginTopPercent="1%"
         android:background="#71373535"/>
 
     <TextView
@@ -47,21 +47,21 @@
         android:id="@+id/bachelorarbeit_text_view"
         android:layout_below="@+id/medieninformatik_text_view"
         android:text="Bachelorarbeit"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textAlignment="center"
         app:layout_widthPercent ="75%"
-        app:layout_heightPercent ="10%"
-        app:layout_marginTopPercent="2%"
+        app:layout_heightPercent ="7%"
+        app:layout_marginTopPercent="1%"
         android:background="#71373535"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/informationswissenschaft_mark"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textAlignment="center"
         app:layout_widthPercent = "20%"
-        app:layout_heightPercent ="10%"
+        app:layout_heightPercent ="7%"
         app:layout_marginLeftPercent="80%"
         android:background="#71373535"/>
 
@@ -70,12 +70,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/informationswissenschaft_mark"
         android:id="@+id/medieninformatik_mark"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textAlignment="center"
         app:layout_widthPercent = "20%"
-        app:layout_heightPercent ="10%"
+        app:layout_heightPercent ="7%"
         app:layout_marginLeftPercent="80%"
-        app:layout_marginTopPercent="2%"
+        app:layout_marginTopPercent="1%"
         android:background="#71373535"/>
 
     <TextView
@@ -83,12 +83,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/bachelorarbeit_mark"
         android:layout_below="@+id/medieninformatik_mark"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textAlignment="center"
         app:layout_widthPercent = "20%"
-        app:layout_heightPercent ="10%"
+        app:layout_heightPercent ="7%"
         app:layout_marginLeftPercent="80%"
-        app:layout_marginTopPercent="2%"
+        app:layout_marginTopPercent="1%"
         android:background="#71373535"/>
 
     <ExpandableListView
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/bachelorarbeit_text_view"
         android:id="@+id/inf"
-        app:layout_heightPercent="100%"
+        app:layout_heightPercent="50%"
         app:layout_widthPercent = "100%"
         app:layout_marginTopPercent="3%">
     </ExpandableListView>
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inf"
         android:id="@+id/medieninfo"
-        app:layout_heightPercent="100%"
+        app:layout_heightPercent="50%"
         app:layout_widthPercent = "100%"
         app:layout_marginTopPercent="3%">
     </ExpandableListView>
@@ -114,9 +114,5 @@
 
 
 
-
-
-
-
 </android.support.percent.PercentRelativeLayout>
-<!--</ScrollView>-->
+</ScrollView>

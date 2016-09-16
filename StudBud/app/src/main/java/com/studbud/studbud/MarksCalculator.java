@@ -39,14 +39,6 @@ public class MarksCalculator extends AppCompatActivity {
         user = new User("Karl",0,3);
         subjectID = user.getMainSubjectID();
         calculator = new Calculator();
-       // onCalClick();
-
-    }
-
-
-    private void readUserInput() {
-        inf01[0] = markOne;
-        inf01[1] = markTwo;
 
     }
 
@@ -151,7 +143,7 @@ public class MarksCalculator extends AppCompatActivity {
         List<String> mei10List = new ArrayList<String>();
 
 
-        String[] infwissHeadingItems = getResources().getStringArray(R.array.header_titles_medinfo);
+        String[] medieninfoHeadingItems = getResources().getStringArray(R.array.header_titles_medinfo);
         String[] mei01Items = getResources().getStringArray(R.array.MEI_01);
         String[] mei03Items = getResources().getStringArray(R.array.MEI_03);
         String[] mei04Items = getResources().getStringArray(R.array.MEI_04_mei);
@@ -161,8 +153,8 @@ public class MarksCalculator extends AppCompatActivity {
 
 
 
-        for(String title : infwissHeadingItems){
-            listHeadingsInfoWiss.add(title);
+        for(String title : medieninfoHeadingItems){
+            listHeadingsMedieninfo.add(title);
         }
 
         for(String title : mei01Items){
