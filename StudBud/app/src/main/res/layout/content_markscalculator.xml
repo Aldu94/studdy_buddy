@@ -13,15 +13,107 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MarksCalculator"
-    tools:showIn="@layout/activity_markscalculator">
+    tools:showIn="@layout/activity_markscalculator"
+    android:backgroundTint="#e5802c"
+    android:background="#000000">
 
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/informationswissenschaft_text_view"
+    android:text="Informationswissenschaft"
+    android:textSize="20sp"
+    android:textAlignment="center"
+    app:layout_widthPercent ="75%"
+    app:layout_heightPercent ="10%"
+        android:background="#71373535"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/medieninformatik_text_view"
+        android:layout_below="@+id/informationswissenschaft_text_view"
+        android:text="Medieninformatik"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        app:layout_widthPercent ="75%"
+        app:layout_heightPercent ="10%"
+        app:layout_marginTopPercent="2%"
+        android:background="#71373535"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bachelorarbeit_text_view"
+        android:layout_below="@+id/medieninformatik_text_view"
+        android:text="Bachelorarbeit"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        app:layout_widthPercent ="75%"
+        app:layout_heightPercent ="10%"
+        app:layout_marginTopPercent="2%"
+        android:background="#71373535"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/informationswissenschaft_mark"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        app:layout_widthPercent = "20%"
+        app:layout_heightPercent ="10%"
+        app:layout_marginLeftPercent="80%"
+        android:background="#71373535"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/informationswissenschaft_mark"
+        android:id="@+id/medieninformatik_mark"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        app:layout_widthPercent = "20%"
+        app:layout_heightPercent ="10%"
+        app:layout_marginLeftPercent="80%"
+        app:layout_marginTopPercent="2%"
+        android:background="#71373535"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bachelorarbeit_mark"
+        android:layout_below="@+id/medieninformatik_mark"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        app:layout_widthPercent = "20%"
+        app:layout_heightPercent ="10%"
+        app:layout_marginLeftPercent="80%"
+        app:layout_marginTopPercent="2%"
+        android:background="#71373535"/>
 
     <ExpandableListView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/Informationswissenschaft"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bachelorarbeit_text_view"
+        android:id="@+id/inf"
+        app:layout_heightPercent="100%"
+        app:layout_widthPercent = "100%"
+        app:layout_marginTopPercent="3%">
+    </ExpandableListView>
+
+    <ExpandableListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inf"
+        android:id="@+id/medieninfo"
+        app:layout_heightPercent="100%"
+        app:layout_widthPercent = "100%"
+        app:layout_marginTopPercent="3%">
+    </ExpandableListView>
+
+
+
+
 
 
 

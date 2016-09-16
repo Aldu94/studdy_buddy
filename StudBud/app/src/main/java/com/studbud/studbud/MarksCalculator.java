@@ -1,14 +1,9 @@
 package com.studbud.studbud;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.studbud.studbud.persistence.ExpandableListAdapter;
 
@@ -18,11 +13,13 @@ import java.util.List;
 
 public class MarksCalculator extends AppCompatActivity {
 
-    private ExpandableListView expandableListView;
-    private ExpandableListAdapter listAdapter;
-    private List<String> listHeadings;
-    private HashMap<String, List<String>> childList;
-    private HashMap <String,List<String>> grandChildList;
+    private ExpandableListView expandableListViewInfoWiss;
+    private ExpandableListView expandableListViewMedieninfo;
+    private List<String> listHeadingsInfoWiss;
+    private HashMap<String, List<String>> childListInfowiss;
+    private List<String> listHeadingsMedieninfo;
+    private HashMap<String, List<String>> childListMedieninfo;
+
 
 
     private long subjectID;
@@ -39,7 +36,6 @@ public class MarksCalculator extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_markscalculator);
         setupUI();
-        inf01 = new double[2];
         user = new User("Karl",0,3);
         subjectID = user.getMainSubjectID();
         calculator = new Calculator();
@@ -56,74 +52,161 @@ public class MarksCalculator extends AppCompatActivity {
 
 
     private void setupUI() {
-        expandableListView = (ExpandableListView)findViewById(R.id.Informationswissenschaft);
-        addListData();
-        ExpandableListAdapter adapter = new ExpandableListAdapter(this, listHeadings,childList);
-        expandableListView.setAdapter(adapter);
+        expandableListViewInfoWiss = (ExpandableListView)findViewById(R.id.inf);
+        expandableListViewMedieninfo = (ExpandableListView)findViewById(R.id.medieninfo);
+        addListDataInfwiss();
+        addListDataMedieninfo();
+        ExpandableListAdapter adapterInfwiss = new ExpandableListAdapter(this, listHeadingsInfoWiss, childListInfowiss);
+        ExpandableListAdapter adapterMedieninfo = new ExpandableListAdapter(this,listHeadingsMedieninfo, childListMedieninfo);
+        expandableListViewInfoWiss.setAdapter(adapterInfwiss);
+        expandableListViewMedieninfo.setAdapter(adapterMedieninfo);
     }
 
-/*
-    private void onCalClick(){
-        calculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readUserInput();
-                calculator.calculateMarks(subjectID, inf01);
-                Intent resultPageIntent = new Intent(MarksCalculator.this, ResultActivity.class);
-                startActivity(resultPageIntent);
-            }
-        });
 
-    }
-*/
 
     // method to fill the expandable listview with data out of the strings
 
-    private void addListData(){
-        listHeadings = new ArrayList<String>();
-        childList = new HashMap<String,List<String>>();
-        grandChildList = new HashMap<String,List<String>>();
+    private void addListDataInfwiss(){
+        listHeadingsInfoWiss = new ArrayList<String>();
+        childListInfowiss = new HashMap<String,List<String>>();
 
-        List<String> informationsWissenschaft = new ArrayList<String>();
-        List<String> medienInformatik = new ArrayList<String>();
-        List<String> bachelorArbeit = new ArrayList<String>();
-
-        String[] headingItems = getResources().getStringArray(R.array.header_titles);
-        String[] infwissItems = getResources().getStringArray(R.array.modules_titles_infwiss);
-        String[] medinfoItems = getResources().getStringArray(R.array.modules_titles_medinfo);
-        String bachelorItem = getResources().getString(R.string.bachelor_title);
+        List<String> inf01List = new ArrayList<String>();
+        List<String> inf02List = new ArrayList<String>();
+        List<String> inf03List = new ArrayList<String>();
+        List<String> inf04List = new ArrayList<String>();
+        List<String> inf05List = new ArrayList<String>();
+        List<String> inf06List = new ArrayList<String>();
+        List<String> inf07List = new ArrayList<String>();
 
 
 
-        for(String title : headingItems){
-            listHeadings.add(title);
+        String[] infwissHeadingItems = getResources().getStringArray(R.array.header_titles_infwiss);
+        String[] inf01Items = getResources().getStringArray(R.array.INF_M01);
+        String[] inf02Items = getResources().getStringArray(R.array.INF_M02);
+        String[] inf04Items = getResources().getStringArray(R.array.INF_M04);
+        String[] inf05Items = getResources().getStringArray(R.array.INF_M05);
+        String[] inf06Items = getResources().getStringArray(R.array.INF_M06);
+        String[] inf07Items = getResources().getStringArray(R.array.INF_M07);
+
+
+
+
+        for(String title : infwissHeadingItems){
+            listHeadingsInfoWiss.add(title);
         }
 
-        for(String title : infwissItems){
-            informationsWissenschaft.add(title);
+        for(String title : inf01Items){
+            inf01List.add(title);
 
         }
 
-        for(String title : medinfoItems){
-            medienInformatik.add(title);
+        for(String title : inf02Items){
+            inf02List.add(title);
+
         }
 
-        bachelorArbeit.add(bachelorItem);
+        for(String title : inf04Items){
+            inf04List.add(title);
+
+        }
+
+        for(String title : inf05Items){
+            inf05List.add(title);
+
+        }
+
+        for(String title : inf06Items){
+            inf06List.add(title);
+
+        }
+        for(String title : inf07Items){
+            inf07List.add(title);
+
+        }
 
 
 
 
-        childList.put(listHeadings.get(0), informationsWissenschaft);
-        childList.put(listHeadings.get(1),medienInformatik);
-        childList.put(listHeadings.get(2),bachelorArbeit);
+        childListInfowiss.put(listHeadingsInfoWiss.get(0), inf01List);
+        childListInfowiss.put(listHeadingsInfoWiss.get(1), inf02List);
+        childListInfowiss.put(listHeadingsInfoWiss.get(2), inf04List);
+        childListInfowiss.put(listHeadingsInfoWiss.get(3), inf05List);
+        childListInfowiss.put(listHeadingsInfoWiss.get(4), inf06List);
+        childListInfowiss.put(listHeadingsInfoWiss.get(5), inf07List);
 
 
-    //    testPersistence();
+
     }
 
-     //   private void testPersistence(){
-     //       Log.i("course name: ", childList.toString());
-    //    }
+    private void addListDataMedieninfo() {
+
+        listHeadingsMedieninfo = new ArrayList<String>();
+        childListMedieninfo = new HashMap<String,List<String>>();
+
+        List<String> mei01List = new ArrayList<String>();
+        List<String> mei03List = new ArrayList<String>();
+        List<String> mei04List = new ArrayList<String>();
+        List<String> mei05List = new ArrayList<String>();
+        List<String> mei08List = new ArrayList<String>();
+        List<String> mei10List = new ArrayList<String>();
+
+
+        String[] infwissHeadingItems = getResources().getStringArray(R.array.header_titles_medinfo);
+        String[] mei01Items = getResources().getStringArray(R.array.MEI_01);
+        String[] mei03Items = getResources().getStringArray(R.array.MEI_03);
+        String[] mei04Items = getResources().getStringArray(R.array.MEI_04_mei);
+        String[] mei05Items = getResources().getStringArray(R.array.MEI_05);
+        String[] mei08Items = getResources().getStringArray(R.array.MEI_08_inf);
+        String[] mei10Items = getResources().getStringArray(R.array.MEI_10_mei);
+
+
+
+        for(String title : infwissHeadingItems){
+            listHeadingsInfoWiss.add(title);
+        }
+
+        for(String title : mei01Items){
+            mei01List.add(title);
+
+        }
+
+        for(String title : mei03Items){
+            mei03List.add(title);
+
+        }
+
+        for(String title : mei04Items){
+            mei04List.add(title);
+
+        }
+
+        for(String title : mei05Items){
+            mei05List.add(title);
+
+        }
+
+        for(String title : mei08Items){
+            mei08List.add(title);
+
+        }
+        for(String title : mei10Items){
+            mei10List.add(title);
+
+        }
+
+
+        childListMedieninfo.put(listHeadingsMedieninfo.get(0), mei01List);
+        childListMedieninfo.put(listHeadingsMedieninfo.get(1), mei03List);
+        childListMedieninfo.put(listHeadingsMedieninfo.get(2), mei04List);
+        childListMedieninfo.put(listHeadingsMedieninfo.get(3), mei05List);
+        childListMedieninfo.put(listHeadingsMedieninfo.get(4), mei08List);
+        childListMedieninfo.put(listHeadingsMedieninfo.get(5), mei10List);
+
+
+
+    }
+
+
 
     /*private void checkForEmptyEditText(){
         if (editTextOne.length() < 1  || editTextTwo.length() < 1){

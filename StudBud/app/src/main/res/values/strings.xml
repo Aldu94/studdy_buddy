@@ -39,14 +39,7 @@
     <string name="profile_main_subject">Main Subject</string>
 
 
-
-    <string-array name="header_titles">
-        <item>Informationswissenschaft</item>
-        <item>Medieninformatik</item>
-        <item>Bachelorarbeit</item>
-    </string-array>
-
-    <string-array name="modules_titles_infwiss">
+    <string-array name="header_titles_infwiss">
         <item>INF_M01</item>
         <item>INF_M02</item>
         <item>INF_M04</item>
@@ -56,7 +49,7 @@
     </string-array>
 
 
-    <string-array name="modules_titles_medinfo">
+    <string-array name="header_titles_medinfo">
         <item>MEI_M01</item>
         <item>MEI_M03</item>
         <item>MEI_M04</item>
@@ -72,6 +65,74 @@
         <item>Einführung Informationswissenschaft</item>
         <item>Informationstechnische Grundlagen</item>
     </string-array>
+
+    <string-array name="INF_M02">
+        <item>Mathematische Grundlagen</item>
+        <item>Einführung in die Empirische Forschung</item>
+        <item>Einführung in die Informationslinguistik</item>
+    </string-array>
+
+    <string-array name="INF_M04">
+        <item>Einführung Information Retrieval</item>
+        <item>Markup-Sprachen</item>
+        <item>Vertiefungsseminar Information Retrieval</item>
+    </string-array>
+
+    <string-array name="INF_M05">
+        <item>Einführung Softwareergonomie</item>
+        <item>Vertiefungsseminar Softwareergonomie</item>
+    </string-array>
+
+    <string-array name="INF_M06">
+        <item>Datenbanksystem</item>
+        <item>Grundlagen: Informationssysteme</item>
+        <item>Vertiefungsseminar Informationssysteme</item>
+    </string-array>
+
+    <string-array name="INF_M07">
+        <item>Einführung Projektmanagement</item>
+        <item>Projektseminar</item>
+    </string-array>
+
+    <string-array name="MEI_01">
+        <item>Einführung Informatik und Medieninformatik</item>
+        <item>Propädeutikum</item>
+    </string-array>
+
+    <string-array name="MEI_03">
+        <item>ADP</item>
+        <item>JAVA</item>
+        <item>Android</item>
+    </string-array>
+
+    <string-array name="MEI_04_mei">
+        <item>MMT</item>
+        <item>MMDB</item>
+        <item>MME</item>
+    </string-array>
+
+    <string-array name="MEI_05">
+        <item>HCI</item>
+        <item>Usability</item>
+        <item>PSMG</item>
+    </string-array>
+
+    <string-array name="MEI_08_inf">
+        <item>MMT</item>
+        <item>MMDB</item>
+    </string-array>
+
+    <string-array name="MEI_10_mei">
+        <item>Kurs1</item>
+        <item>Kurs2</item>
+        <item>Projektseminar</item>
+    </string-array>
+
+    <string-array name="MEI_10_inf">
+        <item>Kurs1</item>
+        <item>Projektseminar</item>
+    </string-array>
+
     <string name="title_activity_add_profile">AddProfile</string>
 
 </resources>
