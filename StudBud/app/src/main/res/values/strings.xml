@@ -38,32 +38,30 @@
     <string name="profile_semester">Semester</string>
     <string name="profile_main_subject">Main Subject</string>
 
-
-    <string-array name="header_titles_infwiss">
-        <item>INF_M01</item>
-        <item>INF_M02</item>
-        <item>INF_M04</item>
-        <item>INF_M05</item>
-        <item>INF_M06</item>
-        <item>INF_M07</item>
-    </string-array>
+    <string name="inf01">INF-M01</string>
+    <string name="inf02">INF-M02</string>
+    <string name="inf04">INF-M04</string>
+    <string name="inf05">INF-M05</string>
+    <string name="inf06">INF-M06</string>
+    <string name="inf07">INF-M07</string>
 
 
-    <string-array name="header_titles_medinfo">
-        <item>MEI_M01</item>
-        <item>MEI_M03</item>
-        <item>MEI_M04</item>
-        <item>MEI_M05</item>
-        <item>MEI_M08</item>
-        <item>MEI_M10</item>
-    </string-array>
+    <string name="mei01">MEI-M01</string>
+    <string name="mei03">MEI-M03</string>
+    <string name="mei04">MEI-M04</string>
+    <string name="mei05">MEI-M05</string>
+    <string name="mei08">MEI-M08</string>
+    <string name="mei10">MEI-M10</string>
 
     <string name="bachelor_title">Bachelorarbeit</string>
 
+    <string name="inf1_1">Einführung in die Informationswissenschaft</string>
+    <string name="inf1_2">Informationstechnische Grundlagen</string>
+
 
     <string-array name="INF_M01">
-        <item>Einführung Informationswissenschaft</item>
-        <item>Informationstechnische Grundlagen</item>
+        <item name="1_1">Einführung Informationswissenschaft</item>
+        <item name ="1_2">Informationstechnische Grundlagen</item>
     </string-array>
 
     <string-array name="INF_M02">
@@ -134,5 +132,9 @@
     </string-array>
 
     <string name="title_activity_add_profile">AddProfile</string>
+    <string name="title_activity_inf_wiss_marks">InfWissMarksActivity</string>
+    <string name="title_activity_medien_info_marks">MedienInfoMarksActivity</string>
+    <string name="title_activity_bachelor_mark">BachelorMarkActivity</string>
+
 
 </resources>

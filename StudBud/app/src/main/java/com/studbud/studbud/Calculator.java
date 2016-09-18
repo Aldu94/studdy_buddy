@@ -122,7 +122,7 @@ public class Calculator {
     }
 
 
-    private double calculateInfwissM01(double[] inf01){
+    public double calculateInfwissM01(double[] inf01){
 
         double markInf11 = inf01[0] * 0.5;
         double markInf12 = inf01[1] * 0.5;

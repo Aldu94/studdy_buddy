@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.studbud.studbud.BachelorMarkActivity"
+    tools:showIn="@layout/activity_bachelor_mark">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bachelor_title"
+        android:id="@+id/ba_view"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:paddingTop="10dp"
+        app:layout_widthPercent = "100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="25%"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ba_view"
+        android:id="@+id/ba_mark"
+        app:layout_widthPercent="60%"
+        app:layout_marginLeftPercent="20%"
+        app:layout_heightPercent="10%"
+        android:inputType="number"
+        app:layout_marginTopPercent="8%"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ba_mark"
+        android:id="@+id/ba_mark_safe_button"
+        android:text="safe"
+        app:layout_widthPercent="30%"
+        app:layout_marginLeftPercent="35%"
+        app:layout_marginTopPercent="10%" />
+
+
+</android.support.percent.PercentRelativeLayout>

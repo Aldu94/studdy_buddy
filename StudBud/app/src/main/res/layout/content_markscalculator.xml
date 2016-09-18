@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -25,8 +22,10 @@
     android:textSize="18sp"
     android:textAlignment="center"
     app:layout_widthPercent ="75%"
-    app:layout_heightPercent ="7%"
-        android:background="#71373535"/>
+    app:layout_heightPercent ="10%"
+    android:background="#71373535"
+    android:onClick="onInfwissClick"
+    android:clickable="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,9 +36,11 @@
         android:textSize="18sp"
         android:textAlignment="center"
         app:layout_widthPercent ="75%"
-        app:layout_heightPercent ="7%"
-        app:layout_marginTopPercent="1%"
-        android:background="#71373535"/>
+        app:layout_heightPercent ="10%"
+        app:layout_marginTopPercent="10%"
+        android:background="#71373535"
+        android:onClick="onMedienInfoClick"
+        android:clickable="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,9 +51,11 @@
         android:textSize="18sp"
         android:textAlignment="center"
         app:layout_widthPercent ="75%"
-        app:layout_heightPercent ="7%"
-        app:layout_marginTopPercent="1%"
-        android:background="#71373535"/>
+        app:layout_heightPercent ="10%"
+        app:layout_marginTopPercent="10%"
+        android:background="#71373535"
+        android:onClick="onBachelorWorkClick"
+        android:clickable="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,7 +64,7 @@
         android:textSize="18sp"
         android:textAlignment="center"
         app:layout_widthPercent = "20%"
-        app:layout_heightPercent ="7%"
+        app:layout_heightPercent ="10%"
         app:layout_marginLeftPercent="80%"
         android:background="#71373535"/>
 
@@ -73,9 +76,9 @@
         android:textSize="18sp"
         android:textAlignment="center"
         app:layout_widthPercent = "20%"
-        app:layout_heightPercent ="7%"
+        app:layout_heightPercent ="10%"
         app:layout_marginLeftPercent="80%"
-        app:layout_marginTopPercent="1%"
+        app:layout_marginTopPercent="10%"
         android:background="#71373535"/>
 
     <TextView
@@ -86,33 +89,9 @@
         android:textSize="18sp"
         android:textAlignment="center"
         app:layout_widthPercent = "20%"
-        app:layout_heightPercent ="7%"
+        app:layout_heightPercent ="10%"
         app:layout_marginLeftPercent="80%"
-        app:layout_marginTopPercent="1%"
+        app:layout_marginTopPercent="10%"
         android:background="#71373535"/>
 
-    <ExpandableListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bachelorarbeit_text_view"
-        android:id="@+id/inf"
-        app:layout_heightPercent="50%"
-        app:layout_widthPercent = "100%"
-        app:layout_marginTopPercent="3%">
-    </ExpandableListView>
-
-    <ExpandableListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/inf"
-        android:id="@+id/medieninfo"
-        app:layout_heightPercent="50%"
-        app:layout_widthPercent = "100%"
-        app:layout_marginTopPercent="3%">
-    </ExpandableListView>
-
-
-
-
 </android.support.percent.PercentRelativeLayout>
-</ScrollView>

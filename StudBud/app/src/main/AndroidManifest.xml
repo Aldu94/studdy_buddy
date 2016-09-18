@@ -44,12 +44,20 @@
             android:label="@string/title_activity_add_course_to_schedule"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ResultActivity"
-            android:label="@string/title_activity_result"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".AddProfile"
             android:label="@string/title_activity_add_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".InfWissMarksActivity"
+            android:label="@string/title_activity_inf_wiss_marks"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MedienInfoMarksActivity"
+            android:label="@string/title_activity_medien_info_marks"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BachelorMarkActivity"
+            android:label="@string/title_activity_bachelor_mark"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
