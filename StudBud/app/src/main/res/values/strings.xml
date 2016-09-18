@@ -5,7 +5,10 @@
     <string name="title_activity_notenrechner">Marks Calculator</string>
     <string name="title_activity_profil">Profile</string>
     <string name="title_activity_preferences">Preferences</string>
-    <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_add_profile">AddProfile</string>
+    <string name="title_activity_inf_wiss_marks">InfWissMarksActivity</string>
+    <string name="title_activity_medien_info_marks">MedienInfoMarksActivity</string>
+    <string name="title_activity_bachelor_mark">BachelorMarkActivity</string>
 
 
     <string name="title_schedule_button">Schedule</string>
@@ -55,86 +58,71 @@
 
     <string name="bachelor_title">Bachelorarbeit</string>
 
+
+    <!--
+
+    Strings for the modules
+    Informationswissenschaft
+
+    -->
+
+
     <string name="inf1_1">Einführung in die Informationswissenschaft</string>
     <string name="inf1_2">Informationstechnische Grundlagen</string>
 
+    <string name="inf2_1">Mathematische Grundlagen</string>
+    <string name="inf2_2">Einführung in die Methoden empirischer Forschung</string>
+    <string name="inf2_3">Einführung in die Informationslinguistik</string>
 
-    <string-array name="INF_M01">
-        <item name="1_1">Einführung Informationswissenschaft</item>
-        <item name ="1_2">Informationstechnische Grundlagen</item>
-    </string-array>
+    <string name="inf4_1">Grundlagen des Information Retrieval</string>
+    <string name="inf4_2">Inhaltserschließung / Auszeichnungssprachen</string>
+    <string name="inf4_3">Vertiefungsseminar Information Retrieval</string>
 
-    <string-array name="INF_M02">
-        <item>Mathematische Grundlagen</item>
-        <item>Einführung in die Empirische Forschung</item>
-        <item>Einführung in die Informationslinguistik</item>
-    </string-array>
+    <string name="inf5_1">Grundlagen der Softwareergonomie</string>
+    <string name="inf5_2">Vertiefungsseminar Softwareergonomie</string>
 
-    <string-array name="INF_M04">
-        <item>Einführung Information Retrieval</item>
-        <item>Markup-Sprachen</item>
-        <item>Vertiefungsseminar Information Retrieval</item>
-    </string-array>
+    <string name="inf6_1">Datenbanksysteme</string>
+    <string name="inf6_2">Grundlagen: Informationssysteme</string>
+    <string name="inf6_3">Vertiefungsseminar Informationssysteme</string>
 
-    <string-array name="INF_M05">
-        <item>Einführung Softwareergonomie</item>
-        <item>Vertiefungsseminar Softwareergonomie</item>
-    </string-array>
+    <string name="inf7_1">Einführung in das Projektmanagement</string>
+    <string name="inf7_2">Projektseminar</string>
 
-    <string-array name="INF_M06">
-        <item>Datenbanksystem</item>
-        <item>Grundlagen: Informationssysteme</item>
-        <item>Vertiefungsseminar Informationssysteme</item>
-    </string-array>
 
-    <string-array name="INF_M07">
-        <item>Einführung Projektmanagement</item>
-        <item>Projektseminar</item>
-    </string-array>
+    <!--
 
-    <string-array name="MEI_01">
-        <item>Einführung Informatik und Medieninformatik</item>
-        <item>Propädeutikum</item>
-    </string-array>
+    Strings for the modules
+    Informationswissenschaft
 
-    <string-array name="MEI_03">
-        <item>ADP</item>
-        <item>JAVA</item>
-        <item>Android</item>
-    </string-array>
+    -->
 
-    <string-array name="MEI_04_mei">
-        <item>MMT</item>
-        <item>MMDB</item>
-        <item>MME</item>
-    </string-array>
 
-    <string-array name="MEI_05">
-        <item>HCI</item>
-        <item>Usability</item>
-        <item>PSMG</item>
-    </string-array>
+    <string name="mei1_1">Einführung in die Informatik und Medieninformatik</string>
+    <string name="mei1_2">Einführung in das wissenschftliche Arbeiten</string>
 
-    <string-array name="MEI_08_inf">
-        <item>MMT</item>
-        <item>MMDB</item>
-    </string-array>
+    <string name="mei3_1">Einführung in die objektorientierte Programmierung: JAVA</string>
+    <string name="mei3_2">Algorithmen,Datenstrukturen und Programmierung</string>
+    <string name="mei3_3">Einführung in die Anwendungsprogrammierung: Android</string>
 
-    <string-array name="MEI_10_mei">
-        <item>Kurs1</item>
-        <item>Kurs2</item>
-        <item>Projektseminar</item>
-    </string-array>
+    <string name="mei4_1">Multimedia Technology</string>
+    <string name="mei4_2">Multimediale Informationssysteme und Datenbanken</string>
+    <string name="mei4_3">Multimedia Engineering</string>
 
-    <string-array name="MEI_10_inf">
-        <item>Kurs1</item>
-        <item>Projektseminar</item>
-    </string-array>
+    <string name="mei5_1">Human Computer Interaction / Ersatzkurs</string>
+    <string name="mei5_2">Usability Engineering</string>
+    <string name="mei5_3">Projektseminar Mediengestaltung</string>
 
-    <string name="title_activity_add_profile">AddProfile</string>
-    <string name="title_activity_inf_wiss_marks">InfWissMarksActivity</string>
-    <string name="title_activity_medien_info_marks">MedienInfoMarksActivity</string>
-    <string name="title_activity_bachelor_mark">BachelorMarkActivity</string>
+    <string name="mei8_1">Multimedia Technology</string>
+    <string name="mei8_2">Multimediale Informationssystem und Datenbanken</string>
+
+    <string name="mei10_1_inf">Kurs 1</string>
+    <string name="mei10_2_inf">Projektseminar</string>
+
+    <string name="mei10_1">Kurs 1</string>
+    <string name="mei10_2">Kurs 2</string>
+    <string name="mei10_3">Projektseminar</string>
+
+
 
 
 </resources>

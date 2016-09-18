@@ -24,16 +24,16 @@ public class Calculator {
 
 
 
-    public double calculateMarks(int subjectID, double[]inf01){
+    public double calculateMarks(int subjectID, double[]inf01,double param1, double param2){
         if(subjectID == INFWISS_ID){
-            return calculateInfwissAsMainSubject(inf01);
+            return calculateInfwissAsMainSubject(inf01,param1,param2);
         }
         else{
             return calculateMedInfoAsMainSubject(inf01);
         }
     }
 
-    private double calculateInfwissAsMainSubject(double[] inf01){
+    private double calculateInfwissAsMainSubject(double[] inf01,double param1, double param2){
         DecimalFormat df = new DecimalFormat("#0.0");
         double markBachelorInfWiss = 4.0;
 
@@ -45,7 +45,7 @@ public class Calculator {
         double inf6 = calculateInfwissM06() * 0.15;
         double inf7 = calculateInfwissM07() * 0.25;
 
-        double markMedInfo = calculateMedInfoAsSecondSubject() * 0.3;
+        double markMedInfo = calculateMedInfoAsSecondSubject(param1, param2) * 0.3;
         double markInfwiss = (inf1 + inf2 + med10 + inf4 + inf5 + inf6 + inf7) * 0.5;
 
         double finalMark = markInfwiss + markMedInfo + (markBachelorInfWiss * 0.2);
@@ -112,8 +112,8 @@ public class Calculator {
         return finalMark * 0.3;
     }
 
-    private double calculateMedInfoAsSecondSubject(){
-        double med1 = calculateMediInfoM01() * 0.25;
+    private double calculateMedInfoAsSecondSubject(double param1, double param2){
+        double med1 = calculateMediInfoM01(param1,param2) * 0.25;
         double med3 = calculateMediInfoM03() * 0.25;
         double med5 = calculateMediInfoM05() * 0.25;
         double med8 = calculateMediInfoM08() * 0.25;
@@ -151,8 +151,11 @@ public class Calculator {
         return 1.0;
     }
 
-    private double calculateMediInfoM01(){
-        return 2.79;
+    public double calculateMediInfoM01(double param1, double param2){
+        double m1_1 = param1 * 0.7;
+        double m1_2 = param2 * 0.3;
+        double finalMarkM1 = m1_1+m1_2;
+        return finalMarkM1;
     }
 
 

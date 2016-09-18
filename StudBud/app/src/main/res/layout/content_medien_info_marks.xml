@@ -16,70 +16,612 @@
     tools:context="com.studbud.studbud.MedienInfoMarksActivity"
     tools:showIn="@layout/activity_medien_info_marks">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:textAlignment="center"
-        android:id="@+id/module_inf_01_header"
-        android:text="@string/inf01"
-        app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
-        app:layout_marginTopPercent="3%"/>
+
+    <!--
+
+    MODULE MEI-M01
+
+    -->
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:id="@+id/module_inf_01_mark"
-        app:layout_widthPercent="25%"
+        android:textAlignment="center"
+        android:id="@+id/module_mei_01_header"
+        android:text="@string/mei01"
+        app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
-        app:layout_marginLeftPercent="75%"/>
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/inf_1_1_title"
-        android:text="@string/inf1_1"
-        android:textSize="18sp"
+        android:textSize="25sp"
+        android:id="@+id/module_mei_01_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_1_1_title"
+        android:text="@string/mei1_1"
+        android:textSize="14sp"
         android:textAlignment="center"
-        android:layout_below="@+id/module_inf_01_header"
+        android:layout_below="@+id/module_mei_01_header"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
-        app:layout_marginTopPercent="3%"/>
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/inf_1_2_title"
+        android:id="@+id/mei_1_2_title"
         android:text="@string/inf1_2"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
-        android:layout_below="@+id/inf_1_1_title"
+        android:layout_below="@+id/mei_1_1_title"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
-        app:layout_marginTopPercent="3%"/>
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/inf_1_1_mark"
-        android:textSize="18sp"
-        android:layout_below="@+id/module_inf_01_mark"
+        android:id="@+id/mei_1_1_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/module_mei_01_mark"
         app:layout_widthPercent="25%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
-        app:layout_marginLeftPercent="75%"/>
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/inf_1_2_mark"
-        android:textSize="18sp"
-        android:layout_below="@+id/inf_1_1_mark"
+        android:id="@+id/mei_1_2_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/mei_1_1_mark"
         app:layout_widthPercent="25%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
-        app:layout_marginLeftPercent="75%"/>
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+
+    <!--
+
+    MODULE INF-M03
+
+    -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_mei_03_header"
+        android:text="@string/mei03"
+        android:layout_below="@+id/mei_1_2_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="5%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_mei_03_mark"
+        android:layout_below="@+id/mei_1_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="5%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_3_1_title"
+        android:text="@string/mei3_1"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_mei_03_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_3_2_title"
+        android:text="@string/mei3_2"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/mei_3_1_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_3_3_title"
+        android:text="@string/mei3_3"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/mei_3_2_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_3_1_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/module_mei_03_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_3_2_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/mei_3_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_3_3_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/mei_3_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+
+    <!--
+
+    MODULE INF-M04
+
+    -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_mei_04_header"
+        android:text="@string/mei04"
+        android:layout_below="@+id/mei_3_3_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="5%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_mei_04_mark"
+        android:layout_below="@+id/mei_3_3_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="5%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_4_1_title"
+        android:text="@string/mei4_1"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_mei_04_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_4_2_title"
+        android:text="@string/mei4_2"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/mei_4_1_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_4_3_title"
+        android:text="@string/mei4_3"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/mei_4_2_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_4_1_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/module_mei_04_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_4_2_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/mei_4_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_4_3_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/mei_4_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+    <!--
+
+    MODULE INF-M05
+
+    -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_mei_05_header"
+        android:layout_below="@+id/mei_4_3_title"
+        android:text="@string/mei05"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_mei_05_mark"
+        android:layout_below="@+id/mei_4_3_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_5_1_title"
+        android:text="@string/mei5_1"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_mei_05_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/mei_5_2_title"
+    android:text="@string/mei5_2"
+    android:textSize="14sp"
+    android:textAlignment="center"
+    android:layout_below="@+id/mei_5_1_title"
+    app:layout_widthPercent="70%"
+    app:layout_heightPercent="10%"
+    app:layout_marginTopPercent="3%"
+    android:gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_5_3_title"
+        android:text="@string/mei5_2"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/mei_5_2_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_5_1_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/module_mei_05_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_5_2_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/mei_5_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_5_3_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/mei_5_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+
+    <!--
+
+    MODULE MEI-M08
+
+    -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_mei_08_header"
+        android:text="@string/mei08"
+        android:layout_below="@+id/mei_5_3_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="5%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_mei_08_mark"
+        android:layout_below="@+id/mei_5_3_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="5%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_8_1_title"
+        android:text="@string/mei8_1"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_mei_08_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_8_2_title"
+        android:text="@string/mei8_2"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/mei_8_1_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_8_1_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/module_mei_08_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_8_2_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/mei_8_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+
+
+    <!--
+
+    MODULE MEI-M10
+
+    -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_mei_10_header"
+        android:layout_below="@+id/mei_8_2_title"
+        android:text="@string/mei10"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_mei_10_mark"
+        android:layout_below="@+id/mei_8_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_10_1_title"
+        android:text="@string/mei10_1"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_mei_10_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_10_2_title"
+        android:text="@string/mei10_2"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/mei_10_1_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_10_3_title"
+        android:text="@string/mei10_3"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/mei_10_2_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_10_1_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/module_mei_10_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_10_2_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/mei_10_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_10_3_mark"
+        android:textSize="14sp"
+        android:layout_below="@+id/mei_10_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mei_10_3_title"
+        android:id="@+id/medieninfo_safe_button"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="10%"/>
+
+
 
 </android.support.percent.PercentRelativeLayout>
 </ScrollView>

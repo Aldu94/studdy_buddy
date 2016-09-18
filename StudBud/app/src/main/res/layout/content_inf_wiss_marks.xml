@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,4 +16,572 @@
     tools:context="com.studbud.studbud.InfWissMarksActivity"
     tools:showIn="@layout/activity_inf_wiss_marks">
 
+    <!--
+
+    MODULE INF-M01
+
+    -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_inf_01_header"
+        android:text="@string/inf01"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_inf_01_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_1_1_title"
+        android:text="@string/inf1_1"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_inf_01_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_1_2_title"
+        android:text="@string/inf1_2"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/inf_1_1_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_1_1_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/module_inf_01_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_1_2_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/inf_1_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+
+    <!--
+
+    MODULE INF-M02
+
+    -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_inf_02_header"
+        android:text="@string/inf02"
+        android:layout_below="@+id/inf_1_2_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="5%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_inf_02_mark"
+        android:layout_below="@+id/inf_1_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="5%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_2_1_title"
+        android:text="@string/inf2_1"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_inf_02_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_2_2_title"
+        android:text="@string/inf2_2"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/inf_2_1_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_2_3_title"
+        android:text="@string/inf2_3"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/inf_2_2_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_2_1_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/module_inf_02_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_2_2_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/inf_2_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_2_3_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/inf_2_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+
+    <!--
+
+    MODULE INF-M04
+
+    -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_inf_04_header"
+        android:text="@string/inf04"
+        android:layout_below="@+id/inf_2_3_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="5%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_inf_04_mark"
+        android:layout_below="@+id/inf_2_3_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="5%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_4_1_title"
+        android:text="@string/inf2_1"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_inf_04_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_4_2_title"
+        android:text="@string/inf2_2"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/inf_4_1_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_4_3_title"
+        android:text="@string/inf2_3"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/inf_4_2_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_4_1_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/module_inf_04_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_4_2_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/inf_4_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_4_3_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/inf_4_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+    <!--
+
+    MODULE INF-M05
+
+    -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_inf_05_header"
+        android:layout_below="@+id/inf_4_3_title"
+        android:text="@string/inf05"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_inf_05_mark"
+        android:layout_below="@+id/inf_4_3_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_5_1_title"
+        android:text="@string/inf1_1"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_inf_05_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_5_2_title"
+        android:text="@string/inf1_2"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/mei_5_1_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_5_1_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/module_inf_05_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_5_2_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/inf_5_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+
+    <!--
+
+    MODULE INF-M06
+
+    -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_inf_06_header"
+        android:text="@string/inf06"
+        android:layout_below="@+id/inf_5_2_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="5%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_inf_06_mark"
+        android:layout_below="@+id/inf_5_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="5%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_6_1_title"
+        android:text="@string/inf2_1"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_inf_06_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_6_2_title"
+        android:text="@string/inf2_2"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/inf_6_1_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_6_3_title"
+        android:text="@string/inf2_3"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/inf_6_2_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_6_1_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/module_inf_06_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_6_2_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/inf_6_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_6_3_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/inf_6_2_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+
+    <!--
+
+    MODULE INF-M07
+
+    -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/module_inf_07_header"
+        android:layout_below="@+id/inf_6_3_title"
+        android:text="@string/inf07"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/module_inf_07_mark"
+        android:layout_below="@+id/inf_6_3_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_7_1_title"
+        android:text="@string/inf1_1"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/module_inf_07_header"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_7_2_title"
+        android:text="@string/inf1_2"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/inf_7_1_title"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_7_1_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/module_inf_07_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_7_2_mark"
+        android:textSize="18sp"
+        android:layout_below="@+id/inf_7_1_mark"
+        app:layout_widthPercent="25%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="75%"
+        android:gravity="center"
+        android:inputType="number"/>
+
+
+
 </android.support.percent.PercentRelativeLayout>
+</ScrollView>
