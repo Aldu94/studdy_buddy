@@ -4,26 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-<<<<<<< HEAD
 import android.widget.TextView;
-=======
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.studbud.studbud.domain.CalculatorItem;
-import com.studbud.studbud.persistence.ExpandableListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
->>>>>>> f9cf897ad361c271ebba01025e2a89daf68941e1
 
 public class MarksCalculator extends AppCompatActivity {
 
 
-<<<<<<< HEAD
     private TextView infWiss;
     private TextView medienInfo;
     private TextView bachelorWork;
@@ -31,7 +26,6 @@ public class MarksCalculator extends AppCompatActivity {
     private TextView infWissMark;
     private TextView medienInfoMark;
     private TextView bachelorWorkMark;
-=======
     private ListContent lc;
     private int subjectID;
     private User user;
@@ -40,7 +34,6 @@ public class MarksCalculator extends AppCompatActivity {
     public double markTwo;
     private Button calculateButton;
     private double[] inf01;
->>>>>>> f9cf897ad361c271ebba01025e2a89daf68941e1
 
 
     @Override
@@ -56,16 +49,14 @@ public class MarksCalculator extends AppCompatActivity {
         getDataFromBachelorMarkActivity();
     }
 
-<<<<<<< HEAD
 
-=======
     private void readUserInput() {
         //checkForEmptyEditText();
         /*markOne = Double.parseDouble(editTextOne.getText().toString());
         markTwo = Double.parseDouble(editTextTwo.getText().toString());*/
         inf01[0] = markOne;
         inf01[1] = markTwo;
->>>>>>> f9cf897ad361c271ebba01025e2a89daf68941e1
+    }
 
     private void setupUI() {
         infWiss = (TextView)findViewById(R.id.informationswissenschaft_text_view);
@@ -146,13 +137,11 @@ public class MarksCalculator extends AppCompatActivity {
         startActivity(i);
     }
 
-<<<<<<< HEAD
 
     public void onMedienInfoClick(View v) {
         Intent m = new Intent(MarksCalculator.this,MedienInfoMarksActivity.class);
         startActivity(m);
     }
-=======
    /* private void onCalClick(){
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,7 +153,6 @@ public class MarksCalculator extends AppCompatActivity {
             }
         });
     }*/
->>>>>>> f9cf897ad361c271ebba01025e2a89daf68941e1
 
     public void onBachelorWorkClick(View v) {
         Intent b = new Intent(MarksCalculator.this,BachelorMarkActivity.class);

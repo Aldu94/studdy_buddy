@@ -112,7 +112,6 @@ public class Database {
     }
 <<<<<<< HEAD
     */
-=======
 
     public String getUser(String userId){
         open();
@@ -148,7 +147,6 @@ public class Database {
         db.execSQL(sqlUpdate);
         close();
     }
->>>>>>> f9cf897ad361c271ebba01025e2a89daf68941e1
     /*Erstellt einen String Array, der die Pfade der in der Datenbank abgelegten Bilder speichert*/
     public String[] referenceArray(){
         open();
