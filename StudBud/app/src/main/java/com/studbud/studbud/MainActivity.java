@@ -37,15 +37,27 @@ public class MainActivity extends AppCompatActivity {
         onPreferencesClicked();
         updateLocation();
         //db.createSet();
+<<<<<<< HEAD
        // showArray();
+=======
+        //db.updateUser("Karl", "1", "lalalala");
+        showArray();
+>>>>>>> f9cf897ad361c271ebba01025e2a89daf68941e1
         //this.deleteDatabase("courseData.db");
     }
 
     /*private void showArray(){
         for(CourseItem member: db.getAllCourseItems()){
-            Log.i("Member name: ", member.getModule());
+            Log.i("Test ", "Name: "+ member.getName()+" ID: "+ member.getStatus()+" Module: "+member.getModule());
         }
+<<<<<<< HEAD
     }*/
+=======
+     /*for(User member: db.getUser()){
+            Log.i("User ", "User: "+member.getName());
+        }*/
+    }
+>>>>>>> f9cf897ad361c271ebba01025e2a89daf68941e1
 
     private void updateLocation(){
         if(!hasPermission(permission.ACCESS_FINE_LOCATION)){
