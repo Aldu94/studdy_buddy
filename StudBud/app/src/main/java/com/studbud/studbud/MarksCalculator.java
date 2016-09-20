@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.studbud.studbud.domain.CalculatorItem;
 import com.studbud.studbud.persistence.ExpandableListAdapter;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class MarksCalculator extends AppCompatActivity {
     private List<String> listHeadings;
     private HashMap<String, List<String>> childList;
 
-
+    private ListContent lc;
     private int subjectID;
     private User user;
     private Calculator calculator;
@@ -46,7 +47,6 @@ public class MarksCalculator extends AppCompatActivity {
 
     }
 
-
     private void readUserInput() {
         //checkForEmptyEditText();
         /*markOne = Double.parseDouble(editTextOne.getText().toString());
@@ -56,6 +56,68 @@ public class MarksCalculator extends AppCompatActivity {
 
     }
 
+    /*private void addListData() {
+        CalculatorItem obj = new CalculatorItem();
+        obj.children = new ArrayList<CalculatorItem>();
+        for(int i = 0; i < ListContent.state.length; i++){
+            CalculatorItem parent = new CalculatorItem();
+            parent.title = ListContent.state[i];
+            parent.children = new ArrayList<CalculatorItem>();
+            for(int j = 0; j < ListContent.parent.length; j++){
+                CalculatorItem child = new CalculatorItem();
+                child.title = ListContent.parent[i][j];
+                child.children = new ArrayList<CalculatorItem>();
+                for(int x = 0; x < ListContent.child.length; x++){
+                    CalculatorItem grandchild = new CalculatorItem();
+                    grandchild.title = ListContent.child[i][j][x];
+                    child.children.add(grandchild);
+                }
+                parent.children.add(child);
+            }
+            obj.children.add(parent);
+        }
+    }*/
+    /*private void initiateUI(){
+        final ExpandableListView test = (ExpandableListView) findViewById(R.id.Informationswissenschaft);
+
+        test.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v,
+                                        int groupPosition, long id) {
+
+                return true; /* or false depending on what you need
+            }
+        });
+    ExpandableListView.OnGroupClickListener grpLst = new ExpandableListView.OnGroupClickListener() {
+        @Override
+        public boolean onGroupClick(ExpandableListView eListView, View view, int groupPosition,
+                                    long id) {
+
+            return true;/* or false depending on what you need
+        }
+    };
+
+
+    ExpandableListView.OnChildClickListener childLst = new ExpandableListView.OnChildClickListener() {
+        @Override
+        public boolean onChildClick(ExpandableListView eListView, View view, int groupPosition,
+                                    int childPosition, long id) {
+
+            return true;/* or false depending on what you need
+        }
+    };
+
+    ExpandableListView.OnGroupExpandListener grpExpLst = new ExpandableListView.OnGroupExpandListener() {
+        @Override
+        public void onGroupExpand(int groupPosition) {
+
+        }
+    };
+
+    final ExpandableListAdapter adapter = new ExpandableListAdapter(this, CalculatorItem, grpLst, childLst, grpExpLst);
+    test.setAdapter(adapter);
+}*/
 
     private void setupUI() {
 
@@ -66,8 +128,7 @@ public class MarksCalculator extends AppCompatActivity {
         informationswissenschaft.setAdapter(adapter);
     }
 
-
-    private void onCalClick(){
+   /* private void onCalClick(){
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +138,7 @@ public class MarksCalculator extends AppCompatActivity {
                 startActivity(resultPageIntent);
             }
         });
-    }
+    }*/
 
     private void addListData(){
         listHeadings = new ArrayList<String>();

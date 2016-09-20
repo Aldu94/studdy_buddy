@@ -10,6 +10,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.studbud.studbud.R;
+import com.studbud.studbud.domain.CalculatorItem;
 
 import java.util.List;
 import java.util.Map;
@@ -17,17 +18,21 @@ import java.util.Map;
 /**
  * Created by Der Bar.de on 08.09.2016.
  */
-public class SecondLevelAdapter extends BaseExpandableListAdapter{
+public class SecondLevelExpandableListAdapter extends BaseExpandableListAdapter{
 
     private final Context context;
         private final List<String> headLine;
         private final Map<String, List<String>> childTitles;
-        public SecondLevelAdapter(Context context, List<String> headLine, Map<String, List<String>> childTitles) {
+        public SecondLevelExpandableListAdapter(CalculatorItem item, Context context, List<String> headLine, Map<String, List<String>> childTitles) {
             this.context = context;
             this.headLine = headLine;
             this.childTitles = childTitles;
         }
-        @Override
+
+
+
+
+    @Override
         public Object getChild(int groupPosition, int childPosition)
         {
             return this.childTitles.get(this.headLine.get(groupPosition))

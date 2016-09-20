@@ -37,14 +37,18 @@ public class MainActivity extends AppCompatActivity {
         onPreferencesClicked();
         updateLocation();
         //db.createSet();
+        //db.updateUser("Karl", "1", "lalalala");
         showArray();
         //this.deleteDatabase("courseData.db");
     }
 
     private void showArray(){
         for(CourseItem member: db.getAllCourseItems()){
-            Log.i("Member name: ", member.getModule());
+            Log.i("Test ", "Name: "+ member.getName()+" ID: "+ member.getStatus()+" Module: "+member.getModule());
         }
+     /*for(User member: db.getUser()){
+            Log.i("User ", "User: "+member.getName());
+        }*/
     }
 
     private void updateLocation(){

@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.studbud.studbud.domain.CourseItem;
 
@@ -91,23 +92,58 @@ public class Database {
     public ArrayList<CourseItem> getAllCourseItems() {
         open();
         ArrayList<CourseItem> courseItems = new ArrayList<CourseItem>();
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] { KEY_ID, KEY_USER, KEY_MODULE, KEY_SUBMODULE, KEY_NAME, KEY_STATUS, KEY_MARK }, null, null, null, null, null);
+        Cursor itemCursor = db.query(DATABASE_TABLE, new String[] { KEY_ID, KEY_USER, KEY_MODULE, KEY_SUBMODULE, KEY_NAME, KEY_STATUS, KEY_MARK }, null, null, null, null, null);
 
-        if (cursor.moveToFirst()) {
+        if (itemCursor.moveToFirst()) {
             do {
-                String user = cursor.getString(COLUMN_USER_INDEX);
-                String module = cursor.getString(COLUMN_MODULE_INDEX);
-                String submodule = cursor.getString(COLUMN_SUBMODULE_INDEX);
-                String name = cursor.getString(COLUMN_NAME_INDEX);
-                String status = cursor.getString(COLUMN_STATUS_INDEX);
-                String mark = cursor.getString(COLUMN_MARK_INDEX);
+                String user = itemCursor.getString(COLUMN_USER_INDEX);
+                String module = itemCursor.getString(COLUMN_MODULE_INDEX);
+                String submodule = itemCursor.getString(COLUMN_SUBMODULE_INDEX);
+                String name = itemCursor.getString(COLUMN_NAME_INDEX);
+                String status = itemCursor.getString(COLUMN_STATUS_INDEX);
+                String mark = itemCursor.getString(COLUMN_MARK_INDEX);
 
                 courseItems.add(new CourseItem(module, submodule, name, status, mark));
-            } while (cursor.moveToNext());
+            } while (itemCursor.moveToNext());
         }
-        cursor.close();
+        itemCursor.close();
         close();
         return courseItems;
+    }
+
+    public String getUser(String userId){
+        open();
+        String userName = "";
+
+            Cursor userCursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE +" WHERE " +KEY_NAME+ "=", new String[]{userId + ""});
+
+            if(userCursor.getCount() > 0){
+                userCursor.moveToFirst();
+                userName = userCursor.getString(userCursor.getColumnIndex("Name"));
+            }
+            userCursor.close();
+            close();
+            return userName;
+
+    }
+    public void updateUser(String name, String mainSubject, String semesterCount){
+        open();
+        String sqlUpdate = "UPDATE "+DATABASE_TABLE+ " SET name='"+ name + "', status='" + mainSubject + "', module='" + semesterCount+ "' WHERE name=" +KEY_NAME +";";
+        db.execSQL(sqlUpdate);
+        close();
+    }
+
+    public void updateCourseName(CourseItem item, String name){
+        open();
+        String sqlUpdate = "UPDATE "+DATABASE_TABLE+ " SET name='"+ name + "',  WHERE name=" +KEY_NAME +";";
+        db.execSQL(sqlUpdate);
+        close();
+    }
+    public void updateCourseMark(CourseItem item, String mark){
+        open();
+        String sqlUpdate = "UPDATE "+DATABASE_TABLE+ " SET rating='"+ mark + "', WHERE name=" +KEY_NAME +";";
+        db.execSQL(sqlUpdate);
+        close();
     }
     /*Erstellt einen String Array, der die Pfade der in der Datenbank abgelegten Bilder speichert*/
     public String[] referenceArray(){
@@ -179,12 +215,25 @@ public class Database {
                 addCourseItem(item, karl.getName());
         }
     }
+
+    public void addUserToDb(User user){
+        ContentValues newUser = new ContentValues();
+
+        newUser.put(KEY_NAME, user.getName());
+        newUser.put(KEY_STATUS, user.getMainSubjectID());
+        newUser.put(KEY_MARK, user.getNumberOfSemester());
+        open();
+        db.insertWithOnConflict(DATABASE_TABLE, null, newUser, SQLiteDatabase.CONFLICT_REPLACE);
+        close();
+    }
+
     /* Löscht einen Eintrag aus der Datenbank, wenn die Methode aufgerufen wird*/
     public long deleteCourseItem(String courseItemID) {
         String whereClause = KEY_ID + " = '" + courseItemID;
         db.delete(DATABASE_TABLE, whereClause, null);
         return 0;
     }
+
     /* Gibt die Anzahl der Datenbankeinträge zurück*/
     public int getNumberOfImages(){
         open();
