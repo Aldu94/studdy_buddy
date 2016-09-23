@@ -24,28 +24,28 @@ public class Calculator {
 
 
 
-    public double calculateMarks(int subjectID, double[]inf01,double param1, double param2){
+    public double calculateMarks(int subjectID, double[]inf01,double[] mei01,double[] mei03, double[] mei04, double[] mei05,double[] mei08,double[] mei10){
         if(subjectID == INFWISS_ID){
-            return calculateInfwissAsMainSubject(inf01,param1,param2);
+            return calculateInfwissAsMainSubject(inf01,mei01,mei03,mei05,mei08,mei10);
         }
         else{
-            return calculateMedInfoAsMainSubject(inf01);
+            return calculateMedInfoAsMainSubject(inf01,mei03,mei04,mei05,mei10);
         }
     }
 
-    private double calculateInfwissAsMainSubject(double[] inf01,double param1, double param2){
+    private double calculateInfwissAsMainSubject(double[] inf01,double[] mei01,double[] mei03,double[] mei05,double[] mei08,double[] mei10){
         DecimalFormat df = new DecimalFormat("#0.0");
         double markBachelorInfWiss = 4.0;
 
         double inf1 = calculateInfwissM01(inf01) * 0.1;
         double inf2 = calculateInfwissM02() * 0.1;
-        double med10 = calculateMediInfoM10() * 0.1;
+        double med10 = calculateMediInfoM10(mei10) * 0.1;
         double inf4 = calculateInfwissM04() * 0.15;
         double inf5 = calculateInfwissM05() * 0.15;
         double inf6 = calculateInfwissM06() * 0.15;
         double inf7 = calculateInfwissM07() * 0.25;
 
-        double markMedInfo = calculateMedInfoAsSecondSubject(param1, param2) * 0.3;
+        double markMedInfo = calculateMedInfoAsSecondSubject(mei01,mei03,mei05,mei08) * 0.3;
         double markInfwiss = (inf1 + inf2 + med10 + inf4 + inf5 + inf6 + inf7) * 0.5;
 
         double finalMark = markInfwiss + markMedInfo + (markBachelorInfWiss * 0.2);
@@ -53,14 +53,14 @@ public class Calculator {
         return finalMark;
     }
 
-    private double calculateMedInfoAsMainSubject(double[] inf01) {
+    private double calculateMedInfoAsMainSubject(double[] inf01,double[] mei03, double[] mei04, double[] mei05,double[] mei10) {
         DecimalFormat df = new DecimalFormat("#0.0");
         double markBachelorMedInfo = 4.0;
 
-        double med3 = calculateMediInfoM03() * 0.25;
-        double med4 = calculateMediInfoM04() * 0.25;
-        double med5 = calculateMediInfoM05() * 0.25;
-        double med10 = calculateMediInfoM10() * 0.25;
+        double med3 = calculateMediInfoM03(mei03) * 0.25;
+        double med4 = calculateMediInfoM04(mei04) * 0.25;
+        double med5 = calculateMediInfoM05(mei05) * 0.25;
+        double med10 = calculateMediInfoM10(mei10) * 0.25;
 
         double markMedInfo = (med3 + med4 + med5 + med10) * 0.5;
         double markInfWiss = calculateInfWissAsSecondSubject(inf01);
@@ -112,11 +112,11 @@ public class Calculator {
         return finalMark * 0.3;
     }
 
-    private double calculateMedInfoAsSecondSubject(double param1, double param2){
-        double med1 = calculateMediInfoM01(param1,param2) * 0.25;
-        double med3 = calculateMediInfoM03() * 0.25;
-        double med5 = calculateMediInfoM05() * 0.25;
-        double med8 = calculateMediInfoM08() * 0.25;
+    private double calculateMedInfoAsSecondSubject(double[] mei01,double[] mei03,double[] mei05,double[] mei08){
+        double med1 = calculateMediInfoM01(mei01) * 0.25;
+        double med3 = calculateMediInfoM03(mei03) * 0.25;
+        double med5 = calculateMediInfoM05(mei05) * 0.25;
+        double med8 = calculateMediInfoM08(mei08) * 0.25;
         double mark = med1 + med3 + med5 + med8;
         return mark;
     }
@@ -151,34 +151,47 @@ public class Calculator {
         return 1.0;
     }
 
-    public double calculateMediInfoM01(double param1, double param2){
-        double m1_1 = param1 * 0.7;
-        double m1_2 = param2 * 0.3;
-        double finalMarkM1 = m1_1+m1_2;
+    public double calculateMediInfoM01(double[] mei01){
+        double m1_1 = mei01[0] * 0.7;
+        double m1_2 = mei01[1] * 0.3;
+        double finalMarkM1 = m1_1 + m1_2;
         return finalMarkM1;
     }
 
 
 
-    private double calculateMediInfoM03(){
-        return 3.325;
+    public double calculateMediInfoM03(double[] mei03){
+        double m3_1 = mei03[0] * 0.25;
+        double m3_2 = mei03[1] * 0.25;
+        double m3_3 = mei03[2] * 0.5;
+        double finalMarkM3 = m3_1 + m3_2 + m3_3;
+        return finalMarkM3;
     }
 
-    private double calculateMediInfoM04(){
-        return 4.0;
+    public double calculateMediInfoM04(double[] mei04){
+        double m4_1 = mei04[0] * 0.25;
+        double m4_2 = mei04[1] * 0.25;
+        double m4_3 = mei04[2] * 0.5;
+        double finalMarkM4 = m4_1 + m4_2 + m4_3;
+        return finalMarkM4;
     }
 
-    private double calculateMediInfoM05(){
-        return 3.325;
-
+    public double calculateMediInfoM05(double[] mei05){
+        double m5_1 = mei05[0] * 0.25;
+        double m5_2 = mei05[1] * 0.25;
+        double m5_3 = mei05[2] * 0.5;
+        double finalMarkM5 = m5_1 + m5_2 + m5_3;
+        return finalMarkM5;
     }
 
-    private double calculateMediInfoM08(){
-        return 2.85;
-    }
+    public double calculateMediInfoM08(double[] mei08){
+        double m8_1 = mei08[0] * 0.5;
+        double m8_2 = mei08[1] * 0.5;
+        double finalMarkM3 = m8_1 + m8_2;
+        return finalMarkM3;    }
 
-    private double calculateMediInfoM10(){
-        return 1.0;
+    public double calculateMediInfoM10(double[] mei10){
+        return mei10[2];
     }
 
 }

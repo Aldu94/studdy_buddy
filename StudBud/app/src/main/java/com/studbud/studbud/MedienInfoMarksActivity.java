@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.studbud.studbud.domain.CourseItem;
+
 public class MedienInfoMarksActivity extends AppCompatActivity {
 
     private static int KEY_MAIN_SUBJECT;
@@ -39,21 +41,30 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
     private TextView markModule8;
     private TextView markModule10;
 
-    private Button button;
 
+    private Button button;
     private Calculator calculator;
+    private Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medien_info_marks);
-        calculator = new Calculator();
+        initDB();
+        initCalculator();
         setupUI();
         onSafeButtonClicked();
+        db.close();
     }
 
+    private void initDB(){
+        db = new Database(MedienInfoMarksActivity.this);
+        db.open();
+    }
 
-
+    private void initCalculator(){
+        calculator = new Calculator();
+    }
 
     private void setupUI(){
         mei1_1 = (EditText)findViewById(R.id.mei_1_1_mark);
@@ -94,18 +105,161 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculateModule1();
+                calculateModule3();
+                calculateModule4();
+                calculateModule5();
+                calculateModule8();
+                calculateModule10();
             }
         });
     }
 
     private void calculateModule1(){
-        double first = Double.parseDouble(mei1_1.getText().toString());
-        double second = Double.parseDouble(mei1_2.getText().toString());
-        double meiModule1Mark = calculator.calculateMediInfoM01(first,second);
+        double[] mei01 = new double[2];
+        if (mei1_1.getText().length() == 0){
+            mei1_1.setText("4.0");
+            mei01[0] = Double.parseDouble(mei1_1.getText().toString());
+        }
+        if (mei1_2.getText().length() == 0){
+            mei1_2.setText("4.0");
+            mei01[1] = Double.parseDouble(mei1_2.getText().toString());
+        }
+        else{
+            mei01[0] = Double.parseDouble(mei1_1.getText().toString());
+            mei01[1] = Double.parseDouble(mei1_2.getText().toString());
+        }
+
+        double meiModule1Mark = calculator.calculateMediInfoM01(mei01);
         markModule1.setText(String.valueOf(meiModule1Mark));
-        Log.d("++++++++++++",String.valueOf(meiModule1Mark));
+        // create new course item
+        //db.addCourseItem();
     }
 
 
+    private void calculateModule3(){
+        double[] mei03 = new double[3];
+
+        if (mei3_1.getText().length() == 0){
+            mei3_1.setText("4.0");
+            mei03[0] = Double.parseDouble(mei3_1.getText().toString());
+        }
+        if (mei3_2.getText().length() == 0){
+            mei3_2.setText("4.0");
+            mei03[1] = Double.parseDouble(mei3_2.getText().toString());
+        }
+        if (mei3_3.getText().length() == 0){
+            mei3_3.setText("4.0");
+            mei03[1] = Double.parseDouble(mei3_3.getText().toString());
+        }
+        else{
+            mei03[0] = Double.parseDouble(mei3_1.getText().toString());
+            mei03[1] = Double.parseDouble(mei3_2.getText().toString());
+            mei03[2] = Double.parseDouble(mei3_3.getText().toString());
+        }
+
+        double meiModule3Mark = calculator.calculateMediInfoM03(mei03);
+        markModule3.setText(String.valueOf(meiModule3Mark));
+
+    }
+
+
+    private void calculateModule4(){
+        double[] mei04 = new double[3];
+
+        if (mei4_1.getText().length() == 0){
+            mei4_1.setText("4.0");
+            mei04[0] = Double.parseDouble(mei4_1.getText().toString());
+        }
+        if (mei4_2.getText().length() == 0){
+            mei4_2.setText("4.0");
+            mei04[1] = Double.parseDouble(mei4_2.getText().toString());
+        }
+        if (mei4_3.getText().length() == 0){
+            mei4_3.setText("4.0");
+            mei04[2] = Double.parseDouble(mei4_3.getText().toString());
+        }
+        else{
+            mei04[0] = Double.parseDouble(mei4_1.getText().toString());
+            mei04[1] = Double.parseDouble(mei4_2.getText().toString());
+            mei04[2] = Double.parseDouble(mei4_3.getText().toString());
+        }
+
+        double meiModule4Mark = calculator.calculateMediInfoM04(mei04);
+        markModule4.setText(String.valueOf(meiModule4Mark));
+
+    }
+
+
+    private void calculateModule5(){
+        double[] mei05 = new double[3];
+
+        if (mei5_1.getText().length() == 0){
+            mei5_1.setText("4.0");
+            mei05[0] = Double.parseDouble(mei5_1.getText().toString());
+        }
+        if (mei5_2.getText().length() == 0){
+            mei5_2.setText("4.0");
+            mei05[1] = Double.parseDouble(mei5_2.getText().toString());
+        }
+        if (mei5_3.getText().length() == 0){
+            mei5_3.setText("4.0");
+            mei05[2] = Double.parseDouble(mei5_3.getText().toString());
+        }
+        else{
+            mei05[0] = Double.parseDouble(mei5_1.getText().toString());
+            mei05[1] = Double.parseDouble(mei5_2.getText().toString());
+            mei05[2] = Double.parseDouble(mei5_3.getText().toString());
+        }
+
+        double meiModule5Mark = calculator.calculateMediInfoM05(mei05);
+        markModule5.setText(String.valueOf(meiModule5Mark));
+    }
+
+
+    private void calculateModule8(){
+        double[] mei08 = new double[2];
+
+        if (mei8_1.getText().length() == 0){
+            mei8_1.setText("4.0");
+            mei08[0] = Double.parseDouble(mei8_1.getText().toString());
+        }
+        if (mei8_2.getText().length() == 0){
+            mei8_2.setText("4.0");
+            mei08[1] = Double.parseDouble(mei8_2.getText().toString());
+        }
+        else{
+            mei08[0] = Double.parseDouble(mei8_1.getText().toString());
+            mei08[1] = Double.parseDouble(mei8_2.getText().toString());
+        }
+
+        double meiModule8Mark = calculator.calculateMediInfoM08(mei08);
+        markModule8.setText(String.valueOf(meiModule8Mark));
+    }
+
+
+    private void calculateModule10(){
+        double[] mei10 = new double[3];
+
+        if (mei10_1.getText().length() == 0){
+            mei10_1.setText("4.0");
+            mei10[0] = Double.parseDouble(mei10_1.getText().toString());
+        }
+        if (mei10_2.getText().length() == 0){
+            mei10_2.setText("4.0");
+            mei10[1] = Double.parseDouble(mei10_2.getText().toString());
+        }
+        if (mei10_3.getText().length() == 0){
+            mei10_3.setText("4.0");
+            mei10[2] = Double.parseDouble(mei10_3.getText().toString());
+        }
+        else{
+            mei10[0] = Double.parseDouble(mei10_1.getText().toString());
+            mei10[1] = Double.parseDouble(mei10_2.getText().toString());
+            mei10[2] = Double.parseDouble(mei10_3.getText().toString());
+        }
+
+        double meiModule10Mark = calculator.calculateMediInfoM10(mei10);
+        markModule10.setText(String.valueOf(meiModule10Mark));
+    }
 
 }

@@ -42,7 +42,7 @@
         android:textSize="25sp"
         android:id="@+id/module_mei_01_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="7%"
+        app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"/>
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mei_1_2_title"
-        android:text="@string/inf1_2"
+        android:text="@string/mei1_2"
         android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/mei_1_1_title"
@@ -83,7 +83,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
 
     <!--
@@ -178,7 +178,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -190,7 +190,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
 
     <!--
@@ -284,7 +284,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -296,7 +296,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -308,7 +308,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
     <!--
 
@@ -390,7 +390,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -402,7 +402,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -414,7 +414,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
 
     <!--
@@ -486,7 +486,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -498,7 +498,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
 
 
@@ -584,7 +584,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -596,7 +596,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         />
     <EditText
         android:layout_width="wrap_content"
@@ -609,7 +609,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         />
 
 

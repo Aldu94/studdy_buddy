@@ -82,7 +82,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
 
     <!--
@@ -177,7 +177,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -201,7 +201,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
 
     <!--
@@ -283,7 +283,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -295,7 +295,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -307,7 +307,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
     <!--
 
@@ -377,7 +377,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -389,7 +389,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
 
     <!--
@@ -472,7 +472,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -484,7 +484,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -496,7 +496,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
 
     <!--
@@ -567,7 +567,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -579,7 +579,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="number"/>
+        android:inputType="numberDecimal"/>
 
 
 

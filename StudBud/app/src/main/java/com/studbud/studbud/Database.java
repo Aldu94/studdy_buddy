@@ -110,7 +110,6 @@ public class Database {
         close();
         return courseItems;
     }
-<<<<<<< HEAD
     */
 
     public String getUser(String userId){
