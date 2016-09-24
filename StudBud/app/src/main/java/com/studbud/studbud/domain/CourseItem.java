@@ -1,27 +1,33 @@
 package com.studbud.studbud.domain;
 
+import java.util.ArrayList;
+
 /**
  * Created by Der Bar.de on 16.08.2016.
  */
 
 public class CourseItem implements Comparable<CourseItem>{
-    private String mark;
+    private double mark;
     private String name;
-    private String module;
-    private String status;
-    private String submodule;
+    private int module;
+    private int submodule;
+    private double weight;
 
-    public CourseItem(String module, String submodule, String name, String status, String mark){
+    public CourseItem(String name, int module, int submodule, double mark, double weight) {
         this.name = name;
-        this.status = status;
         this.mark = mark;
         this.module = module;
         this.submodule = submodule;
+        this.weight = weight;
     }
 
     /* gibt dem Nutzer den Namen des CourseItems zurück */
     public String getName(){
         return name;
+    }
+
+    public double getWeight() {
+        return weight;
     }
 
     /* Wenn der Nutzer dem CourseItem einen Namen geben will, kann er diese Methode aufrufen */
@@ -30,42 +36,34 @@ public class CourseItem implements Comparable<CourseItem>{
     }
 
     /* Hier lässt sich die Note des CourseItems speichern, wenn es geändert wurde */
-    public void setMark(String mark){
+    public void setMark(int mark){
         this.mark = mark;
     }
 
     /* Die methode gibt die Note des Courseitem zurück */
-    public String getMark() {
+    public double getMark() {
         return mark;
     }
-    public String getModule(){
+
+    public int getModule(){
         return module;
     }
 
-    public void setModule(String module){
+    public void setModule(int module){
         this.module = module;
     }
 
-    public String getSubmodule(){
+    public int getSubmodule(){
         return submodule;
     }
 
-    public void setSubmodule(String submodule){
+    public void setSubmodule(int submodule){
         this.submodule = submodule;
     }
+
     /* Mit dieser Methode kann die App die CourseItems anhand der Namen vergleichen. Kann für die Sortierung der CourseItems verwendet werden */
     @Override
     public int compareTo(CourseItem another){
-        return getModule().compareTo(another.getModule());
-    }
-
-    public String getStatus() {
-        return status;
-    }
-    public void setStatus(String status) {
-        this.status = status;
+        return getName().compareTo(another.getName());
     }
 }
-
-
-

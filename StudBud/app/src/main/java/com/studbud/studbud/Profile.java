@@ -37,14 +37,10 @@ public class Profile extends AppCompatActivity {
             nameView.setText(userName);
             int userSemester = extras.getInt("semester");
             semesterView.setText(String.valueOf(userSemester));
-            long userMainSubjectId = extras.getLong("subjectID");
-            if (userMainSubjectId == 0){
-                mainSubjectView.setText("Informationswissenschaft");
-            } else{
-                mainSubjectView.setText("Medieninformatik");
-            }
+            MainSubject userMainSubject = MainSubject.values()[extras.getInt("subjectID")];
+            mainSubjectView.setText(userMainSubject.getName());
 
-            User user = new User(userName,userSemester,userMainSubjectId);
+            User user = new User(userName,userSemester, userMainSubject);
             //safe user in database
         }
 

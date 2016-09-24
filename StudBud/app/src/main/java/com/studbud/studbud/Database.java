@@ -13,11 +13,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.studbud.studbud.domain.CourseItem;
+import com.studbud.studbud.domain.Module;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class Database {
-    private static final String DATABASE_NAME = "courseData.db";
+    private static final String DATABASE_NAME = "courseItems8.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_TABLE = "courseItems";
@@ -38,22 +45,26 @@ public class Database {
     public static final int COLUMN_STATUS_INDEX = 5;
     public static final int COLUMN_MARK_INDEX = 6;
 
-    private User karl = new User("Karl", 0, 2);
+    private User karl = new User("Karl", 0, MainSubject.MI);
     private CourseDBOpenHelper dbHelper;
     private SQLiteDatabase db;
     public String[] referenceArray;
 
     public Database(Context context) {
         dbHelper = new CourseDBOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
+        createSet();
     }
+
     /* ermöglicht es anderen Klassen, die Datenbank zu öffnen */
     public void open() throws SQLException {
+        Log.d("DBHelper", dbHelper.toString());
         try {
             db = dbHelper.getWritableDatabase();
         } catch (SQLException e) {
             db = dbHelper.getReadableDatabase();
         }
     }
+
     /* ermöglicht es den anderen Klassen, die Datenbank wieder zu schließen, wenn die Interaktion damit beendet ist */
     public void close() {
         db.close();
@@ -64,7 +75,6 @@ public class Database {
         ContentValues newCourseValue = new ContentValues();
 
         newCourseValue.put(KEY_NAME, item.getName());
-        newCourseValue.put(KEY_STATUS, item.getStatus());
         newCourseValue.put(KEY_MARK, item.getMark());
         newCourseValue.put(KEY_MODULE, item.getModule());
         newCourseValue.put(KEY_SUBMODULE, item.getSubmodule());
@@ -140,9 +150,9 @@ public class Database {
         db.execSQL(sqlUpdate);
         close();
     }
-    public void updateCourseMark(CourseItem item, String mark){
+    public void updateMark(int module, int submodule, double newMark) {
         open();
-        String sqlUpdate = "UPDATE "+DATABASE_TABLE+ " SET rating='"+ mark + "', WHERE name=" +KEY_NAME +";";
+        String sqlUpdate = "UPDATE "+ DATABASE_TABLE + " SET rating='" + newMark + "' WHERE module= " + module + ";";
         db.execSQL(sqlUpdate);
         close();
     }
@@ -161,34 +171,68 @@ public class Database {
         return referenceArray;
     }
 
-    public void updateMark(CourseItem course, float mark) {
-        if(checkForExistingEntry(course.getName(), Float.toString(mark)) == true){
-            ContentValues cv = new ContentValues();
-            cv.put(KEY_MARK, Float.toString(mark));
-            db.update(DATABASE_TABLE, cv, KEY_ID + " = ?", new String[]{String.valueOf(course.getName())});
+    public ArrayList<CourseItem> getAllToDoItems() {
+        ArrayList<CourseItem> items = new ArrayList<CourseItem>();
+        Cursor cursor = db.query(DATABASE_TABLE, new String[] { KEY_ID,
+                KEY_MODULE, KEY_SUBMODULE, KEY_MARK, KEY_NAME}, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String submodule = cursor.getString(2);
+                String mark = cursor.getString(3);
+                String name = cursor.getString(4);
+                String module = cursor.getString(1);
+
+                Log.d("Entity: ", cursor.getString(0) + ": " + name + ", Module Position: " + module + "." + submodule + ", MARK: " + mark);
+
+            } while (cursor.moveToNext());
         }
-        addCourseItem(course, karl.getName());
+        return items;
     }
 
      public void createSet() {
-        ArrayList<CourseItem> itemSet = new ArrayList<CourseItem>();
-         //Kurse der Medieninformatik
-         itemSet.add(new CourseItem("MEI-M01", "01", "EIMI", null, null ));
-         itemSet.add(new CourseItem("MEI-M01", "02", "Propäd.", null, null ));
-         itemSet.add(new CourseItem("MEI-M02", "01", "Mathe I", null, null ));
-         itemSet.add(new CourseItem("MEI-M02", "02", "Mathe II", null, null ));
-         itemSet.add(new CourseItem("MEI-M03", "01", "OOP", null, null ));
-         itemSet.add(new CourseItem("MEI-M03", "02", "ADP", null, null ));
-         itemSet.add(new CourseItem("MEI-M03", "03", "Android", null, null ));
-         itemSet.add(new CourseItem("MEI-M04", "01", "MMT", null, null ));
-         itemSet.add(new CourseItem("MEI-M04", "02", "MIDBS", null, null ));
-         itemSet.add(new CourseItem("MEI-M04", "03", "MME", null, null ));
-         itemSet.add(new CourseItem("MEI-M05", "01", "HCI", null, null ));
-         itemSet.add(new CourseItem("MEI-M05", "02", "Usability", null, null ));
-         itemSet.add(new CourseItem("MEI-M05", "03", "Med.Gest.", null, null ));
-         itemSet.add(new CourseItem("MEI-M10", "01", "Anw.Schw.", null, null ));
-         itemSet.add(new CourseItem("MEI-M10", "02", "Anw.Modul", null, null ));
-         itemSet.add(new CourseItem("MEI-M10", "03", "Projektsem.", null, null ));
+         ArrayList<Module> miModules = new ArrayList<Module>(Arrays.asList(
+                 new Module("MEI-M01", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("EIMI", 1, 1, 4),
+                         new CourseItem("Propäd.", 1, 2, 4)
+                 ))),
+                 new Module("MEI-M03", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("OOP", 3, 1, 4),
+                         new CourseItem("ADP", 3, 2, 4),
+                         new CourseItem("Android", 3, 3, 4)
+                 ))),
+                 new Module("MEI-M04", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("MMT", 4, 1, 4),
+                         new CourseItem("MIDBS", 4, 2, 4),
+                         new CourseItem("MME", 4, 3, 4)
+                 ))),
+                 new Module("MEI-M05", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("HCI", 5, 1, 4),
+                         new CourseItem("Usability", 5, 2, 4),
+                         new CourseItem("Med.Gest.", 5, 3, 4)
+                 ))),
+                 new Module("MEI-M08", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("MMT.", 8, 1, 4),
+                         new CourseItem("MMDB", 8, 2, 4)
+                 ))),
+                 new Module("MEI-M10", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("Anw.Schw.", 10, 1, 4),
+                         new CourseItem("Anw.Modul", 10, 2, 4),
+                         new CourseItem("Projektsem.", 10, 3, 4)
+                 )))
+         ));
+
+         open();
+         for (Module module : miModules) {
+
+             for (CourseItem course : module.getCourses()) {
+                 saveCourseItem(course, false);
+             }
+
+         }
+
+
+         /*
          //Kurse der Informationswissenschaft
          itemSet.add(new CourseItem("INF-M01", "01", "a", null, null ));
          itemSet.add(new CourseItem("INF-M01", "02", "b", null, null ));
@@ -206,8 +250,31 @@ public class Database {
          itemSet.add(new CourseItem("INF-M10", "01", "n", null, null ));
          itemSet.add(new CourseItem("INF-M10", "02", "o", null, null ));
          itemSet.add(new CourseItem("INF-M10", "03", "p", null, null ));
+         */
+    }
 
-         addSetToDb(itemSet);
+    /*
+    public CourseItem getCourseItem(int module, int submodule) {
+        String whereClause = KEY_MODULE + " = '" + module + " and " + KEY_SUBMODULE + " = " + submodule;
+    }
+    */
+
+    private void saveCourseItem(CourseItem course, boolean openDatabaseManually) {
+        ContentValues entity = new ContentValues();
+        entity.put(KEY_NAME, course.getName());
+        entity.put(KEY_MODULE, course.getModule());
+        entity.put(KEY_SUBMODULE, course.getSubmodule());
+        entity.put(KEY_MARK, course.getMark());
+
+        if (openDatabaseManually) {
+            open();
+        }
+
+        db.insertWithOnConflict(DATABASE_TABLE, null, entity, SQLiteDatabase.CONFLICT_REPLACE);
+
+        if (openDatabaseManually) {
+            close();
+        }
     }
 
     /* Erstellt pro User einen Datenbanksatz*/
@@ -221,7 +288,7 @@ public class Database {
         ContentValues newUser = new ContentValues();
 
         newUser.put(KEY_NAME, user.getName());
-        newUser.put(KEY_STATUS, user.getMainSubjectID());
+        newUser.put(KEY_STATUS, user.getMainSubject().toString());
         newUser.put(KEY_MARK, user.getNumberOfSemester());
         open();
         db.insertWithOnConflict(DATABASE_TABLE, null, newUser, SQLiteDatabase.CONFLICT_REPLACE);
@@ -254,7 +321,7 @@ public class Database {
     private class CourseDBOpenHelper extends SQLiteOpenHelper {
         private static final String DATABASE_CREATE = "create table "
                 + DATABASE_TABLE + " (" +KEY_ID + " integer primary key autoincrement, " + KEY_USER + " text," + KEY_MODULE + " text," + KEY_SUBMODULE + " text," +
-                KEY_NAME + " text," + KEY_STATUS + " text," + KEY_MARK + " text);";
+                KEY_NAME + " text," + KEY_MARK + " text);";
 
         public CourseDBOpenHelper(Context context, String dbname, SQLiteDatabase.CursorFactory factory, int version){
             super(context, dbname, factory, version);

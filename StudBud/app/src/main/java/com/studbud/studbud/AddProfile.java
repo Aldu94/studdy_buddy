@@ -90,7 +90,7 @@ public class AddProfile extends AppCompatActivity {
     // method to get the user input for the subject id
 
     private long getSubjectInput(){
-        return mainSubjectSpinner.getSelectedItemId();
+        return (int) mainSubjectSpinner.getSelectedItemId();
     }
 
 }

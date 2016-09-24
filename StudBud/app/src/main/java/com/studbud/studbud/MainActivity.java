@@ -22,9 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private Button calculatorButton;
     private Button profileButton;
     private Button preferencesButton;
-    private Database db = new Database(MainActivity.this);
-    private User karl = new User("Karl",0,3);
-    private CourseItem INF1 = new CourseItem("INF-M01","01","ADP", "bestanden", "2.3");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

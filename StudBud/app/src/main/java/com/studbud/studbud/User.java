@@ -3,16 +3,31 @@ package com.studbud.studbud;
 /**
  * Created by Aldu on 31.08.16.
  */
+
+
+enum MainSubject {
+    MI, INF;
+
+    public String getName() {
+        switch (this) {
+            case MI: return "Medieninformatik";
+            case INF: return "Informationswissenschaft";
+            default: return "Invalid MainSubject";
+        }
+    }
+}
+
+
 public class User {
 
     private String name;
-    private long mainSubjectID;
+    private MainSubject mainSubject;
     private int numberOfSemester;
 
 
-    public User(String name, int numberOfSemester, long mainSubjectID){
+    public User(String name, int numberOfSemester, MainSubject mainSubject) {
         this.name = name;
-        this.mainSubjectID = mainSubjectID;
+        this.mainSubject = mainSubject;
         this.numberOfSemester = numberOfSemester;
     }
 
@@ -31,8 +46,8 @@ public class User {
 
     //gibt ID des Hauptfachs zurück (0/1)
 
-    public long getMainSubjectID(){
-        return mainSubjectID;
+    public MainSubject getMainSubject(){
+        return mainSubject;
     }
 
 

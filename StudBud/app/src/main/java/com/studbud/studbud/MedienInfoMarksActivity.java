@@ -54,12 +54,12 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         initCalculator();
         setupUI();
         onSafeButtonClicked();
-        db.close();
     }
 
     private void initDB(){
         db = new Database(MedienInfoMarksActivity.this);
-        db.open();
+
+        db.getAllToDoItems();
     }
 
     private void initCalculator(){
@@ -89,6 +89,8 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         mei10_2 = (EditText)findViewById(R.id.mei_10_2_mark);
         mei10_3 = (EditText)findViewById(R.id.mei_10_3_mark);
 
+        
+
 
         markModule1 = (TextView)findViewById(R.id.module_mei_01_mark);
         markModule3 = (TextView)findViewById(R.id.module_mei_03_mark);
@@ -110,6 +112,12 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
                 calculateModule5();
                 calculateModule8();
                 calculateModule10();
+
+                db.open();
+                db.getAllToDoItems();
+
+                mei1_1.setText(courses[0].getMark());
+
             }
         });
     }
@@ -119,10 +127,12 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         if (mei1_1.getText().length() == 0){
             mei1_1.setText("4.0");
             mei01[0] = Double.parseDouble(mei1_1.getText().toString());
+            db.updateMark(1, 1, 1.0);
         }
         if (mei1_2.getText().length() == 0){
             mei1_2.setText("4.0");
             mei01[1] = Double.parseDouble(mei1_2.getText().toString());
+            db.updateMark(1, 2, 1.0);
         }
         else{
             mei01[0] = Double.parseDouble(mei1_1.getText().toString());
