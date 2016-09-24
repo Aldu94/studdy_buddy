@@ -36,12 +36,32 @@ public class MainActivity extends AppCompatActivity {
         onProfileClicked();
         onPreferencesClicked();
         updateLocation();
+        //db.updateUser("Klaus", 1, 5);
+        //db.addUserToDb(karl);
         //db.createSet();
         //db.updateUser("Karl", "1", "lalalala");
         showArray();
+        //checkForUser(karl.getName());
+        //showUser(karl.getName());
         //this.deleteDatabase("courseData.db");
     }
+    /*
+    private void showUser(String data){
+       String[] userData = db.updateUser(data);
+        for(String member: userData){
+            Log.i("UserData: ",member);
+        }
 
+    }*/
+
+    private void checkForUser(String data){
+        if(db.checkForExistingUser(data) == true){
+            Log.i("Note: ", "User exists!");
+        }else{
+            Log.i("Note: ", "User not found!");
+        }
+
+    }
     private void showArray(){
         for(CourseItem member: db.getAllCourseItems()){
             Log.i("Test ", "Name: "+ member.getName()+" ID: "+ member.getStatus()+" Module: "+member.getModule());
