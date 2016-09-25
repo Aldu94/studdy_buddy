@@ -322,7 +322,7 @@ public class Database {
         if (openDatabaseManually) {
             close();
         }
-         //addSetToDb(itemSet);
+         addSetToDb(itemSet);
     }
 
     /* Erstellt pro User einen Datenbanksatz*/
