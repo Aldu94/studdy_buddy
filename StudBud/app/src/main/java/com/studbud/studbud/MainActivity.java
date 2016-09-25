@@ -2,6 +2,7 @@ package com.studbud.studbud;
 
 import android.Manifest.permission;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private Button profileButton;
     private Button preferencesButton;
 
+    private Database db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         onProfileClicked();
         onPreferencesClicked();
         updateLocation();
+        db = new Database(this);
+        checkFirstOpen();
         //db.updateUser("Klaus", 1, 5);
         //db.addUserToDb(karl);
         //db.createSet();
@@ -71,6 +76,21 @@ public class MainActivity extends AppCompatActivity {
             Log.i("User ", "User: "+member.getName());
         }*/
 
+    private void checkFirstOpen() {
+        final String PREFS_NAME = "MyPrefsFile";
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+        if (settings.getBoolean("my_first_time", true)) {
+            //the app is being launched for first time, do something
+            Log.d("Comments", "First time");
+
+            // first time task
+                db.createSet();
+            // record the fact that the app has been started at least once
+            settings.edit().putBoolean("my_first_time", false).commit();
+        }
+    }
 
     private void updateLocation(){
         if(!hasPermission(permission.ACCESS_FINE_LOCATION)){

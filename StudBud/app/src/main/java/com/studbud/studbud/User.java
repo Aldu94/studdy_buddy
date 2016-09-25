@@ -1,22 +1,5 @@
 package com.studbud.studbud;
 
-/**
- * Created by Aldu on 31.08.16.
- */
-
-
-enum MainSubject {
-    MI, INF;
-
-    public String getName() {
-        switch (this) {
-            case MI: return "Medieninformatik";
-            case INF: return "Informationswissenschaft";
-            default: return "Invalid MainSubject";
-        }
-    }
-}
-
 
 public class User {
 

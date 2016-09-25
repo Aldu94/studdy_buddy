@@ -582,6 +582,19 @@
         android:inputType="numberDecimal"/>
 
 
+    <!--
+
+    Button
+
+    -->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/inf_7_2_title"
+        android:id="@+id/saveButtonInfwiss"
+        app:layout_widthPercent="100%"/>
+
 
 </android.support.percent.PercentRelativeLayout>
 </ScrollView>

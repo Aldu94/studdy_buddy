@@ -68,68 +68,6 @@ public class MarksCalculator extends AppCompatActivity {
         bachelorWorkMark = (TextView)findViewById(R.id.bachelorarbeit_mark);
     }
 
-    /*private void addListData() {
-        CalculatorItem obj = new CalculatorItem();
-        obj.children = new ArrayList<CalculatorItem>();
-        for(int i = 0; i < ListContent.state.length; i++){
-            CalculatorItem parent = new CalculatorItem();
-            parent.title = ListContent.state[i];
-            parent.children = new ArrayList<CalculatorItem>();
-            for(int j = 0; j < ListContent.parent.length; j++){
-                CalculatorItem child = new CalculatorItem();
-                child.title = ListContent.parent[i][j];
-                child.children = new ArrayList<CalculatorItem>();
-                for(int x = 0; x < ListContent.child.length; x++){
-                    CalculatorItem grandchild = new CalculatorItem();
-                    grandchild.title = ListContent.child[i][j][x];
-                    child.children.add(grandchild);
-                }
-                parent.children.add(child);
-            }
-            obj.children.add(parent);
-        }
-    }*/
-    /*private void initiateUI(){
-        final ExpandableListView test = (ExpandableListView) findViewById(R.id.Informationswissenschaft);
-
-        test.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                                        int groupPosition, long id) {
-
-                return true; /* or false depending on what you need
-            }
-        });
-    ExpandableListView.OnGroupClickListener grpLst = new ExpandableListView.OnGroupClickListener() {
-        @Override
-        public boolean onGroupClick(ExpandableListView eListView, View view, int groupPosition,
-                                    long id) {
-
-            return true;/* or false depending on what you need
-        }
-    };
-
-
-    ExpandableListView.OnChildClickListener childLst = new ExpandableListView.OnChildClickListener() {
-        @Override
-        public boolean onChildClick(ExpandableListView eListView, View view, int groupPosition,
-                                    int childPosition, long id) {
-
-            return true;/* or false depending on what you need
-        }
-    };
-
-    ExpandableListView.OnGroupExpandListener grpExpLst = new ExpandableListView.OnGroupExpandListener() {
-        @Override
-        public void onGroupExpand(int groupPosition) {
-
-        }
-    };
-
-    final ExpandableListAdapter adapter = new ExpandableListAdapter(this, CalculatorItem, grpLst, childLst, grpExpLst);
-    test.setAdapter(adapter);
-}*/
 
 
     public void onInfwissClick(View v) {
@@ -142,17 +80,7 @@ public class MarksCalculator extends AppCompatActivity {
         Intent m = new Intent(MarksCalculator.this,MedienInfoMarksActivity.class);
         startActivity(m);
     }
-   /* private void onCalClick(){
-        calculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readUserInput();
-                calculator.calculateMarks(subjectID, inf01);
-                Intent resultPageIntent = new Intent(MarksCalculator.this, ResultActivity.class);
-                startActivity(resultPageIntent);
-            }
-        });
-    }*/
+
 
     public void onBachelorWorkClick(View v) {
         Intent b = new Intent(MarksCalculator.this,BachelorMarkActivity.class);

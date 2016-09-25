@@ -15,16 +15,11 @@ import android.util.Log;
 import com.studbud.studbud.domain.CourseItem;
 import com.studbud.studbud.domain.Module;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class Database {
-    private static final String DATABASE_NAME = "courseItems9.db";
+    private static final String DATABASE_NAME = "courseItems33.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_TABLE = "courseItems";
@@ -35,7 +30,8 @@ public class Database {
     private static final String KEY_NAME = "name";
     private static final String KEY_ID = "_id";
     private static final String KEY_MARK = "rating";
-    private static final String KEY_STATUS ="status";
+    private static final String KEY_WEIGHT ="weight";
+    private static final String KEY_SUBJECT = "subject";
 
 
     /* Hier werden die Spalten Nummern vergeben */
@@ -45,6 +41,7 @@ public class Database {
     public static final int COLUMN_NAME_INDEX = 4;
     public static final int COLUMN_STATUS_INDEX = 5;
     public static final int COLUMN_MARK_INDEX = 6;
+    private static final int COLUMN_WEIGHT_INDEX = 7;
 
     private User karl = new User("Karl", 0, MainSubject.MI);
     private CourseDBOpenHelper dbHelper;
@@ -53,7 +50,7 @@ public class Database {
 
     public Database(Context context) {
         dbHelper = new CourseDBOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
-        createSet();
+        //createSet();
     }
 
     /* ermöglicht es anderen Klassen, die Datenbank zu öffnen */
@@ -72,17 +69,18 @@ public class Database {
     }
 
     /* Legt ein CourseItem in der Datenbank mit den Informationen KEY_NAME, KEY_STATUS, KEY_RATING ab */
-    public void addCourseItem(CourseItem item, String user) {
+    public long addCourseItem(CourseItem item, String user) {
         ContentValues newCourseValue = new ContentValues();
 
         newCourseValue.put(KEY_NAME, item.getName());
-        newCourseValue.put(KEY_MARK, item.getMark());
         newCourseValue.put(KEY_MODULE, item.getModule());
         newCourseValue.put(KEY_SUBMODULE, item.getSubmodule());
-        newCourseValue.put(KEY_USER, user);
+        newCourseValue.put(KEY_MARK, item.getMark());
+        newCourseValue.put(KEY_SUBJECT, item.getSubject().getName());
         open();
-        db.insertWithOnConflict(DATABASE_TABLE, null, newCourseValue, SQLiteDatabase.CONFLICT_REPLACE);
-        close();
+        //db.insertWithOnConflict(DATABASE_TABLE, null, newCourseValue, SQLiteDatabase.CONFLICT_REPLACE);
+        return db.insert(DATABASE_TABLE,null,newCourseValue);
+        //close();
     }
 
     /* prüft, ob ein Eintrag mit dem gewünschten Wert bereits in der Datenbank liegt */
@@ -98,30 +96,6 @@ public class Database {
         close();
         return true;
     }
-
-    /*gibt eine ArrayList mit allen CourseItems und den entsprechenden Werten aus der Datenbank zurück*/
-  /*  public ArrayList<CourseItem> getAllCourseItems() {
-        open();
-        ArrayList<CourseItem> courseItems = new ArrayList<CourseItem>();
-        Cursor itemCursor = db.query(DATABASE_TABLE, new String[] { KEY_ID, KEY_USER, KEY_MODULE, KEY_SUBMODULE, KEY_NAME, KEY_STATUS, KEY_MARK }, null, null, null, null, null);
-
-        if (itemCursor.moveToFirst()) {
-            do {
-                String user = itemCursor.getString(COLUMN_USER_INDEX);
-                String module = itemCursor.getString(COLUMN_MODULE_INDEX);
-                String submodule = itemCursor.getString(COLUMN_SUBMODULE_INDEX);
-                String name = itemCursor.getString(COLUMN_NAME_INDEX);
-                String status = itemCursor.getString(COLUMN_STATUS_INDEX);
-                String mark = itemCursor.getString(COLUMN_MARK_INDEX);
-
-                courseItems.add(new CourseItem(module, submodule, name, status, mark));
-            } while (itemCursor.moveToNext());
-        }
-        itemCursor.close();
-        close();
-        return courseItems;
-    }
-    */
 
     public String getUser(String userId){
         open();
@@ -142,7 +116,6 @@ public class Database {
         open();
         ContentValues userContent = new ContentValues();
         userContent.put(KEY_NAME, Name);
-        userContent.put(KEY_STATUS, "" + MainSubject);
         userContent.put(KEY_MARK, "" + SemesterCount);
         return db.update(DATABASE_TABLE, userContent, "name "+"="+Name, null);
     }
@@ -153,41 +126,31 @@ public class Database {
         db.execSQL(sqlUpdate);
         close();
     }
-    public void updateMark(int module, int submodule, double newMark) {
+
+    public void updateMark(int module, int submodule, double newMark, MainSubject subject) {
         open();
-        String sqlUpdate = "UPDATE "+ DATABASE_TABLE + " SET rating='" + newMark + "' WHERE module= " + module + ";";
+        String sqlUpdate = "UPDATE "+ DATABASE_TABLE + " SET rating='" + newMark + "' WHERE module= '" + module + "' AND submodule= '" + submodule +"' AND subject= '" + subject.getName() + "';";
         db.execSQL(sqlUpdate);
         close();
     }
-    /*Erstellt einen String Array, der die Pfade der in der Datenbank abgelegten Bilder speichert*/
-    public String[] referenceArray(){
-        open();
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_STATUS}, null, null, null, null, null);
-        cursor.moveToFirst();
-        for(int i = 0; i <= getNumberOfImages()-1; i++){
-            String filepath = cursor.getString(COLUMN_STATUS_INDEX);
-            referenceArray[i] = filepath;
-            cursor.moveToNext();
-        }
-        cursor.close();
-        close();
-        return referenceArray;
-    }
 
-    public ArrayList<CourseItem> getAllToDoItems() {
-        ArrayList<CourseItem> items = new ArrayList<CourseItem>();
+
+    public ArrayList<CourseItem> getAllCourseItems() {
+        ArrayList<CourseItem> items = new ArrayList<>();
+        open();
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
-                KEY_MODULE, KEY_SUBMODULE, KEY_MARK, KEY_NAME}, null, null, null, null, null);
+                KEY_MODULE, KEY_SUBMODULE, KEY_MARK, KEY_NAME, KEY_WEIGHT, KEY_SUBJECT}, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
             do {
-                String submodule = cursor.getString(2);
-                String mark = cursor.getString(3);
+                int module = cursor.getInt(1);
+                int submodule = cursor.getInt(2);
+                double mark = cursor.getDouble(3);
                 String name = cursor.getString(4);
-                String module = cursor.getString(1);
+                double weight = cursor.getDouble(5);
+                String subject = cursor.getString(6);
 
-                Log.d("Entity: ", cursor.getString(0) + ": " + name + ", Module Position: " + module + "." + submodule + ", MARK: " + mark);
-
+                items.add(new CourseItem(name, module, submodule, mark, weight, MainSubject.fromString(subject)));
             } while (cursor.moveToNext());
         }
         return items;
@@ -204,7 +167,7 @@ public class Database {
         Cursor userCursor = findUserData(data);
 
         String name = userCursor.getString(userCursor.getColumnIndex(KEY_NAME));
-        String subject = userCursor.getString(userCursor.getColumnIndex(KEY_STATUS));
+        String subject = userCursor.getString(userCursor.getColumnIndex(""));
         String semesters = userCursor.getString(userCursor.getColumnIndex(KEY_MARK));
         userCursor.close();
         close();
@@ -230,93 +193,81 @@ public class Database {
     }
 
 
-    public void updateMark(CourseItem course, float mark) {
-        if(checkForExistingEntry(course.getName(), Float.toString(mark)) == true){
-            ContentValues cv = new ContentValues();
-            cv.put(KEY_MARK, Float.toString(mark));
-            db.update(DATABASE_TABLE, cv, KEY_ID + " = ?", new String[]{String.valueOf(course.getName())});
-        }
-        return;
-    }
-
      public void createSet() {
          ArrayList<Module> miModules = new ArrayList<Module>(Arrays.asList(
                  new Module("MEI-M01", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("EIMI", 1, 1, 4, 0.7),
-                         new CourseItem("Propäd.", 1, 2, 4, 0.3)
+                         new CourseItem("Einführung in die Informatik und Medieninformatik", 1, 1, 4, 0.7, MainSubject.MI),
+                         new CourseItem("Einführung in das wissenschaftliche Schreiben", 1, 2, 4, 0.3,MainSubject.MI)
                  ))),
                  new Module("MEI-M03", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("OOP", 3, 1, 4, 0.25),
-                         new CourseItem("ADP", 3, 2, 4, 0.25),
-                         new CourseItem("Android", 3, 3, 4, 0.5)
+                         new CourseItem("Objektorientierte Programmierung", 3, 1, 4, 0.25,MainSubject.MI),
+                         new CourseItem("Algorithmen,Datenstrukturen und Programmierung", 3, 2, 4, 0.25,MainSubject.MI),
+                         new CourseItem("Android", 3, 3, 4, 0.5,MainSubject.MI)
                  ))),
                  new Module("MEI-M04", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("MMT", 4, 1, 4, 0.25),
-                         new CourseItem("MIDBS", 4, 2, 4, 0.25),
-                         new CourseItem("MME", 4, 3, 4, 0.5)
+                         new CourseItem("Multimedia Technology", 4, 1, 4, 0.25,MainSubject.MI),
+                         new CourseItem("Multimediale Informationssysteme und Datenbanken", 4, 2, 4, 0.25,MainSubject.MI),
+                         new CourseItem("Multimedia Engineering", 4, 3, 4, 0.5,MainSubject.MI)
                  ))),
                  new Module("MEI-M05", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("HCI", 5, 1, 4, 0.25),
-                         new CourseItem("Usability", 5, 2, 4, 0.25),
-                         new CourseItem("Med.Gest.", 5, 3, 4, 0.5)
+                         new CourseItem("Human Computer Interaction", 5, 1, 4, 0.25,MainSubject.MI),
+                         new CourseItem("Usability Engineering", 5, 2, 4, 0.25,MainSubject.MI),
+                         new CourseItem("Projektseminar Mediengestaltung", 5, 3, 4, 0.5,MainSubject.MI)
                  ))),
                  new Module("MEI-M08", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("MMT.", 8, 1, 4, 0.5),
-                         new CourseItem("MMDB", 8, 2, 4, 0.5)
+                         new CourseItem("Multimedia Technology", 8, 1, 4, 0.5,MainSubject.MI),
+                         new CourseItem("Multimediale Informationssysteme und Datenbanken", 8, 2, 4, 0.5,MainSubject.MI)
                  ))),
                  new Module("MEI-M10", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("Anw.Schw.", 10, 1, 4, 0.0),
-                         new CourseItem("Anw.Modul", 10, 2, 4, 0.0),
-                         new CourseItem("Projektsem.", 10, 3, 4, 1)
+                         new CourseItem("Kurs 1", 10, 1, 4, 0.0,MainSubject.MI),
+                         new CourseItem("Kurs 2", 10, 2, 4, 0.0,MainSubject.MI),
+                         new CourseItem("Projektseminar", 10, 3, 4, 1,MainSubject.MI)
                  )))
          ));
 
 
          ArrayList<Module> infModules = new ArrayList<Module>(Arrays.asList(
                  new Module("INF-M01", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("Einführung in die Informationswissenschaft", 1, 1, 4, 0.5),
-                         new CourseItem("Informationstechnische Grundlagen", 1, 2, 4, 0.5)
+                         new CourseItem("Einführung in die Informationswissenschaft", 1, 1, 4, 0.5,MainSubject.INF),
+                         new CourseItem("Informationstechnische Grundlagen", 1, 2, 4, 0.5,MainSubject.INF)
                  ))),
                  new Module("INF-M02", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("Mathematische Grundlagen", 3, 1, 4, 0.5),
-                         new CourseItem("Empirische Forschung", 3, 2, 4, 0.5),
-                         new CourseItem("Einführung in die Informationslinguistik", 3, 3, 4, 0.0)
+                         new CourseItem("Mathematische Grundlagen", 2, 1, 4, 0.5,MainSubject.INF),
+                         new CourseItem("Empirische Forschung", 2, 2, 4, 0.5,MainSubject.INF),
+                         new CourseItem("Einführung in die Informationslinguistik", 2, 3, 4, 0.0,MainSubject.INF)
                  ))),
                  new Module("INF-M04", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("Information Retrieval", 4, 1, 4, 0.25),
-                         new CourseItem("Auszeichnungssprachen", 4, 2, 4, 0.25),
-                         new CourseItem("Vertiefungsseminar Information Retrieval", 4, 3, 4, 0.5)
+                         new CourseItem("Information Retrieval", 4, 1, 4, 0.25,MainSubject.INF),
+                         new CourseItem("Auszeichnungssprachen", 4, 2, 4, 0.25,MainSubject.INF),
+                         new CourseItem("Vertiefungsseminar Information Retrieval", 4, 3, 4, 0.5,MainSubject.INF)
                  ))),
                  new Module("INF-M05", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("Grundlagen der Softwareergonomie", 5, 1, 4, 0.33),
-                         new CourseItem("Vertiefungsseminar Softwareergonomie", 5, 2, 4, 0.66)
+                         new CourseItem("Grundlagen der Softwareergonomie", 5, 1, 4, 0.33,MainSubject.INF),
+                         new CourseItem("Vertiefungsseminar Softwareergonomie", 5, 2, 4, 0.66,MainSubject.INF)
                  ))),
                  new Module("INF-M06", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("Datenbanksysteme", 8, 1, 4, 0.25),
-                         new CourseItem("Grundlagen: Informationssysteme", 8, 2, 4, 0.25),
-                         new CourseItem("Vertiefungsseminar Informationssysteme", 8, 2, 4, 0.5)
+                         new CourseItem("Datenbanksysteme", 6, 1, 4, 0.25,MainSubject.INF),
+                         new CourseItem("Grundlagen: Informationssysteme", 6, 2, 4, 0.25,MainSubject.INF),
+                         new CourseItem("Vertiefungsseminar Informationssysteme", 6, 3, 4, 0.5,MainSubject.INF)
                  ))),
                  new Module("INF-M07", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("Einführung in das Projektmanagement", 10, 1, 4, 0.0),
-                         new CourseItem("Praxisseminar", 10, 2, 4, 1)
+                         new CourseItem("Einführung in das Projektmanagement", 7, 1, 4, 0.0,MainSubject.INF),
+                         new CourseItem("Praxisseminar", 7, 2, 4, 1,MainSubject.INF)
                  )))
          ));
 
          open();
-         for (Module module : miModules) {
 
+         for (Module module : miModules) {
              for (CourseItem course : module.getCourses()) {
                  saveCourseItem(course, false);
              }
-
          }
 
          for (Module module : infModules) {
-
              for (CourseItem course : module.getCourses()) {
                  saveCourseItem(course, false);
              }
-
          }
     }
 
@@ -332,6 +283,8 @@ public class Database {
         entity.put(KEY_MODULE, course.getModule());
         entity.put(KEY_SUBMODULE, course.getSubmodule());
         entity.put(KEY_MARK, course.getMark());
+        entity.put(KEY_WEIGHT, course.getWeight());
+        entity.put(KEY_SUBJECT,course.getSubject().getName());
 
         if (openDatabaseManually) {
             open();
@@ -357,7 +310,7 @@ public class Database {
         ContentValues newUser = new ContentValues();
 
         newUser.put(KEY_NAME, user.getName());
-        newUser.put(KEY_STATUS, user.getMainSubject().toString());
+        newUser.put("", user.getMainSubject().toString());
         newUser.put(KEY_MARK, user.getNumberOfSemester());
         open();
         db.insertWithOnConflict(DATABASE_TABLE, null, newUser, SQLiteDatabase.CONFLICT_REPLACE);
@@ -389,8 +342,8 @@ public class Database {
     /* Der CourseDBOpenHelper erstellt eine Datenbank mit den gewünschten Spalten und dem Datenbanknamen*/
     private class CourseDBOpenHelper extends SQLiteOpenHelper {
         private static final String DATABASE_CREATE = "create table "
-                + DATABASE_TABLE + " (" +KEY_ID + " integer primary key autoincrement, " + KEY_USER + " text," + KEY_MODULE + " text," + KEY_SUBMODULE + " text," +
-                KEY_NAME + " text," + KEY_MARK + " text);";
+                + DATABASE_TABLE + " (" + KEY_ID + " integer primary key autoincrement, " + KEY_USER + " text," + KEY_MODULE + " text," + KEY_SUBMODULE + " text," +
+                KEY_NAME + " text," + KEY_MARK + " text," + KEY_WEIGHT + " text," + KEY_SUBJECT + " text);";
 
         public CourseDBOpenHelper(Context context, String dbname, SQLiteDatabase.CursorFactory factory, int version){
             super(context, dbname, factory, version);

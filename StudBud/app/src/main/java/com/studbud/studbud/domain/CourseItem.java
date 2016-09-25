@@ -1,6 +1,8 @@
 package com.studbud.studbud.domain;
 
-import java.util.ArrayList;
+import com.studbud.studbud.MainSubject;
+
+import javax.security.auth.Subject;
 
 /**
  * Created by Der Bar.de on 16.08.2016.
@@ -12,18 +14,24 @@ public class CourseItem implements Comparable<CourseItem>{
     private int module;
     private int submodule;
     private double weight;
+    private MainSubject subject;
 
-    public CourseItem(String name, int module, int submodule, double mark, double weight) {
+    public CourseItem(String name, int module, int submodule, double mark, double weight, MainSubject subject) {
         this.name = name;
         this.mark = mark;
         this.module = module;
         this.submodule = submodule;
         this.weight = weight;
+        this.subject = subject;
     }
 
     /* gibt dem Nutzer den Namen des CourseItems zurück */
     public String getName(){
         return name;
+    }
+
+    public MainSubject getSubject(){
+        return subject;
     }
 
     public double getWeight() {
@@ -40,7 +48,7 @@ public class CourseItem implements Comparable<CourseItem>{
         this.mark = mark;
     }
 
-    /* Die methode gibt die Note des Courseitem zurück */
+    /* Die Methode gibt die Note des CourseItem zurück */
     public double getMark() {
         return mark;
     }
