@@ -37,6 +37,7 @@ public class Database {
     private static final String KEY_MARK = "rating";
     private static final String KEY_STATUS ="status";
 
+
     /* Hier werden die Spalten Nummern vergeben */
     public static final int COLUMN_USER_INDEX = 1;
     public static final int COLUMN_MODULE_INDEX = 2;
@@ -137,11 +138,13 @@ public class Database {
             return userName;
 
     }
-    public void updateUser(String name, String mainSubject, String semesterCount){
+    public long updateUser(String Name, int MainSubject, int SemesterCount){
         open();
-        String sqlUpdate = "UPDATE "+DATABASE_TABLE+ " SET name='"+ name + "', status='" + mainSubject + "', module='" + semesterCount+ "' WHERE name=" +KEY_NAME +";";
-        db.execSQL(sqlUpdate);
-        close();
+        ContentValues userContent = new ContentValues();
+        userContent.put(KEY_NAME, Name);
+        userContent.put(KEY_STATUS, "" + MainSubject);
+        userContent.put(KEY_MARK, "" + SemesterCount);
+        return db.update(DATABASE_TABLE, userContent, "name "+"="+Name, null);
     }
 
     public void updateCourseName(CourseItem item, String name){
@@ -186,6 +189,50 @@ public class Database {
                 Log.d("Entity: ", cursor.getString(0) + ": " + name + ", Module Position: " + module + "." + submodule + ", MARK: " + mark);
 
             } while (cursor.moveToNext());
+        }
+
+    private Cursor findUserData(String userName){
+        Cursor usCurs = db.rawQuery("select * from " + DATABASE_TABLE + " where " + KEY_NAME + "=?".toString(), null);
+        return usCurs;
+    }
+
+    public String[] updateUser(String data){
+        open();
+        String[] userData = new String[3];
+        Cursor userCursor = findUserData(data);
+
+        String name = userCursor.getString(userCursor.getColumnIndex(KEY_NAME));
+        String subject = userCursor.getString(userCursor.getColumnIndex(KEY_STATUS));
+        String semesters = userCursor.getString(userCursor.getColumnIndex(KEY_MARK));
+        userCursor.close();
+        close();
+        userData[0] = name;
+        userData[1] = subject;
+        userData[2] = semesters;
+
+        return userData;
+    }
+
+    public boolean checkForExistingUser(String userName){
+        open();
+        String query = "Select * from " + DATABASE_TABLE + " where " + KEY_NAME + " = '" + userName + "'";
+        Cursor bCursor = db.rawQuery(query, null);
+            if(bCursor.getCount() <= 0){
+                bCursor.close();
+                close();
+                return false;
+            }
+        bCursor.close();
+        close();
+        return true;
+    }
+
+
+    public void updateMark(CourseItem course, float mark) {
+        if(checkForExistingEntry(course.getName(), Float.toString(mark)) == true){
+            ContentValues cv = new ContentValues();
+            cv.put(KEY_MARK, Float.toString(mark));
+            db.update(DATABASE_TABLE, cv, KEY_ID + " = ?", new String[]{String.valueOf(course.getName())});
         }
         return items;
     }
@@ -275,6 +322,7 @@ public class Database {
         if (openDatabaseManually) {
             close();
         }
+         addSetToDb(itemSet);
     }
 
     /* Erstellt pro User einen Datenbanksatz*/
@@ -283,6 +331,7 @@ public class Database {
                 addCourseItem(item, karl.getName());
         }
     }
+
 
     public void addUserToDb(User user){
         ContentValues newUser = new ContentValues();

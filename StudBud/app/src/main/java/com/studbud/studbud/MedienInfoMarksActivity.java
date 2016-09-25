@@ -116,7 +116,7 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
                 db.open();
                 db.getAllToDoItems();
 
-                mei1_1.setText(courses[0].getMark());
+                //mei1_1.setText(courses[0].getMark());
 
             }
         });
