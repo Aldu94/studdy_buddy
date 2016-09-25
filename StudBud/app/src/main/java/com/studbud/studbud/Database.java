@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Database {
-    private static final String DATABASE_NAME = "courseItems33.db";
+    private static final String DATABASE_NAME = "courseItems36.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_TABLE = "courseItems";

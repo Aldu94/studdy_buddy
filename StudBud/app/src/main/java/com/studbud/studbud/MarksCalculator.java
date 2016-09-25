@@ -97,6 +97,8 @@ public class MarksCalculator extends AppCompatActivity {
     private void getDataFromMedienInfoMarkActivity(){
         Intent m = getIntent();
         Bundle medienInfoExtras = m.getExtras();
+       // double miMarkData = m.getDoubleExtra("",);
+        //medienInfoMark.setText(String.valueOf(miMarkData));
 
     }
 

@@ -120,11 +120,11 @@ public class InfWissMarksActivity extends AppCompatActivity {
 
     private void updateModuleMarks() {
         markModule1.setText(String.valueOf(calculateModuleMark(1)));
-        markModule2.setText(String.valueOf(calculateModuleMark(3)));
+        markModule2.setText(String.valueOf(calculateModuleMark(2)));
         markModule4.setText(String.valueOf(calculateModuleMark(4)));
         markModule5.setText(String.valueOf(calculateModuleMark(5)));
-        markModule6.setText(String.valueOf(calculateModuleMark(8)));
-        markModule7.setText(String.valueOf(calculateModuleMark(10)));
+        markModule6.setText(String.valueOf(calculateModuleMark(6)));
+        markModule7.setText(String.valueOf(calculateModuleMark(7)));
     }
 
     private void setCourseMarks() {
@@ -146,21 +146,21 @@ public class InfWissMarksActivity extends AppCompatActivity {
     }
 
     private void updateCourseMarks(){
-        db.updateMark(1, 1, getMarkFromEditText(inf1_1), MainSubject.MI);
-        db.updateMark(1, 2, getMarkFromEditText(inf1_2), MainSubject.MI);
-        db.updateMark(3, 1, getMarkFromEditText(inf2_1), MainSubject.MI);
-        db.updateMark(3, 2, getMarkFromEditText(inf2_2), MainSubject.MI);
-        db.updateMark(3, 3, getMarkFromEditText(inf2_3), MainSubject.MI);
-        db.updateMark(4, 1, getMarkFromEditText(inf4_1), MainSubject.MI);
-        db.updateMark(4, 2, getMarkFromEditText(inf4_2), MainSubject.MI);
-        db.updateMark(4, 3, getMarkFromEditText(inf4_3), MainSubject.MI);
-        db.updateMark(5, 1, getMarkFromEditText(inf5_1), MainSubject.MI);
-        db.updateMark(5, 2, getMarkFromEditText(inf5_2), MainSubject.MI);
-        db.updateMark(5, 3, getMarkFromEditText(inf6_1), MainSubject.MI);
-        db.updateMark(8, 1, getMarkFromEditText(inf6_2), MainSubject.MI);
-        db.updateMark(8, 2, getMarkFromEditText(inf6_3), MainSubject.MI);
-        db.updateMark(10, 1, getMarkFromEditText(inf7_1), MainSubject.MI);
-        db.updateMark(10, 2, getMarkFromEditText(inf7_2), MainSubject.MI);
+        db.updateMark(1, 1, getMarkFromEditText(inf1_1), MainSubject.INF);
+        db.updateMark(1, 2, getMarkFromEditText(inf1_2), MainSubject.INF);
+        db.updateMark(2, 1, getMarkFromEditText(inf2_1), MainSubject.INF);
+        db.updateMark(2, 2, getMarkFromEditText(inf2_2), MainSubject.INF);
+        db.updateMark(2, 3, getMarkFromEditText(inf2_3), MainSubject.INF);
+        db.updateMark(4, 1, getMarkFromEditText(inf4_1), MainSubject.INF);
+        db.updateMark(4, 2, getMarkFromEditText(inf4_2), MainSubject.INF);
+        db.updateMark(4, 3, getMarkFromEditText(inf4_3), MainSubject.INF);
+        db.updateMark(5, 1, getMarkFromEditText(inf5_1), MainSubject.INF);
+        db.updateMark(5, 2, getMarkFromEditText(inf5_2), MainSubject.INF);
+        db.updateMark(6, 1, getMarkFromEditText(inf6_1), MainSubject.INF);
+        db.updateMark(6, 2, getMarkFromEditText(inf6_2), MainSubject.INF);
+        db.updateMark(6, 3, getMarkFromEditText(inf6_3), MainSubject.INF);
+        db.updateMark(7, 1, getMarkFromEditText(inf7_1), MainSubject.INF);
+        db.updateMark(7, 2, getMarkFromEditText(inf7_2), MainSubject.INF);
     }
 
     private double calculateModuleMark(int moduleId) {
@@ -188,5 +188,9 @@ public class InfWissMarksActivity extends AppCompatActivity {
         return Double.parseDouble(editText.getText().toString());
     }
 
+
+    private void calculateSubjectMark(){
+
+    }
 
 }
