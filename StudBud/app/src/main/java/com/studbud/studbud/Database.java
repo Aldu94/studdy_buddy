@@ -234,38 +234,38 @@ public class Database {
             cv.put(KEY_MARK, Float.toString(mark));
             db.update(DATABASE_TABLE, cv, KEY_ID + " = ?", new String[]{String.valueOf(course.getName())});
         }
-        return items;
+        return;
     }
 
      public void createSet() {
          ArrayList<Module> miModules = new ArrayList<Module>(Arrays.asList(
                  new Module("MEI-M01", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("EIMI", 1, 1, 4),
-                         new CourseItem("Propäd.", 1, 2, 4)
+                         new CourseItem("EIMI", 1, 1, 4, 0.7),
+                         new CourseItem("Propäd.", 1, 2, 4, 0.3)
                  ))),
                  new Module("MEI-M03", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("OOP", 3, 1, 4),
-                         new CourseItem("ADP", 3, 2, 4),
-                         new CourseItem("Android", 3, 3, 4)
+                         new CourseItem("OOP", 3, 1, 4, 0.25),
+                         new CourseItem("ADP", 3, 2, 4, 0.25),
+                         new CourseItem("Android", 3, 3, 4, 0.5)
                  ))),
                  new Module("MEI-M04", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("MMT", 4, 1, 4),
-                         new CourseItem("MIDBS", 4, 2, 4),
-                         new CourseItem("MME", 4, 3, 4)
+                         new CourseItem("MMT", 4, 1, 4, 0.25),
+                         new CourseItem("MIDBS", 4, 2, 4, 0.25),
+                         new CourseItem("MME", 4, 3, 4, 0.5)
                  ))),
                  new Module("MEI-M05", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("HCI", 5, 1, 4),
-                         new CourseItem("Usability", 5, 2, 4),
-                         new CourseItem("Med.Gest.", 5, 3, 4)
+                         new CourseItem("HCI", 5, 1, 4, 0.25),
+                         new CourseItem("Usability", 5, 2, 4, 0.25),
+                         new CourseItem("Med.Gest.", 5, 3, 4, 0.5)
                  ))),
                  new Module("MEI-M08", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("MMT.", 8, 1, 4),
-                         new CourseItem("MMDB", 8, 2, 4)
+                         new CourseItem("MMT.", 8, 1, 4, 0.5),
+                         new CourseItem("MMDB", 8, 2, 4, 0.5)
                  ))),
                  new Module("MEI-M10", new ArrayList<CourseItem>(Arrays.asList(
-                         new CourseItem("Anw.Schw.", 10, 1, 4),
-                         new CourseItem("Anw.Modul", 10, 2, 4),
-                         new CourseItem("Projektsem.", 10, 3, 4)
+                         new CourseItem("Anw.Schw.", 10, 1, 4, 0.0),
+                         new CourseItem("Anw.Modul", 10, 2, 4, 0.0),
+                         new CourseItem("Projektsem.", 10, 3, 4, 1)
                  )))
          ));
 
@@ -322,7 +322,7 @@ public class Database {
         if (openDatabaseManually) {
             close();
         }
-         addSetToDb(itemSet);
+         //addSetToDb(itemSet);
     }
 
     /* Erstellt pro User einen Datenbanksatz*/
