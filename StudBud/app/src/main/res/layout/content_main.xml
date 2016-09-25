@@ -11,7 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.aldu.studbud.MainActivity"
-    android:background="#050505">
+    android:backgroundTint="#e5802c"
+    android:background="#000000">
 
     <TextView
         android:layout_width="match_parent"
@@ -25,7 +26,7 @@
         android:textColor="#050505"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:background="#1abc9c" />
+        android:background="#ffffff" />
 
     <Button
         android:layout_width="wrap_content"

@@ -24,7 +24,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Database {
-    private static final String DATABASE_NAME = "courseItems8.db";
+    private static final String DATABASE_NAME = "courseItems9.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_TABLE = "courseItems";
@@ -176,7 +176,7 @@ public class Database {
 
     public ArrayList<CourseItem> getAllToDoItems() {
         ArrayList<CourseItem> items = new ArrayList<CourseItem>();
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] { KEY_ID,
+        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
                 KEY_MODULE, KEY_SUBMODULE, KEY_MARK, KEY_NAME}, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
@@ -190,6 +190,8 @@ public class Database {
 
             } while (cursor.moveToNext());
         }
+        return items;
+    }
 
     private Cursor findUserData(String userName){
         Cursor usCurs = db.rawQuery("select * from " + DATABASE_TABLE + " where " + KEY_NAME + "=?".toString(), null);
@@ -269,6 +271,37 @@ public class Database {
                  )))
          ));
 
+
+         ArrayList<Module> infModules = new ArrayList<Module>(Arrays.asList(
+                 new Module("INF-M01", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("Einführung in die Informationswissenschaft", 1, 1, 4, 0.5),
+                         new CourseItem("Informationstechnische Grundlagen", 1, 2, 4, 0.5)
+                 ))),
+                 new Module("INF-M02", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("Mathematische Grundlagen", 3, 1, 4, 0.5),
+                         new CourseItem("Empirische Forschung", 3, 2, 4, 0.5),
+                         new CourseItem("Einführung in die Informationslinguistik", 3, 3, 4, 0.0)
+                 ))),
+                 new Module("INF-M04", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("Information Retrieval", 4, 1, 4, 0.25),
+                         new CourseItem("Auszeichnungssprachen", 4, 2, 4, 0.25),
+                         new CourseItem("Vertiefungsseminar Information Retrieval", 4, 3, 4, 0.5)
+                 ))),
+                 new Module("INF-M05", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("Grundlagen der Softwareergonomie", 5, 1, 4, 0.33),
+                         new CourseItem("Vertiefungsseminar Softwareergonomie", 5, 2, 4, 0.66)
+                 ))),
+                 new Module("INF-M06", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("Datenbanksysteme", 8, 1, 4, 0.25),
+                         new CourseItem("Grundlagen: Informationssysteme", 8, 2, 4, 0.25),
+                         new CourseItem("Vertiefungsseminar Informationssysteme", 8, 2, 4, 0.5)
+                 ))),
+                 new Module("INF-M07", new ArrayList<CourseItem>(Arrays.asList(
+                         new CourseItem("Einführung in das Projektmanagement", 10, 1, 4, 0.0),
+                         new CourseItem("Praxisseminar", 10, 2, 4, 1)
+                 )))
+         ));
+
          open();
          for (Module module : miModules) {
 
@@ -278,26 +311,13 @@ public class Database {
 
          }
 
+         for (Module module : infModules) {
 
-         /*
-         //Kurse der Informationswissenschaft
-         itemSet.add(new CourseItem("INF-M01", "01", "a", null, null ));
-         itemSet.add(new CourseItem("INF-M01", "02", "b", null, null ));
-         itemSet.add(new CourseItem("INF-M02", "01", "c", null, null ));
-         itemSet.add(new CourseItem("INF-M02", "02", "d", null, null ));
-         itemSet.add(new CourseItem("INF-M03", "01", "e", null, null ));
-         itemSet.add(new CourseItem("INF-M03", "02", "f", null, null ));
-         itemSet.add(new CourseItem("INF-M03", "03", "g", null, null ));
-         itemSet.add(new CourseItem("INF-M04", "01", "h", null, null ));
-         itemSet.add(new CourseItem("INF-M04", "02", "i", null, null ));
-         itemSet.add(new CourseItem("INF-M04", "03", "j", null, null ));
-         itemSet.add(new CourseItem("INF-M05", "01", "k", null, null ));
-         itemSet.add(new CourseItem("INF-M05", "02", "l", null, null ));
-         itemSet.add(new CourseItem("INF-M05", "03", "m", null, null ));
-         itemSet.add(new CourseItem("INF-M10", "01", "n", null, null ));
-         itemSet.add(new CourseItem("INF-M10", "02", "o", null, null ));
-         itemSet.add(new CourseItem("INF-M10", "03", "p", null, null ));
-         */
+             for (CourseItem course : module.getCourses()) {
+                 saveCourseItem(course, false);
+             }
+
+         }
     }
 
     /*
@@ -322,7 +342,7 @@ public class Database {
         if (openDatabaseManually) {
             close();
         }
-         addSetToDb(itemSet);
+         //addSetToDb(itemSet);
     }
 
     /* Erstellt pro User einen Datenbanksatz*/

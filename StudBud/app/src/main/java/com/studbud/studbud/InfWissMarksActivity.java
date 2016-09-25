@@ -11,7 +11,7 @@ import android.view.View;
 public class InfWissMarksActivity extends AppCompatActivity {
 
 
-    private Database db = new Database(this);
+    private Database db;
     private Calculator calculator;
 
     @Override
@@ -24,7 +24,8 @@ public class InfWissMarksActivity extends AppCompatActivity {
     }
 
     private void initDB() {
-        db.open();
+        db = new Database(InfWissMarksActivity.this);
+        db.getAllToDoItems();
         Log.d("Check for open Database", "OPEN");
     }
 

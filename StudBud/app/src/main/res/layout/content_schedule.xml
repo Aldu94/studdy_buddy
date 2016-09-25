@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,6 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Schedule"
     tools:showIn="@layout/activity_schedule"
+    android:backgroundTint="#e5802c"
     android:background="#000000">
 
 
@@ -22,11 +23,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="#00ffffff" />
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/schedule_week">
+        android:background="#00ffffff"
+        app:layout_marginTopPercent= "87%"
+        app:layout_marginRightPercent="3%"/>
 
-    </GridLayout>
-</RelativeLayout>
+</android.support.percent.PercentRelativeLayout>
