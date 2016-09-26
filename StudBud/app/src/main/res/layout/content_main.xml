@@ -34,9 +34,10 @@
         android:text="@string/title_profile_button"
         android:id="@+id/profile_button"
         android:background="@drawable/rounded_button"
-        app:layout_widthPercent ="45%"
-        app:layout_heightPercent ="30%"
-        android:layout_alignTop="@+id/preferences_button"
+        app:layout_widthPercent ="100%"
+        app:layout_heightPercent ="10%"
+        app:layout_marginTopPercent="7%"
+        android:layout_below="@+id/calculator_button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -46,24 +47,13 @@
         android:text="@string/title_schedule_button"
         android:id="@+id/schedule_button"
         android:background="@drawable/rounded_button"
-        app:layout_widthPercent ="45%"
-        app:layout_heightPercent ="30%"
-        android:layout_alignTop="@+id/calculator_button"
+        app:layout_widthPercent ="100%"
+        app:layout_heightPercent ="10%"
+        app:layout_marginTopPercent="15%"
+        android:layout_below="@+id/headLine"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/title_preferences_button"
-    android:id="@+id/preferences_button"
-    android:background="@drawable/rounded_button"
-        app:layout_widthPercent ="45%"
-        app:layout_heightPercent ="30%"
-        app:layout_marginTopPercent ="2%"
-        android:layout_below="@+id/schedule_button"
-        android:layout_alignLeft="@+id/calculator_button"
-        android:layout_alignStart="@+id/calculator_button" />
 
     <Button
         android:layout_width="wrap_content"
@@ -71,10 +61,10 @@
         android:text="@string/title_calculator_button"
         android:id="@+id/calculator_button"
         android:background="@drawable/rounded_button"
-        app:layout_widthPercent ="45%"
-        app:layout_heightPercent ="30%"
-        app:layout_marginTopPercent ="10%"
-        android:layout_below="@+id/headLine"
+        app:layout_widthPercent ="100%"
+        app:layout_heightPercent ="10%"
+        app:layout_marginTopPercent ="7%"
+        android:layout_below="@+id/schedule_button"
         android:layout_alignRight="@+id/headLine"
         android:layout_alignEnd="@+id/headLine" />
 
