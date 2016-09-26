@@ -1,12 +1,15 @@
 package com.studbud.studbud;
 
+import android.Manifest;
 import android.Manifest.permission;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.view.*;
 
 import com.studbud.studbud.domain.CourseItem;
 
@@ -24,7 +28,10 @@ public class MainActivity extends AppCompatActivity {
     private Button profileButton;
     private Button preferencesButton;
 
+    private int score = 0;
+
     private Database db;
+    private GPSLocator locator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +41,12 @@ public class MainActivity extends AppCompatActivity {
         onScheduleClicked();
         onCalculatorClicked();
         onProfileClicked();
-        onPreferencesClicked();
         updateLocation();
         db = new Database(this);
+        locator = new GPSLocator();
         checkFirstOpen();
-        //db.updateUser("Klaus", 1, 5);
-        //db.addUserToDb(karl);
-        //db.createSet();
-       // showArray();
-        //db.updateUser("Karl", "1", "lalalala");
-        //showArray();
-        //showArray();
-        //checkForUser(karl.getName());
-        //showUser(karl.getName());
-        //this.deleteDatabase("courseData.db");
+        collectGamePoints();
+
     }
     /*
     private void showUser(String data){
@@ -76,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
             Log.i("User ", "User: "+member.getName());
         }*/
 
+
+    // Check the first opening after the installation of the app
+    // then create the course set, otherwise not
     private void checkFirstOpen() {
         final String PREFS_NAME = "MyPrefsFile";
 
@@ -92,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void updateLocation(){
         if(!hasPermission(permission.ACCESS_FINE_LOCATION)){
             ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION}, 12);
@@ -105,37 +109,45 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
- /*   private void collectGamePoints(){
+
+   private void collectGamePoints(){
         Log.i("MainActivity", "asking for GPS permission!");
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)) != PackageManager.PERMISSION_GRANTED){
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             requestGpsPermission();
+            //locator.onLocationChanged();
+
         }
         else{
             Log.i("MainActivity", "GPS permission granted");
         }
     }
+
+
     private void requestGpsPermission(){
         if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
-        Snackbar.make(permLayout, "GPS muss für die Gaming Funktion eingeschaltet sein", Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener()){
-            @Override
-                    public void onClick(View view){
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},0);
+            View permLayout = new View(this);
+            Snackbar.make(permLayout, "GPS muss für die Gaming Funktion eingeschaltet sein", Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},0);
             }
+        });
         }
+        else {
+            ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION}, 0);
         }
-     else {
-        ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION}, 0);
-        }
-    }*/
+    }
 
-    // setup buttons on main screen
+
+    // setup UI on main screen
     private void setupUI(){
         scheduleButton = (Button)findViewById(R.id.schedule_button);
         calculatorButton = (Button)findViewById(R.id.calculator_button);
         profileButton = (Button)findViewById(R.id.profile_button);
-        preferencesButton = (Button)findViewById(R.id.preferences_button);
     }
 
+
+    //onClick-function for the schedule-button
     private void onScheduleClicked(){
         scheduleButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    //onClick-function for the calculator-button
     private void onCalculatorClicked(){
         calculatorButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +170,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    //onClick-function for the profil-button
     private void onProfileClicked(){
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,15 +182,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void onPreferencesClicked(){
-        preferencesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent preferencesIntent = new Intent(MainActivity.this, Preferences.class);
-                startActivity(preferencesIntent);
-            }
-        });
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
