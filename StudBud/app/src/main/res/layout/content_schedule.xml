@@ -40,7 +40,7 @@
             android:id="@+id/todo_edit_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
+            android:layout_weight="0.7"
             android:focusable="false"
             android:hint="@string/todo_text_date_hint"
             android:inputType="date"
@@ -51,8 +51,10 @@
             android:id="@+id/add_task_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:text="@string/add_item_button_confirm" />
+            android:layout_weight="0.3"
+            android:text="@string/add_item_button_confirm"
+            android:background="#5d4037"
+            android:textColor="#ffffff"/>
 
     </LinearLayout>
 

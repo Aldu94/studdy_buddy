@@ -36,14 +36,6 @@
             android:label="@string/title_activity_profil"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Preferences"
-            android:label="@string/title_activity_preferences"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AddCourseToSchedule"
-            android:label="@string/title_activity_add_course_to_schedule"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".AddProfile"
             android:label="@string/title_activity_add_profile"
             android:theme="@style/AppTheme.NoActionBar" />
