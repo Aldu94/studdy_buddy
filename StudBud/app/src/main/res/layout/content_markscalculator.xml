@@ -23,9 +23,11 @@
     android:textAlignment="center"
     app:layout_widthPercent ="75%"
     app:layout_heightPercent ="10%"
-    android:background="#71373535"
+    app:layout_marginTopPercent="10%"
+    android:background="#424242"
     android:onClick="onInfwissClick"
-    android:clickable="true"/>
+    android:clickable="true"
+    android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,10 +39,11 @@
         android:textAlignment="center"
         app:layout_widthPercent ="75%"
         app:layout_heightPercent ="10%"
-        app:layout_marginTopPercent="10%"
-        android:background="#71373535"
+        app:layout_marginTopPercent="12%"
+        android:background="#424242"
         android:onClick="onMedienInfoClick"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,8 +55,9 @@
         android:textAlignment="center"
         app:layout_widthPercent ="75%"
         app:layout_heightPercent ="10%"
-        app:layout_marginTopPercent="10%"
-        android:background="#71373535"
+        app:layout_marginTopPercent="12%"
+        android:background="#424242"
+        android:textColor="#ffffff"
         android:onClick="onBachelorWorkClick"
         android:clickable="true"/>
 
@@ -66,7 +70,9 @@
         app:layout_widthPercent = "20%"
         app:layout_heightPercent ="10%"
         app:layout_marginLeftPercent="80%"
-        android:background="#71373535"/>
+        app:layout_marginTopPercent="10%"
+        android:background="#424242"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,8 +84,9 @@
         app:layout_widthPercent = "20%"
         app:layout_heightPercent ="10%"
         app:layout_marginLeftPercent="80%"
-        app:layout_marginTopPercent="10%"
-        android:background="#71373535"/>
+        app:layout_marginTopPercent="12%"
+        android:background="#424242"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,7 +98,8 @@
         app:layout_widthPercent = "20%"
         app:layout_heightPercent ="10%"
         app:layout_marginLeftPercent="80%"
-        app:layout_marginTopPercent="10%"
-        android:background="#71373535"/>
+        app:layout_marginTopPercent="12%"
+        android:background="#424242"
+        android:textColor="#ffffff"/>
 
 </android.support.percent.PercentRelativeLayout>

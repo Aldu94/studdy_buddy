@@ -14,8 +14,6 @@
     <string name="title_schedule_button">Schedule</string>
     <string name="title_calculator_button">Calculator</string>
     <string name="title_profile_button">Profile</string>
-    <string name="title_preferences_button">Preferences</string>
-    <string name="title_activity_add_course_to_schedule">addCourseToSchedule</string>
 
 
     <string name="title_course_title">Course title</string>
@@ -40,6 +38,7 @@
     <string name="profile_name">Name</string>
     <string name="profile_semester">Semester</string>
     <string name="profile_main_subject">Main Subject</string>
+    <string name="profile_score">Score</string>
 
     <string name="inf01">INF-M01</string>
     <string name="inf02">INF-M02</string>
@@ -121,6 +120,8 @@
     <string name="mei10_1">Kurs 1</string>
     <string name="mei10_2">Kurs 2</string>
     <string name="mei10_3">Projektseminar</string>
+
+
     <string name="todo_text_date_hint">Set Date</string>
     <string name="add_item_hint">New Task</string>
     <string name="add_item_button_confirm">Add</string>
