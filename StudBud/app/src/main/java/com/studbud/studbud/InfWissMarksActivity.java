@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.studbud.studbud.domain.CourseItem;
 import com.studbud.studbud.domain.Module;
+import com.studbud.studbud.domain.ModuleItem;
+import com.studbud.studbud.domain.Subject;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,7 @@ public class InfWissMarksActivity extends AppCompatActivity {
 
     private Database db;
     private ArrayList<CourseItem> courses;
+    private ArrayList<ModuleItem> modules;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,13 @@ public class InfWissMarksActivity extends AppCompatActivity {
         for (CourseItem course : db.getAllCourseItems()) {
             if (course.getSubject() == MainSubject.INF) {
                 courses.add(course);
+            }
+        }
+
+        modules = new ArrayList<>();
+        for (ModuleItem module : db.getAllModuleItems()){
+            if (module.getSubject() == MainSubject.INF){
+                modules.add(module);
             }
         }
 
@@ -188,9 +198,25 @@ public class InfWissMarksActivity extends AppCompatActivity {
         return Double.parseDouble(editText.getText().toString());
     }
 
+    private double getMarkFromTextView(TextView textView){
+        double [] moduleMarksArray = new double[5];
 
-    private void calculateSubjectMark(){
+        return Double.parseDouble(textView.getText().toString());
+    }
 
+
+    public double calculateSubjectMark(){
+        ArrayList<ModuleItem> modulesInSubject = new ArrayList<>();
+
+        for (ModuleItem module : modules){
+            if(module.getSubject() == MainSubject.INF){
+                modulesInSubject.add(module);
+            }
+        }
+
+        Subject subject = new Subject(modulesInSubject);
+
+        return subject.calculateSubjectGrade();
     }
 
 }

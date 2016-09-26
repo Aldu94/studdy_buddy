@@ -14,6 +14,7 @@ import android.util.Log;
 
 import com.studbud.studbud.domain.CourseItem;
 import com.studbud.studbud.domain.Module;
+import com.studbud.studbud.domain.ModuleItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -132,6 +133,27 @@ public class Database {
         String sqlUpdate = "UPDATE "+ DATABASE_TABLE + " SET rating='" + newMark + "' WHERE module= '" + module + "' AND submodule= '" + submodule +"' AND subject= '" + subject.getName() + "';";
         db.execSQL(sqlUpdate);
         close();
+    }
+
+
+    public ArrayList<ModuleItem> getAllModuleItems(){
+        ArrayList<ModuleItem> items = new ArrayList<>();
+        open();
+        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
+                KEY_NAME, KEY_MODULE, KEY_MARK, KEY_WEIGHT, KEY_SUBJECT},null, null, null, null, null);
+
+        if(cursor.moveToFirst()){
+            do {
+                String name = cursor.getString(1);
+                int module = cursor.getInt(2);
+                double mark = cursor.getDouble(3);
+                double weight = cursor.getDouble(4);
+                String subject = cursor.getString(5);
+
+                items.add(new ModuleItem(name, module, mark, weight, MainSubject.fromString(subject)));
+            }while (cursor.moveToNext());
+        }
+        return items;
     }
 
 

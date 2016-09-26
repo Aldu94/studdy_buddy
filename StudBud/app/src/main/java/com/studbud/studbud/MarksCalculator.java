@@ -50,14 +50,6 @@ public class MarksCalculator extends AppCompatActivity {
     }
 
 
-    private void readUserInput() {
-        //checkForEmptyEditText();
-        /*markOne = Double.parseDouble(editTextOne.getText().toString());
-        markTwo = Double.parseDouble(editTextTwo.getText().toString());*/
-        inf01[0] = markOne;
-        inf01[1] = markTwo;
-    }
-
     private void setupUI() {
         infWiss = (TextView)findViewById(R.id.informationswissenschaft_text_view);
         medienInfo = (TextView)findViewById(R.id.medieninformatik_text_view);
@@ -66,6 +58,8 @@ public class MarksCalculator extends AppCompatActivity {
         infWissMark = (TextView)findViewById(R.id.informationswissenschaft_mark);
         medienInfoMark = (TextView)findViewById(R.id.medieninformatik_mark);
         bachelorWorkMark = (TextView)findViewById(R.id.bachelorarbeit_mark);
+
+
     }
 
 
