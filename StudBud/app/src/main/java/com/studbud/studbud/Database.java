@@ -15,12 +15,19 @@ import android.util.Log;
 import com.studbud.studbud.domain.CourseItem;
 import com.studbud.studbud.domain.Module;
 import com.studbud.studbud.domain.ModuleItem;
+import com.studbud.studbud.domain.ScheduleItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Locale;
 
 public class Database {
-    private static final String DATABASE_NAME = "courseItems36.db";
+    private static final String DATABASE_NAME = "courseItems37.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_TABLE = "courseItems";
@@ -33,7 +40,8 @@ public class Database {
     private static final String KEY_MARK = "rating";
     private static final String KEY_WEIGHT ="weight";
     private static final String KEY_SUBJECT = "subject";
-
+    public static final String KEY_TASK = "task";
+    public static final String KEY_DATE = "date";
 
     /* Hier werden die Spalten Nummern vergeben */
     public static final int COLUMN_USER_INDEX = 1;
@@ -54,6 +62,8 @@ public class Database {
         //createSet();
     }
 
+
+
     /* ermöglicht es anderen Klassen, die Datenbank zu öffnen */
     public void open() throws SQLException {
         Log.d("DBHelper", dbHelper.toString());
@@ -64,10 +74,14 @@ public class Database {
         }
     }
 
+
+
     /* ermöglicht es den anderen Klassen, die Datenbank wieder zu schließen, wenn die Interaktion damit beendet ist */
     public void close() {
         db.close();
     }
+
+
 
     /* Legt ein CourseItem in der Datenbank mit den Informationen KEY_NAME, KEY_STATUS, KEY_RATING ab */
     public long addCourseItem(CourseItem item, String user) {
@@ -84,6 +98,8 @@ public class Database {
         //close();
     }
 
+
+
     /* prüft, ob ein Eintrag mit dem gewünschten Wert bereits in der Datenbank liegt */
     public boolean checkForExistingEntry(String dbField, String fieldValue){
         open();
@@ -97,6 +113,8 @@ public class Database {
         close();
         return true;
     }
+
+
 
     public String getUser(String userId){
         open();
@@ -113,6 +131,9 @@ public class Database {
             return userName;
 
     }
+
+
+
     public long updateUser(String Name, int MainSubject, int SemesterCount){
         open();
         ContentValues userContent = new ContentValues();
@@ -121,6 +142,8 @@ public class Database {
         return db.update(DATABASE_TABLE, userContent, "name "+"="+Name, null);
     }
 
+
+
     public void updateCourseName(CourseItem item, String name){
         open();
         String sqlUpdate = "UPDATE "+DATABASE_TABLE+ " SET name='"+ name + "',  WHERE name=" +KEY_NAME +";";
@@ -128,12 +151,15 @@ public class Database {
         close();
     }
 
+
+
     public void updateMark(int module, int submodule, double newMark, MainSubject subject) {
         open();
         String sqlUpdate = "UPDATE "+ DATABASE_TABLE + " SET rating='" + newMark + "' WHERE module= '" + module + "' AND submodule= '" + submodule +"' AND subject= '" + subject.getName() + "';";
         db.execSQL(sqlUpdate);
         close();
     }
+
 
 
     public ArrayList<ModuleItem> getAllModuleItems(){
@@ -157,6 +183,7 @@ public class Database {
     }
 
 
+
     public ArrayList<CourseItem> getAllCourseItems() {
         ArrayList<CourseItem> items = new ArrayList<>();
         open();
@@ -178,10 +205,14 @@ public class Database {
         return items;
     }
 
+
+
     private Cursor findUserData(String userName){
         Cursor usCurs = db.rawQuery("select * from " + DATABASE_TABLE + " where " + KEY_NAME + "=?".toString(), null);
         return usCurs;
     }
+
+
 
     public String[] updateUser(String data){
         open();
@@ -200,6 +231,8 @@ public class Database {
         return userData;
     }
 
+
+
     public boolean checkForExistingUser(String userName){
         open();
         String query = "Select * from " + DATABASE_TABLE + " where " + KEY_NAME + " = '" + userName + "'";
@@ -213,6 +246,7 @@ public class Database {
         close();
         return true;
     }
+
 
 
      public void createSet() {
@@ -299,6 +333,8 @@ public class Database {
     }
     */
 
+
+
     private void saveCourseItem(CourseItem course, boolean openDatabaseManually) {
         ContentValues entity = new ContentValues();
         entity.put(KEY_NAME, course.getName());
@@ -320,6 +356,8 @@ public class Database {
          //addSetToDb(itemSet);
     }
 
+
+
     /* Erstellt pro User einen Datenbanksatz*/
     private void addSetToDb(ArrayList<CourseItem> set){
         for(CourseItem item: set){
@@ -339,12 +377,16 @@ public class Database {
         close();
     }
 
+
+
     /* Löscht einen Eintrag aus der Datenbank, wenn die Methode aufgerufen wird*/
     public long deleteCourseItem(String courseItemID) {
         String whereClause = KEY_ID + " = '" + courseItemID;
         db.delete(DATABASE_TABLE, whereClause, null);
         return 0;
     }
+
+
 
     /* Gibt die Anzahl der Datenbankeinträge zurück*/
     public int getNumberOfImages(){
@@ -357,9 +399,15 @@ public class Database {
         close();
         return x;
     }
+
+
     public void deleteDB (){
         dbHelper.deleteDatabase(db, DATABASE_TABLE);
     }
+
+
+
+
 
     /* Der CourseDBOpenHelper erstellt eine Datenbank mit den gewünschten Spalten und dem Datenbanknamen*/
     private class CourseDBOpenHelper extends SQLiteOpenHelper {

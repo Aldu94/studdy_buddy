@@ -35,7 +35,7 @@ public class AddCourseToSchedule extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_course_to_schedule);
         setupUI();
-        onAddButtonClicked();
+        //onAddButtonClicked();
     }
 
     private void setupUI(){
@@ -52,7 +52,7 @@ public class AddCourseToSchedule extends AppCompatActivity {
         daySpinner.setAdapter(spinnerAdapter);
 
     }
-
+/*
     private void onAddButtonClicked(){
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class AddCourseToSchedule extends AppCompatActivity {
             }
         });
     }
-
+*/
     private void readUserInput(){
         title = courseTitle.getText().toString();
         timeStart = startTime.getText().toString();

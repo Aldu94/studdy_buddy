@@ -1,5 +1,10 @@
 package com.studbud.studbud.domain;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+
 /**
  * Created by Aldu on 01.09.16.
  */
@@ -7,51 +12,44 @@ public class ScheduleItem {
 
     private String title;
     private String startTime;
-    private String endTime;
-    private String room;
+    private GregorianCalendar cal;
+    private long id;
 
-    public ScheduleItem(String title, String startTime, String endTime, String room){
-        this.title = title;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.room = room;
+
+    public ScheduleItem(String title, int day, int month, int year) {
+            this.title = title;
+            cal = new GregorianCalendar(year, month, day);
+        }
+
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getFormattedDate() {
+            DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT,
+                    Locale.GERMANY);
+            String dateString = df.format(cal.getTime());
+
+            return dateString;
+        }
+
+        public Date getDueDate() {
+            return cal.getTime();
+        }
+
+        public void setID(long id) {
+            this.id = id;
+        }
+
+        public long getID() {
+            return id;
+        }
+
+
+        public int compareTo(ScheduleItem another) {
+            return getDueDate().compareTo(another.getDueDate());
+
+        }
+
     }
-
-
-    // getter-methods
-
-    public String getTitle(){
-        return title;
-    }
-
-    public String getStartTime(){
-        return startTime;
-    }
-
-    public String getEndTime(){
-        return endTime;
-    }
-
-    public String getRoom(){
-        return room;
-    }
-
-
-    //setter-methods
-
-    public void setTitle(String title){
-        this.title = title;
-    }
-
-    public void setStartTime(String startTime){
-        this.startTime = startTime;
-    }
-
-    public void setEndTime(String endTime){
-        this.endTime = endTime;
-    }
-
-    public void setRoom(String room){
-        this.room = room;
-    }
-}

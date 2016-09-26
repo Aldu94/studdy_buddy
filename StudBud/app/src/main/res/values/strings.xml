@@ -121,8 +121,10 @@
     <string name="mei10_1">Kurs 1</string>
     <string name="mei10_2">Kurs 2</string>
     <string name="mei10_3">Projektseminar</string>
-
-
+    <string name="todo_text_date_hint">Set Date</string>
+    <string name="add_item_hint">New Task</string>
+    <string name="add_item_button_confirm">Add</string>
+    <string name="add_item_header">Todo-List</string>
 
 
 </resources>
