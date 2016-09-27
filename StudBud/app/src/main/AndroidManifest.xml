@@ -36,6 +36,10 @@
             android:label="@string/title_activity_profil"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".TimeTable.Timetable"
+            android:label="Timetable"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".AddProfile"
             android:label="@string/title_activity_add_profile"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -48,11 +52,15 @@
             android:name=".MedienInfoMarksActivity"
             android:label="@string/title_activity_medien_info_marks"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".BachelorMarkActivity"
             android:label="@string/title_activity_bachelor_mark"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TimeTable.AddCourseToTimeTable"
+            android:label="AddCourseToTimeTable"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

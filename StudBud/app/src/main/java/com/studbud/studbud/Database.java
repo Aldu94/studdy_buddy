@@ -1,9 +1,5 @@
 package com.studbud.studbud;
 
-/**
- * Created by Der Bar.de on 16.08.2016.
- */
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -12,19 +8,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.studbud.studbud.domain.BachelorMarkItem;
 import com.studbud.studbud.domain.CourseItem;
 import com.studbud.studbud.domain.Module;
 import com.studbud.studbud.domain.ModuleItem;
-import com.studbud.studbud.domain.ScheduleItem;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Locale;
 
 public class Database {
     private static final String DATABASE_NAME = "courseItems37.db";
@@ -59,7 +49,9 @@ public class Database {
 
     public Database(Context context) {
         dbHelper = new CourseDBOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
-        //createSet();
+        if(countDataBaseEntries() == 0) {
+            createSet();
+        }
     }
 
 
@@ -168,13 +160,19 @@ public class Database {
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
                 KEY_NAME, KEY_MODULE, KEY_MARK, KEY_WEIGHT, KEY_SUBJECT},null, null, null, null, null);
 
+        int idName = cursor.getColumnIndex(KEY_NAME);
+        int idModule = cursor.getColumnIndex(KEY_MODULE);
+        int idMark = cursor.getColumnIndex(KEY_MARK);
+        int idWeight = cursor.getColumnIndex(KEY_WEIGHT);
+        int idSubject = cursor.getColumnIndex(KEY_SUBJECT);
+
         if(cursor.moveToFirst()){
             do {
-                String name = cursor.getString(1);
-                int module = cursor.getInt(2);
-                double mark = cursor.getDouble(3);
-                double weight = cursor.getDouble(4);
-                String subject = cursor.getString(5);
+                String name = cursor.getString(idName);
+                int module = cursor.getInt(idModule);
+                double mark = cursor.getDouble(idMark);
+                double weight = cursor.getDouble(idWeight);
+                String subject = cursor.getString(idSubject);
 
                 items.add(new ModuleItem(name, module, mark, weight, MainSubject.fromString(subject)));
             }while (cursor.moveToNext());
@@ -185,22 +183,34 @@ public class Database {
 
 
     public ArrayList<CourseItem> getAllCourseItems() {
+        //new String inf = "MainSubject.INF"
         ArrayList<CourseItem> items = new ArrayList<>();
         open();
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
                 KEY_MODULE, KEY_SUBMODULE, KEY_MARK, KEY_NAME, KEY_WEIGHT, KEY_SUBJECT}, null, null, null, null, null);
 
+        int idModule = cursor.getColumnIndex(KEY_MODULE);
+        int idSubmodule = cursor.getColumnIndex(KEY_SUBMODULE);
+        int idMark = cursor.getColumnIndex(KEY_MARK);
+        int idName = cursor.getColumnIndex(KEY_NAME);
+        int idWeight = cursor.getColumnIndex(KEY_WEIGHT);
+        int idSubject = cursor.getColumnIndex(KEY_SUBJECT);
+
         if (cursor.moveToFirst()) {
             do {
-                int module = cursor.getInt(1);
-                int submodule = cursor.getInt(2);
-                double mark = cursor.getDouble(3);
-                String name = cursor.getString(4);
-                double weight = cursor.getDouble(5);
-                String subject = cursor.getString(6);
+                int module = cursor.getInt(idModule);
+                int submodule = cursor.getInt(idSubmodule);
+                double mark = cursor.getDouble(idMark);
+                String name = cursor.getString(idName);
+                double weight = cursor.getDouble(idWeight);
+                String subject = cursor.getString(idSubject);
 
                 items.add(new CourseItem(name, module, submodule, mark, weight, MainSubject.fromString(subject)));
+                Log.d("DATABASE: ", "added new CourseItem: " + name + " to String "+MainSubject.fromString(subject).getName());
             } while (cursor.moveToNext());
+        }
+        for(CourseItem course: items) {
+            Log.d("DATABASE: ", course.getName());
         }
         return items;
     }
@@ -405,9 +415,15 @@ public class Database {
         dbHelper.deleteDatabase(db, DATABASE_TABLE);
     }
 
-
-
-
+    public int countDataBaseEntries() {
+        open();
+        Cursor cursor = db.rawQuery("Select " + KEY_ID + " from " + DATABASE_TABLE, null);
+        int count = cursor.getCount();
+        Log.d("DATABASE_ENTRIES", "Anzahl der Einträge: " + count);
+        cursor.close();
+        close();
+        return count;
+    }
 
     /* Der CourseDBOpenHelper erstellt eine Datenbank mit den gewünschten Spalten und dem Datenbanknamen*/
     private class CourseDBOpenHelper extends SQLiteOpenHelper {

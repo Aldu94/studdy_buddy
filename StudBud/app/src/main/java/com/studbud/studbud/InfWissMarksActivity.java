@@ -51,7 +51,7 @@ public class InfWissMarksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inf_wiss_marks);
-        initDB();
+        //initDB();
         setupUI();
         onButtonClicked();
     }
@@ -59,6 +59,7 @@ public class InfWissMarksActivity extends AppCompatActivity {
     private void initDB() {
         db = new Database(InfWissMarksActivity.this);
         courses = new ArrayList<>();
+        Log.d("DEBUG: ", "Database getAllCourseItems() angefragt");
         for (CourseItem course : db.getAllCourseItems()) {
             if (course.getSubject() == MainSubject.INF) {
                 courses.add(course);

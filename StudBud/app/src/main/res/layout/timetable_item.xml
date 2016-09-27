@@ -1,0 +1,12 @@
+
+
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/timetable_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@+id/label"
+    android:layout_marginTop="7px"
+    android:textSize="15px"
+    android:clickable="false">
+</TextView>

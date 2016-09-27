@@ -11,9 +11,10 @@
     <string name="title_activity_bachelor_mark">BachelorMarkActivity</string>
 
 
-    <string name="title_schedule_button">Schedule</string>
+    <string name="title_schedule_button">ToDo Liste</string>
     <string name="title_calculator_button">Calculator</string>
     <string name="title_profile_button">Profile</string>
+    <string name="title_timetable_button">Timetable</string>
 
 
     <string name="title_course_title">Course title</string>

@@ -6,15 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ExpandableListView;
-import android.widget.Toast;
 
-import com.studbud.studbud.domain.CalculatorItem;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.studbud.studbud.BachelorDB.BachelorItemDB;
 
 public class MarksCalculator extends AppCompatActivity {
 
@@ -32,14 +25,18 @@ public class MarksCalculator extends AppCompatActivity {
     private Calculator calculator;
     public double markOne;
     public double markTwo;
+    public double markBachelor;
+    private static final String bachelorMark = "bachelorMark";
     private Button calculateButton;
     private double[] inf01;
+    private Database db;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_markscalculator);
+        db = new Database(MarksCalculator.this);
         setupUI();
     }
 
@@ -78,14 +75,15 @@ public class MarksCalculator extends AppCompatActivity {
 
     public void onBachelorWorkClick(View v) {
         Intent b = new Intent(MarksCalculator.this,BachelorMarkActivity.class);
+        b.putExtra("Mark", markBachelor);
         startActivity(b);
     }
 
     private void getDataFromBachelorMarkActivity(){
-        Intent b = getIntent();
-        Bundle bachelorWorkExtras = b.getExtras();
-        double markData = b.getIntExtra("bachelorWorkMark",4);
-        bachelorWorkMark.setText(String.valueOf(markData));
+        Bundle bachelorExtras = getIntent().getExtras();
+        if(bachelorExtras != null) {
+            bachelorWorkMark.setText(String.valueOf(bachelorExtras.getDouble("Mark")));
+        }
     }
 
     private void getDataFromMedienInfoMarkActivity(){

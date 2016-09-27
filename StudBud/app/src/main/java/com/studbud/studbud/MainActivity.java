@@ -5,7 +5,6 @@ import android.Manifest.permission;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -17,9 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.view.*;
 
-import com.studbud.studbud.domain.CourseItem;
+import com.studbud.studbud.TimeTable.Timetable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Button calculatorButton;
     private Button profileButton;
     private Button preferencesButton;
+    private Button timetableButton;
 
     private int score = 0;
 
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         onScheduleClicked();
         onCalculatorClicked();
         onProfileClicked();
+        onTimetableClicked();
         updateLocation();
         db = new Database(this);
         locator = new GPSLocator();
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Comments", "First time");
 
             // first time task
-                db.createSet();
+
             // record the fact that the app has been started at least once
             settings.edit().putBoolean("my_first_time", false).commit();
         }
@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         scheduleButton = (Button)findViewById(R.id.schedule_button);
         calculatorButton = (Button)findViewById(R.id.calculator_button);
         profileButton = (Button)findViewById(R.id.profile_button);
+        timetableButton = (Button)findViewById(R.id.timetable_button);
     }
 
 
@@ -178,6 +179,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent profileIntent = new Intent(MainActivity.this, Profile.class);
                 startActivity(profileIntent);
+            }
+        });
+    }
+
+    //onClick-function for the timetable-button
+    private void onTimetableClicked(){
+        timetableButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent timetableIntent = new Intent(MainActivity.this, Timetable.class);
+                startActivity(timetableIntent);
             }
         });
     }
