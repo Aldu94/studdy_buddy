@@ -5,17 +5,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class AddProfile extends AppCompatActivity {
 
     private EditText name;
     private EditText semester;
     private Spinner mainSubjectSpinner;
-    private ImageButton safeButton;
+    private Button saveButton;
 
     private ArrayAdapter<CharSequence> spinnerAdapter;
 
@@ -35,7 +34,7 @@ public class AddProfile extends AppCompatActivity {
         name = (EditText)findViewById(R.id.name_editText);
         semester = (EditText)findViewById(R.id.semester_editText);
         mainSubjectSpinner = (Spinner)findViewById(R.id.main_subject_spinner);
-        safeButton = (ImageButton)findViewById(R.id.safe_button);
+        saveButton = (Button)findViewById(R.id.save_button);
 
         connectSpinnerAdapter();
     }
@@ -44,7 +43,7 @@ public class AddProfile extends AppCompatActivity {
     // method to connect the main subject spinner with the spinner adapter
 
     private void connectSpinnerAdapter(){
-        spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.main_subject,android.R.layout.simple_spinner_item);
+        spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.main_subject,android.R.layout.simple_spinner_dropdown_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mainSubjectSpinner.setAdapter(spinnerAdapter);
     }
@@ -56,7 +55,7 @@ public class AddProfile extends AppCompatActivity {
     // go back to profile-screen and show the profile
 
     private void onSafeButtonClicked(){
-        safeButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userName = getNameInput();
@@ -64,9 +63,9 @@ public class AddProfile extends AppCompatActivity {
                 long userMainSubjectID = getSubjectInput();
 
                 Intent intent = new Intent(AddProfile.this, Profile.class);
-                intent.putExtra("username",userName);
-                intent.putExtra("semester",userSemester);
-                intent.putExtra("subjectID",userMainSubjectID);
+                intent.putExtra("username", userName);
+                intent.putExtra("semester", userSemester);
+                intent.putExtra("subjectID", userMainSubjectID);
                 startActivity(intent);
             }
         });

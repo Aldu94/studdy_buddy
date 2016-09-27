@@ -7,7 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".TimeTable.Timetable"
     tools:ignore="MergeRootFrame"
-    android:screenOrientation="landscape">
+    android:screenOrientation="landscape"
+    android:backgroundTint="#2196f3"
+    android:background="#000000">
     <GridView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"

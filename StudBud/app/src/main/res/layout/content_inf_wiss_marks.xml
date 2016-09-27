@@ -14,7 +14,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.studbud.studbud.InfWissMarksActivity"
-    tools:showIn="@layout/activity_inf_wiss_marks">
+    tools:showIn="@layout/activity_inf_wiss_marks"
+    android:backgroundTint="#2196f3"
+    android:background="#000000">
 
     <!--
 
@@ -26,7 +28,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_inf_01_header"
         android:text="@string/inf01"
@@ -34,19 +36,21 @@
         app:layout_heightPercent="7%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_inf_01_mark"
         app:layout_widthPercent="25%"
         app:layout_heightPercent="7%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:fontFamily="sans-serif"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,10 +61,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/module_inf_01_header"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,35 +77,40 @@
         android:layout_below="@+id/inf_1_1_title"
         app:layout_widthPercent="70%"
         android:fontFamily="sans-serif"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_1_1_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/module_inf_01_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_1_2_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/inf_1_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
 
 
     <!--
@@ -113,7 +123,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_inf_02_header"
         android:text="@string/inf02"
@@ -122,12 +132,13 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_inf_02_mark"
         android:layout_below="@+id/inf_1_2_mark"
         app:layout_widthPercent="25%"
@@ -135,87 +146,97 @@
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="5%"
         app:layout_marginLeftPercent="75%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_2_1_title"
         android:text="@string/inf2_1"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/module_inf_02_header"
         android:fontFamily="sans-serif"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_2_2_title"
         android:text="@string/inf2_2"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/inf_2_1_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_2_3_title"
         android:text="@string/inf2_3"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/inf_2_2_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_2_1_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/module_inf_02_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_2_2_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/inf_2_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_2_3_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/inf_2_2_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
 
 
     <!--
@@ -227,7 +248,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_inf_04_header"
         android:text="@string/inf04"
@@ -236,12 +257,13 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_inf_04_mark"
         android:layout_below="@+id/inf_2_3_mark"
         app:layout_widthPercent="25%"
@@ -249,87 +271,97 @@
         app:layout_marginTopPercent="5%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_4_1_title"
         android:text="@string/inf4_1"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/module_inf_04_header"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_4_2_title"
         android:text="@string/inf4_2"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/inf_4_1_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_4_3_title"
         android:text="@string/inf4_3"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/inf_4_2_title"
         app:layout_widthPercent="70%"
         android:fontFamily="sans-serif"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_4_1_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/module_inf_04_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_4_2_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/inf_4_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_4_3_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/inf_4_2_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
 
     <!--
 
@@ -341,7 +373,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_inf_05_header"
         android:layout_below="@+id/inf_4_3_title"
@@ -350,12 +382,13 @@
         android:fontFamily="sans-serif"
         app:layout_heightPercent="7%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_inf_05_mark"
         android:layout_below="@+id/inf_4_3_mark"
         app:layout_widthPercent="25%"
@@ -363,61 +396,68 @@
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mei_5_1_title"
         android:text="@string/inf5_1"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/module_inf_05_header"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_5_2_title"
         android:text="@string/inf5_2"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/mei_5_1_title"
         app:layout_widthPercent="70%"
         android:fontFamily="sans-serif"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_5_1_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/module_inf_05_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_5_2_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/inf_5_1_mark"
         app:layout_widthPercent="25%"
         android:fontFamily="sans-serif"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
 
 
     <!--
@@ -430,7 +470,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:fontFamily="sans-serif"
         android:id="@+id/module_inf_06_header"
@@ -439,12 +479,13 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_inf_06_mark"
         android:layout_below="@+id/inf_5_2_mark"
         app:layout_widthPercent="25%"
@@ -452,87 +493,97 @@
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="5%"
         app:layout_marginLeftPercent="75%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_6_1_title"
         android:text="@string/inf6_1"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/module_inf_06_header"
         app:layout_widthPercent="70%"
         android:fontFamily="sans-serif"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_6_2_title"
         android:text="@string/inf6_2"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/inf_6_1_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_6_3_title"
         android:text="@string/inf6_3"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/inf_6_2_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_6_1_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/module_inf_06_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_6_2_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/inf_6_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_6_3_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/inf_6_2_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
 
 
     <!--
@@ -545,7 +596,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_inf_07_header"
         android:layout_below="@+id/inf_6_3_title"
@@ -554,12 +605,13 @@
         app:layout_heightPercent="7%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_inf_07_mark"
         android:layout_below="@+id/inf_6_3_mark"
         app:layout_widthPercent="25%"
@@ -567,61 +619,68 @@
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_7_1_title"
         android:text="@string/inf7_1"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/module_inf_07_header"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_7_2_title"
         android:text="@string/inf7_2"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textAlignment="center"
         android:layout_below="@+id/inf_7_1_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_7_1_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/module_inf_07_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inf_7_2_mark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@+id/inf_7_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"/>
 
 
     <!--
@@ -635,9 +694,14 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/inf_7_2_title"
         android:id="@+id/saveButtonInfwiss"
-        android:text="safe"
+        android:text="save"
         android:fontFamily="sans-serif"
-        app:layout_widthPercent="100%"/>
+        app:layout_widthPercent="100%"
+        android:background="@drawable/rounded_button"
+        android:textColor="#ffffff"
+        app:layout_marginTopPercent="5%"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
 
 
 </android.support.percent.PercentRelativeLayout>

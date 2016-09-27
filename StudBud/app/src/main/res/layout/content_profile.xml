@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Profile"
     tools:showIn="@layout/activity_profile"
-    android:backgroundTint="#e5802c"
+    android:backgroundTint="#2196f3"
     android:background="#000000">
 
 
@@ -39,7 +39,8 @@
         android:background="#424242"
         app:layout_marginTopPercent="3%"
         android:textColor="#ffffff"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,7 +51,8 @@
         android:id="@+id/profile_name"
         android:textSize="16sp"
         android:textAlignment="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,7 +67,8 @@
         android:background="#424242"
         app:layout_marginTopPercent="5%"
         android:textColor="#ffffff"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -76,7 +79,8 @@
         android:id="@+id/profile_semester"
         android:textSize="16sp"
         android:textAlignment="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,7 +95,8 @@
         android:background="#424242"
         app:layout_marginTopPercent="5%"
         android:textColor="#ffffff"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -102,7 +107,8 @@
         android:id="@+id/profile_main_subject"
         android:textSize="16sp"
         android:textAlignment="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -117,7 +123,8 @@
         android:background="#424242"
         app:layout_marginTopPercent="5%"
         android:textColor="#ffffff"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -128,7 +135,8 @@
         android:id="@+id/profile_score"
         android:textSize="16sp"
         android:textAlignment="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
 
 

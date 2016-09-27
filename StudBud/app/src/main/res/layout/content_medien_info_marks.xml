@@ -14,7 +14,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.studbud.studbud.MedienInfoMarksActivity"
-    tools:showIn="@layout/activity_medien_info_marks">
+    tools:showIn="@layout/activity_medien_info_marks"
+    android:backgroundTint="#2196f3"
+    android:background="#000000">
 
 
     <!--
@@ -27,27 +29,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_mei_01_header"
         android:text="@string/mei01"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="3%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_mei_01_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,10 +62,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/module_mei_01_header"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,10 +77,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/mei_1_1_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,12 +89,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/module_mei_01_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,12 +104,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/mei_1_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
 
 
     <!--
@@ -114,29 +124,31 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_mei_03_header"
         android:text="@string/mei03"
         android:layout_below="@+id/mei_1_2_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_mei_03_mark"
         android:layout_below="@+id/mei_1_2_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -147,10 +159,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/module_mei_03_header"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -161,10 +174,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/mei_3_1_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -174,10 +188,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/mei_3_2_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -185,12 +200,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/module_mei_03_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:fontFamily="sans-serif"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -198,12 +215,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/mei_3_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -211,12 +230,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/mei_3_2_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
 
 
     <!--
@@ -228,29 +249,31 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_mei_04_header"
         android:text="@string/mei04"
         android:layout_below="@+id/mei_3_3_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_mei_04_mark"
         android:layout_below="@+id/mei_3_3_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -261,10 +284,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/module_mei_04_header"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -275,10 +299,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/mei_4_1_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -288,10 +313,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/mei_4_2_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -299,12 +325,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/module_mei_04_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -312,12 +340,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/mei_4_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -325,12 +355,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/mei_4_2_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
 
     <!--
 
@@ -342,29 +374,31 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_mei_05_header"
         android:layout_below="@+id/mei_4_3_title"
         android:text="@string/mei05"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_mei_05_mark"
         android:layout_below="@+id/mei_4_3_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:fontFamily="sans-serif"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -375,10 +409,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/module_mei_05_header"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
     android:layout_width="wrap_content"
@@ -390,9 +425,10 @@
     android:layout_below="@+id/mei_5_1_title"
     app:layout_widthPercent="70%"
     android:fontFamily="sans-serif"
-    app:layout_heightPercent="10%"
+    app:layout_heightPercent="12%"
     app:layout_marginTopPercent="3%"
-    android:gravity="center"/>
+    android:gravity="center"
+        android:textColor="#ffffff"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -402,10 +438,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/mei_5_2_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -413,12 +450,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/module_mei_05_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -426,12 +465,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/mei_5_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -439,12 +480,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/mei_5_2_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
 
 
     <!--
@@ -457,29 +500,31 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_mei_08_header"
         android:text="@string/mei08"
         android:layout_below="@+id/mei_5_3_title"
         app:layout_widthPercent="70%"
         android:fontFamily="sans-serif"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_mei_08_mark"
         android:layout_below="@+id/mei_5_3_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -490,10 +535,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/module_mei_08_header"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -504,10 +550,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/mei_8_1_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -516,12 +563,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/module_mei_08_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -529,12 +578,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/mei_8_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
 
 
 
@@ -548,29 +599,31 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/module_mei_10_header"
         android:layout_below="@+id/mei_8_2_title"
         android:text="@string/mei10"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/module_mei_10_mark"
         android:layout_below="@+id/mei_8_2_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="7%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -581,10 +634,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/module_mei_10_header"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -595,10 +649,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/mei_10_1_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -609,10 +664,11 @@
         android:textAlignment="center"
         android:layout_below="@+id/mei_10_2_title"
         app:layout_widthPercent="70%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#ffffff"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -621,12 +677,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/module_mei_10_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -634,12 +692,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/mei_10_1_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:fontFamily="sans-serif"
         android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"
         />
     <EditText
         android:layout_width="wrap_content"
@@ -648,12 +708,14 @@
         android:textSize="14sp"
         android:layout_below="@+id/mei_10_2_mark"
         app:layout_widthPercent="25%"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="12%"
         android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"
         />
 
 
@@ -663,9 +725,15 @@
         android:layout_below="@+id/mei_10_3_title"
         android:id="@+id/medieninfo_safe_button"
         android:fontFamily="sans-serif"
-        android:text="Safe"
+        android:text="Save"
         app:layout_widthPercent="100%"
-        app:layout_heightPercent="10%"/>
+        app:layout_heightPercent="10%"
+        android:textColor="#ffffff"
+        android:background="@drawable/rounded_button"
+        app:layout_marginTopPercent="5%"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        />
 
 
 

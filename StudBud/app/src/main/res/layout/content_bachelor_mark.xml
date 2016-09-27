@@ -10,7 +10,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".BachelorMarkActivity"
-    tools:showIn="@layout/activity_bachelor_mark">
+    tools:showIn="@layout/activity_bachelor_mark"
+    android:backgroundTint="#2196f3"
+    android:background="#000000">
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,9 +25,11 @@
         android:textSize="25sp"
         android:paddingTop="10dp"
         android:fontFamily="sans-serif"
+        android:textColor="#ffffff"
         app:layout_widthPercent = "100%"
-        app:layout_heightPercent="10%"
-        app:layout_marginTopPercent="25%"/>
+        app:layout_heightPercent="15%"
+        app:layout_marginTopPercent="25%"
+        android:gravity="center"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -37,18 +41,25 @@
         android:fontFamily="sans-serif"
         app:layout_heightPercent="10%"
         android:inputType="number"
-        app:layout_marginTopPercent="8%"/>
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"
+        app:layout_marginTopPercent="8%"
+        android:textAlignment="center"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ba_mark"
         android:id="@+id/ba_mark_safe_button"
-        android:text="safe"
+        android:text="save"
         app:layout_widthPercent="30%"
         android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="35%"
-        app:layout_marginTopPercent="10%" />
+        app:layout_marginTopPercent="10%"
+        android:background="@drawable/rounded_button"
+        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
 
 
 </android.support.percent.PercentRelativeLayout>

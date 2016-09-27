@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MarksCalculator"
     tools:showIn="@layout/activity_markscalculator"
-    android:backgroundTint="#e5802c"
+    android:backgroundTint="#2196f3"
     android:background="#000000">
 
     <TextView
@@ -28,7 +28,8 @@
     android:onClick="onInfwissClick"
     android:clickable="true"
     android:textColor="#ffffff"
-        android:fontFamily="sans-serif"/>
+    android:fontFamily="sans-serif"
+    android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,7 +46,8 @@
         android:onClick="onMedienInfoClick"
         android:clickable="true"
         android:textColor="#ffffff"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,7 +64,8 @@
         android:textColor="#ffffff"
         android:onClick="onBachelorWorkClick"
         android:clickable="true"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -76,7 +79,8 @@
         app:layout_marginTopPercent="10%"
         android:background="#424242"
         android:textColor="#ffffff"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,7 +95,8 @@
         app:layout_marginTopPercent="12%"
         android:background="#424242"
         android:textColor="#ffffff"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -106,6 +111,7 @@
         app:layout_marginTopPercent="12%"
         android:background="#424242"
         android:textColor="#ffffff"
-        android:fontFamily="sans-serif"/>
+        android:fontFamily="sans-serif"
+        android:gravity="center"/>
 
 </android.support.percent.PercentRelativeLayout>

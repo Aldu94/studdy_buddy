@@ -8,7 +8,6 @@
     android:text="@+id/label"
     android:layout_marginTop="200px"
     android:paddingTop="20px"
-    android:paddingBottom="20px"
     android:textSize="14sp"
     android:clickable="false"
     android:fontFamily="sans-serif">
