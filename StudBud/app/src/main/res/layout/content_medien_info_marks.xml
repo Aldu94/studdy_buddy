@@ -34,7 +34,8 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,7 +46,8 @@
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,7 +60,8 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +74,8 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,7 +87,8 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:fontFamily="sans-serif"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,7 +100,8 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:fontFamily="sans-serif"/>
 
 
     <!--
@@ -116,7 +122,8 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="5%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -128,7 +135,8 @@
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="5%"
         app:layout_marginLeftPercent="75%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -141,7 +149,8 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -154,7 +163,8 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -166,7 +176,8 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -178,6 +189,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
+        android:fontFamily="sans-serif"
         android:inputType="numberDecimal"/>
     <EditText
         android:layout_width="wrap_content"
@@ -190,7 +202,8 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:fontFamily="sans-serif"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -202,7 +215,8 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:fontFamily="sans-serif"/>
 
 
     <!--
@@ -222,7 +236,8 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="5%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -234,7 +249,8 @@
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="5%"
         app:layout_marginLeftPercent="75%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -247,7 +263,8 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -259,6 +276,7 @@
         android:layout_below="@+id/mei_4_1_title"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
+        android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         android:gravity="center"/>
     <TextView
@@ -271,6 +289,7 @@
         android:layout_below="@+id/mei_4_2_title"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
+        android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         android:gravity="center"/>
     <EditText
@@ -283,6 +302,7 @@
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
+        android:fontFamily="sans-serif"
         android:gravity="center"
         android:inputType="numberDecimal"/>
     <EditText
@@ -294,6 +314,7 @@
         app:layout_widthPercent="25%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
+        android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"/>
@@ -307,6 +328,7 @@
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
+        android:fontFamily="sans-serif"
         android:gravity="center"
         android:inputType="numberDecimal"/>
 
@@ -328,6 +350,7 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
+        android:fontFamily="sans-serif"
         android:gravity="center"/>
 
     <TextView
@@ -340,6 +363,7 @@
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
+        android:fontFamily="sans-serif"
         android:gravity="center"/>
 
     <TextView
@@ -353,6 +377,7 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
+        android:fontFamily="sans-serif"
         android:gravity="center"/>
 
     <TextView
@@ -364,6 +389,7 @@
     android:textAlignment="center"
     android:layout_below="@+id/mei_5_1_title"
     app:layout_widthPercent="70%"
+    android:fontFamily="sans-serif"
     app:layout_heightPercent="10%"
     app:layout_marginTopPercent="3%"
     android:gravity="center"/>
@@ -378,6 +404,7 @@
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
+        android:fontFamily="sans-serif"
         android:gravity="center"/>
     <EditText
         android:layout_width="wrap_content"
@@ -389,6 +416,7 @@
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
+        android:fontFamily="sans-serif"
         android:gravity="center"
         android:inputType="numberDecimal"/>
     <EditText
@@ -401,6 +429,7 @@
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
+        android:fontFamily="sans-serif"
         android:gravity="center"
         android:inputType="numberDecimal"/>
     <EditText
@@ -412,6 +441,7 @@
         app:layout_widthPercent="25%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
+        android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"/>
@@ -433,6 +463,7 @@
         android:text="@string/mei08"
         android:layout_below="@+id/mei_5_3_title"
         app:layout_widthPercent="70%"
+        android:fontFamily="sans-serif"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="5%"
         android:gravity="center"/>
@@ -446,6 +477,7 @@
         app:layout_widthPercent="25%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="5%"
+        android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"/>
 
@@ -459,6 +491,7 @@
         android:layout_below="@+id/module_mei_08_header"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
+        android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         android:gravity="center"/>
 
@@ -472,6 +505,7 @@
         android:layout_below="@+id/mei_8_1_title"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
+        android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         android:gravity="center"/>
 
@@ -484,6 +518,7 @@
         app:layout_widthPercent="25%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
+        android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"/>
@@ -496,6 +531,7 @@
         app:layout_widthPercent="25%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
+        android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"/>
@@ -519,6 +555,7 @@
         android:text="@string/mei10"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
+        android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         android:gravity="center"/>
 
@@ -531,6 +568,7 @@
         app:layout_widthPercent="25%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
+        android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"/>
 
@@ -544,6 +582,7 @@
         android:layout_below="@+id/module_mei_10_header"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
+        android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         android:gravity="center"/>
 
@@ -557,6 +596,7 @@
         android:layout_below="@+id/mei_10_1_title"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
+        android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         android:gravity="center"/>
 
@@ -570,6 +610,7 @@
         android:layout_below="@+id/mei_10_2_title"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="10%"
+        android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         android:gravity="center"/>
 
@@ -582,6 +623,7 @@
         app:layout_widthPercent="25%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="3%"
+        android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"/>
@@ -596,6 +638,7 @@
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
+        android:fontFamily="sans-serif"
         android:inputType="numberDecimal"
         />
     <EditText
@@ -606,6 +649,7 @@
         android:layout_below="@+id/mei_10_2_mark"
         app:layout_widthPercent="25%"
         app:layout_heightPercent="10%"
+        android:fontFamily="sans-serif"
         app:layout_marginTopPercent="3%"
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
@@ -618,6 +662,8 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/mei_10_3_title"
         android:id="@+id/medieninfo_safe_button"
+        android:fontFamily="sans-serif"
+        android:text="Safe"
         app:layout_widthPercent="100%"
         app:layout_heightPercent="10%"/>
 

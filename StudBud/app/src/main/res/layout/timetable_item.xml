@@ -6,7 +6,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@+id/label"
-    android:layout_marginTop="7px"
-    android:textSize="15px"
-    android:clickable="false">
+    android:layout_marginTop="200px"
+    android:paddingTop="20px"
+    android:paddingBottom="20px"
+    android:textSize="14sp"
+    android:clickable="false"
+    android:fontFamily="sans-serif">
 </TextView>

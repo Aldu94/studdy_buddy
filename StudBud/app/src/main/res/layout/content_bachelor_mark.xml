@@ -22,6 +22,7 @@
         android:textAlignment="center"
         android:textSize="25sp"
         android:paddingTop="10dp"
+        android:fontFamily="sans-serif"
         app:layout_widthPercent = "100%"
         app:layout_heightPercent="10%"
         app:layout_marginTopPercent="25%"/>
@@ -33,6 +34,7 @@
         android:id="@+id/ba_mark"
         app:layout_widthPercent="60%"
         app:layout_marginLeftPercent="20%"
+        android:fontFamily="sans-serif"
         app:layout_heightPercent="10%"
         android:inputType="number"
         app:layout_marginTopPercent="8%"/>
@@ -44,6 +46,7 @@
         android:id="@+id/ba_mark_safe_button"
         android:text="safe"
         app:layout_widthPercent="30%"
+        android:fontFamily="sans-serif"
         app:layout_marginLeftPercent="35%"
         app:layout_marginTopPercent="10%" />
 

@@ -28,7 +28,7 @@ public class Timetable extends AppCompatActivity {
     private TimetableDataBase db;
 
     private String[] scheduleContent = new String[]{
-            "Zeit", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag",
+            "Zeit", "MO", "DI", "MI", "DO", "FR",
             "08:00", " ", " ", " ", " ", " ",
             "09:00", " ", " ", " ", " ", " ",
             "10:00", " ", " ", " ", " ", " ",

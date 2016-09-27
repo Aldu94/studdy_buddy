@@ -38,7 +38,8 @@
         android:textSize="16sp"
         android:background="#424242"
         app:layout_marginTopPercent="3%"
-        android:textColor="#ffffff"/>
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +49,8 @@
         android:layout_below="@+id/profile_name_title"
         android:id="@+id/profile_name"
         android:textSize="16sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,7 +64,8 @@
         android:textSize="16sp"
         android:background="#424242"
         app:layout_marginTopPercent="5%"
-        android:textColor="#ffffff"/>
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,7 +75,8 @@
         android:layout_below="@+id/profile_semester_title"
         android:id="@+id/profile_semester"
         android:textSize="16sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -86,7 +90,8 @@
         android:textSize="16sp"
         android:background="#424242"
         app:layout_marginTopPercent="5%"
-        android:textColor="#ffffff"/>
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,7 +101,8 @@
         android:layout_below="@+id/profile_main_subject_title"
         android:id="@+id/profile_main_subject"
         android:textSize="16sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -110,7 +116,8 @@
         android:textSize="16sp"
         android:background="#424242"
         app:layout_marginTopPercent="5%"
-        android:textColor="#ffffff"/>
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -120,7 +127,8 @@
         android:layout_below="@+id/profile_score_title"
         android:id="@+id/profile_score"
         android:textSize="16sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:fontFamily="sans-serif"/>
 
 
 

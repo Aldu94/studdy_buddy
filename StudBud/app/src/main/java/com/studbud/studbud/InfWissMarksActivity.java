@@ -51,7 +51,7 @@ public class InfWissMarksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inf_wiss_marks);
-        //initDB();
+        initDB();
         setupUI();
         onButtonClicked();
     }
