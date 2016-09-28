@@ -38,6 +38,10 @@ public class AddCourseToTimeTable extends AppCompatActivity {
         getExistingString();
     }
 
+    /*
+     * this method seperates the informtion that was put extra by the Timetable activity
+     * when clicked on a textview in the gridview
+     */
     private void getExistingString() {
         Bundle extras = getIntent().getExtras();
         currentPosition = extras.getInt("Position");
@@ -46,7 +50,11 @@ public class AddCourseToTimeTable extends AppCompatActivity {
         splitString(currentCourseInfo);
     }
 
-
+    /*
+     * method used to split the String from the textview into the courseTitle and the roominfo.
+     * the information from the 2 tokens is used to fill the editText views so the user can see
+     * which entry he is currently working on
+     */
     private void splitString(String string) {
         StringTokenizer token = new StringTokenizer(string, " ");
         if (token.countTokens()== 0) {
@@ -60,12 +68,18 @@ public class AddCourseToTimeTable extends AppCompatActivity {
         }
     }
 
+    // here we set up the user interface of the activity
     private void setupUI(){
         courseTitle = (EditText)findViewById(R.id.title_text);
         room = (EditText)findViewById(R.id.room_text);
         addButton = (Button)findViewById(R.id.add_course_button);
 
     }
+
+    /*
+     * here we set an onClickListener to the add button and define to go back to the Timetable
+     * activity and put extra the input from the edit Text fields
+     */
     private void onAddButtonClicked(){
         addButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -80,6 +94,9 @@ public class AddCourseToTimeTable extends AppCompatActivity {
         });
     }
 
+    /*
+     * method to parse the user input to the editText fields
+     */
     private void readUserInput(){
         title = courseTitle.getText().toString();
         if(title.equals("")){

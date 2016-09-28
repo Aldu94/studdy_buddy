@@ -16,7 +16,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Chronometer;
 
 import com.studbud.studbud.domain.ScheduleItem;
-
+/*
+ * The scheduleDatabase class that is accessible from the mainActivity. It will create a list of
+ * Dates which can be used as a planner for important dates. This class is taken from
+ * the android course exercises no. 5
+ */
 public class ScheduleDatabase {
     private static final String DATABASE_NAME = "scheduleList.db";
     private static final int DATABASE_VERSION = 1;

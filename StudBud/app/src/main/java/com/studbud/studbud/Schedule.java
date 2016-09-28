@@ -31,6 +31,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+/*
+ * The schedule class that is accessible from the mainActivity. It will create a list of
+ * Dates which can be used as a planner for important dates. This class is taken from
+ * the android course exercises no. 5
+ */
 public class Schedule extends AppCompatActivity {
 
     private ArrayList<ScheduleItem> tasks;
@@ -39,6 +44,9 @@ public class Schedule extends AppCompatActivity {
 
     private Button addButton;
 
+    /*
+     * the method onCreate lists all methods that will be executed when the activity starts
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,22 +61,37 @@ public class Schedule extends AppCompatActivity {
         initDatabase();
     }
 
+    /*
+     * This method let us take care of what to do when the activity is destroyed,
+     * in this case, the database is closed
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
         db.close();
     }
 
+    /*
+     * here the Database is called and made available for methods within this class,
+     * there is also the method updateList in order to retrieve the latest data from
+     * the database
+     */
     private void initDatabase() {
         db = new ScheduleDatabase(this);
         db.open();
         updateList();
     }
-
+    /*
+     * here we create an ArrayList for scheduleItems
+     */
     private void initTaskList() {
         tasks = new ArrayList<ScheduleItem>();
     }
 
+    /*
+     * This method sets up the user interface, it is created in here to keep the class constructor
+     * clear
+     */
     private void initUI() {
         Log.d("Init Task Button:", "go");
         initTaskButton();
@@ -76,7 +99,9 @@ public class Schedule extends AppCompatActivity {
         initListAdapter();
     }
 
-
+    /*
+     * Here we init the button taskButton and define what happens if it get clicked
+     */
     private void initTaskButton() {
         addButton = (Button)findViewById(R.id.add_task_button);
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +124,9 @@ public class Schedule extends AppCompatActivity {
         });
     }
 
+    /*
+     * This methods initiates the ListView in order to see the scheduleItems
+     */
     private void initListView() {
         ListView list = (ListView) findViewById(R.id.todo_list);
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -111,18 +139,28 @@ public class Schedule extends AppCompatActivity {
         });
     }
 
+    /*
+     * here we link an adapter from our ScheduleListAdapter class to the listView
+     */
     private void initListAdapter() {
         ListView list = (ListView) findViewById(R.id.todo_list);
         adapter = new ScheduleListAdapter(this, tasks);
         list.setAdapter(adapter);
     }
 
+    /*
+     * Here we can update the listView with data stored in the Database
+     */
     private void updateList() {
         tasks.removeAll(tasks);
         tasks.addAll(db.getAllScheduleItems());
         adapter.notifyDataSetChanged();
     }
 
+    /*
+     * This method allows us to add a new Task. It also opens a calendar to select
+     * the date for the scheduleItem
+     */
     private void addNewTask(String task, String date) {
         Date dueDate = getDateFromString(date);
         GregorianCalendar cal = new GregorianCalendar();
@@ -135,6 +173,9 @@ public class Schedule extends AppCompatActivity {
         updateList();
     }
 
+    /*
+     * Here we initiate the calendar that pops up when we click on the datefield
+     */
     private void initDateField() {
         EditText dateEdit = (EditText) findViewById(R.id.todo_edit_date);
         dateEdit.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +189,9 @@ public class Schedule extends AppCompatActivity {
 
     }
 
+    /*
+     * this method allows us to remove a specific scheduleItem from the list
+     */
     private void removeTaskAtPosition(int position) {
         if (tasks.get(position) == null) {
             return;
@@ -159,6 +203,9 @@ public class Schedule extends AppCompatActivity {
         }
     }
 
+    /*
+     * Here we convert the input from the calendar to a DateFormat
+     */
     private Date getDateFromString(String dateString) {
         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT,
                 Locale.GERMANY);
@@ -170,16 +217,24 @@ public class Schedule extends AppCompatActivity {
         }
     }
 
+    /*
+     * this is the method where the calendar is created
+     */
     public void showDatePickerDialog(View v) {
         DialogFragment dateFragment = new DatePickerFragment();
         dateFragment.show(getFragmentManager(), "datePicker");
     }
 
+    /*
+     * this method let us take care of what to do when the optionsmenu is created
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        // Inflate the menu; this adds items to the action bar if it is present.
+        /*
+         * Inflate the menu; this adds items to the action bar if it is present.
+         */
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -204,6 +259,9 @@ public class Schedule extends AppCompatActivity {
 
     }
 */
+    /*
+     * Here we have the class that will take care of the calendar object
+     */
     public static class DatePickerFragment extends DialogFragment implements
             DatePickerDialog.OnDateSetListener {
 

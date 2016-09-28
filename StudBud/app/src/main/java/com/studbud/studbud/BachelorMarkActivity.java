@@ -19,6 +19,10 @@ public class BachelorMarkActivity extends AppCompatActivity {
     private double finalBachelorWorkMark;
     private final String bachelorName = "bachelorMark";
 
+    /*
+     * when the acitivity is created, we set the visible content, setp the user interface and
+     * initiate the save button
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +32,11 @@ public class BachelorMarkActivity extends AppCompatActivity {
         onSafeButtonClick();
     }
 
-
+    /*
+     * here we setup the user interface including the editText field, the save button and
+     * we set the mark value for the editText field acording to the value stored in the
+     * database
+     */
     private void setupUI(){
         bachelorMark = (EditText)findViewById(R.id.ba_mark);
         safeButton = (Button)findViewById(R.id.ba_mark_safe_button);
@@ -37,6 +45,9 @@ public class BachelorMarkActivity extends AppCompatActivity {
         db.close();
     }
 
+    /*
+     * this method will parse the input of the user in the editText field
+     */
     private void getUserInput(){
         String mark = bachelorMark.getText().toString();
         if(!mark.isEmpty()) {
@@ -47,6 +58,10 @@ public class BachelorMarkActivity extends AppCompatActivity {
         }
     }
 
+    /*
+     * Here we define what happens when the user clicks the save button.
+     * we start the activity MarksCalculator and insert the value from the editText field
+     */
     private void onSafeButtonClick(){
         safeButton.setOnClickListener(new View.OnClickListener() {
             @Override

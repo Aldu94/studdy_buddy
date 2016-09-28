@@ -14,11 +14,14 @@ public class Profile extends AppCompatActivity {
     private TextView mainSubjectView;
     private ImageButton newProfileButton;
 
+    private Database db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        db = new Database(this);
         setupUI();
         onNewProfileClicked();
         getDataFromAddedProfile();
@@ -37,11 +40,10 @@ public class Profile extends AppCompatActivity {
             nameView.setText(userName);
             int userSemester = extras.getInt("semester");
             semesterView.setText(String.valueOf(userSemester));
-            MainSubject userMainSubject = MainSubject.values()[extras.getInt("subjectID")];
+            MainSubject userMainSubject = MainSubject.values()[(int)extras.getLong("subjectID")];
             mainSubjectView.setText(userMainSubject.getName());
-
             User user = new User(userName,userSemester, userMainSubject);
-            //safe user in database
+            db.addUserToDb(user);
         }
 
     }
@@ -55,6 +57,7 @@ public class Profile extends AppCompatActivity {
         nameView = (TextView)findViewById(R.id.profile_name);
         semesterView = (TextView)findViewById(R.id.profile_semester);
         mainSubjectView = (TextView)findViewById(R.id.profile_main_subject);
+
     }
 
 

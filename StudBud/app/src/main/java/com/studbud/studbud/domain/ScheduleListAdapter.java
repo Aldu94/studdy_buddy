@@ -11,6 +11,11 @@ import com.studbud.studbud.R;
 
 import java.util.ArrayList;
 
+/*
+ * The scheduleListAdapter class that is accessible from the mainActivity. It will create a list of
+ * Dates which can be used as a planner for important dates. This class is taken from
+ * the android course exercises no. 5
+ */
 
 public class ScheduleListAdapter extends ArrayAdapter<ScheduleItem> {
     private ArrayList<ScheduleItem> scheduleList;

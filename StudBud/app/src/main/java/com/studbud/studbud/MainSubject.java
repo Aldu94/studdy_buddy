@@ -1,13 +1,17 @@
 package com.studbud.studbud;
 
 /**
- * Created by Aldu on 31.08.16.
+ * This is the MainSubject object
  */
 
 
 public enum MainSubject {
-    MI, INF;
+     INF, MI;
 
+    /*
+     * in this method we can find out which string we have to return depending on the string
+     * given to the fromString method
+     */
     public String getName() {
         switch (this) {
             case MI: return "Medieninformatik";
@@ -16,6 +20,9 @@ public enum MainSubject {
         }
     }
 
+    /*
+     * this method calls the getName method depending on the String we provide
+     */
     public static MainSubject fromString(String string) {
         if(string.equals(MI.getName())){
             return MI;

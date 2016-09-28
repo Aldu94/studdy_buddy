@@ -11,16 +11,23 @@ import android.widget.TextView;
 
 import com.studbud.studbud.R;
 
+/*
+ * this adapter is used to setup the timetable in the TimeTable activity
+ */
 public class TimetableGridViewAdapter extends BaseAdapter {
     private Context context;
     private String[] scheduleItems;
 
+    // the constructor initialising the scheduleItems string array
     public TimetableGridViewAdapter(Context context, String[] scheduleItems) {
         this.context = context;
         this.scheduleItems = scheduleItems;
-        //myClickListener = clickListener;
     }
 
+    /*
+     * according to the information stored in the string array scheduleItems,
+     * we initialize the gridview with the textviews and set the information from the array as text
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -39,18 +46,20 @@ public class TimetableGridViewAdapter extends BaseAdapter {
     }
 
 
-
+    // method to get the number of strings in the scheduleItems array
     @Override
     public int getCount() {
         return scheduleItems.length;
     }
 
+    //method to get the object at a given position
     @Override
     public Object getItem(int position) {
         //return scheduleItems[position];
         return null;
     }
 
+    // method to get the positon of the scheduleItem within the string array
     @Override
     public long getItemId(int position) {
         return position;

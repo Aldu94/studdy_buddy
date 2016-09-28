@@ -17,25 +17,34 @@ import java.util.Timer;
 
 public class GPSLocator extends MainActivity implements android.location.LocationListener {
 
-
+    private final Context context;
+    private LocationManager locManager;
     private Stopwatch timer;
 
+    public GPSLocator(Context context) {
+        this.context = context;
+    }
+
+    /*
+     * here we can put in our evaluation function which checks how close the user is to
+     * the university campus. The timer will count up until the user has went too far away
+     * from the center of the campus, so the points collection be stopped
+     */
     @Override
     public void onLocationChanged(Location location) {
         if (location != null) {
             Log.e("Längengrad : ", "" + location.getLatitude());
             Log.e("Breitengrad: ", "" + location.getLongitude());
-
             double lat1 = 48.998583;
-            double lng1 =12.094805;
-           double lat2 = location.getLatitude();
-           double lng2 =  location.getLongitude();
+            double lng1 = 12.094805;
+            double lat2 = location.getLatitude();
+            double lng2 = location.getLongitude();
 
-            Log.i("Distance", "" + distance(lat1,lng1,lat2,lng2));
+            Log.i("Distance", "" + distance(lat1, lng1, lat2, lng2));
 
-            if(distance(lat1,lng1, lat2, lng2) < 0.5){
+            if (distance(lat1, lng1, lat2, lng2) < 0.5) {
                 timer.start();
-            }else{
+            } else {
                 timer.stop();
             }
         }
@@ -44,7 +53,10 @@ public class GPSLocator extends MainActivity implements android.location.Locatio
 
     }
 
-
+    /*
+     * Here we calculate the distance using the latitude and longitude of
+     * the last known location and the current location
+     */
     private double distance(double lat1, double lng1, double lat2, double lng2) {
 
         double earthRadius = 6371;
@@ -65,9 +77,13 @@ public class GPSLocator extends MainActivity implements android.location.Locatio
         return dist;
     }
 
+    /*public void getLocation(){
+        try{
+            locManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
+        }
+    }*/
 
-
-    public void updateLocation() {
+    /*public void updateLocation() {
         GPSLocator gpsl = new GPSLocator();
         LocationManager myLocator = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         if(ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -76,7 +92,7 @@ public class GPSLocator extends MainActivity implements android.location.Locatio
             ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION}, 0);
         }
 
-    }
+    }*/
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
 

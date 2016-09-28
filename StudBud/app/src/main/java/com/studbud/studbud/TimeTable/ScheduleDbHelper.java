@@ -24,6 +24,7 @@ public class ScheduleDbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1);
     }
 
+    // database is created here
     @Override
     public void onCreate(SQLiteDatabase db) {
         try{
@@ -33,7 +34,7 @@ public class ScheduleDbHelper extends SQLiteOpenHelper {
             Log.e(LOG, "Fehler beim Erstellen der Tabelle: " + ex.getMessage());
         }
     }
-
+    // method to handle actions on a database upgrade
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DATABASE_DROP);

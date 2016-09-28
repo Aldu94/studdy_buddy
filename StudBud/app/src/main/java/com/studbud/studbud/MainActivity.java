@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         onTimetableClicked();
         updateLocation();
         db = new Database(this);
-        locator = new GPSLocator();
+        //locator = new GPSLocator();
         checkFirstOpen();
         collectGamePoints();
 
@@ -95,13 +95,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /*
+     * Here we can get an update of the location of the device by using GPS data
+     * In order to be allowed to do so we have to pass the permission check
+     */
     private void updateLocation(){
         if(!hasPermission(permission.ACCESS_FINE_LOCATION)){
             ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION}, 12);
         }
     }
 
+    /*
+     * if this boolean turns out true, the application has the permission to use the sensor
+     */
     private boolean hasPermission(String perm) {
         if (VERSION.SDK_INT >= VERSION_CODES.M) {
             return(PackageManager.PERMISSION_GRANTED==checkSelfPermission(perm));
@@ -109,7 +115,10 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-
+    /*
+     * this method handles the data from the GPS sensor and provides a point collecting system
+     * for the score in the profile activity
+     */
    private void collectGamePoints(){
         Log.i("MainActivity", "asking for GPS permission!");
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -122,7 +131,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    /*
+     * this method will request the permission from the user with a dialog in order to
+     * be able to use the GPS sensor of the device
+     */
     private void requestGpsPermission(){
         if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
             View permLayout = new View(this);

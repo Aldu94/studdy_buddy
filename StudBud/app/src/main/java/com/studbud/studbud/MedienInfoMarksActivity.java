@@ -44,12 +44,12 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
 
 
     private Button button;
-    private Calculator calculator;
     private Database db;
     private ArrayList<CourseItem> courses;
 
-
-
+    /*
+     * the method defines what happens when the activity is started
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +59,10 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         onSafeButtonClicked();
     }
 
+    /*
+     * the database will be referenced here so the class methods can interact with the
+     * database
+     */
     private void initDB(){
         db = new Database(MedienInfoMarksActivity.this);
         courses = new ArrayList<>();
@@ -71,6 +75,10 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         Log.d("Courses", "" + courses.size());
     }
 
+    /*
+     * here we set up the user interface for activity. in particular we initiate all the textviews
+     * and editText views
+     */
     private void setupUI(){
 
         mei1_1 = (EditText)findViewById(R.id.mei_1_1_mark);
@@ -109,6 +117,9 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
 
     }
 
+    /*
+     * This method gets all modules and submodules for multiple Courseitems
+     */
     private CourseItem getCourse(int module, int submodule) {
         for (CourseItem course : courses) {
             if (module == course.getModule() && submodule == course.getSubmodule()) {
@@ -119,6 +130,11 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         return null;
     }
 
+    /*
+     * Here we can define what the save button will actually do. here, the marks will be updated
+     * first and then the new values will be put into the database for the single Coursemarks
+     * and ModuleMarks
+     */
     private void onSafeButtonClicked(){
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +147,9 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         });
     }
 
-
+    /*
+     * here we update the courseMarks in the database
+     */
     private void updateCourseMarks(){
         db.updateMark(1, 1, getMarkFromEditText(mei1_1), MainSubject.MI);
         db.updateMark(1, 2, getMarkFromEditText(mei1_2), MainSubject.MI);
@@ -151,7 +169,10 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         db.updateMark(10, 3, getMarkFromEditText(mei10_3), MainSubject.MI);
     }
 
-
+    /*
+     * in order to visualize the module marks, we update the Texts of the corresponding
+     * module textfields
+     */
     private void updateModuleMarks(){
         markModule1.setText(String.valueOf(calculateModuleMark(1)));
         markModule3.setText(String.valueOf(calculateModuleMark(3)));
@@ -161,7 +182,9 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         markModule10.setText(String.valueOf(calculateModuleMark(10)));
     }
 
-
+    /*
+     * this method sets the courseMarks for each course
+     */
     private void setCourseMarks(){
         mei1_1.setText("" + getCourse(1, 1).getMark());
         mei1_2.setText("" + getCourse(1, 2).getMark());
@@ -181,6 +204,9 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         mei10_3.setText("" + getCourse(10, 3).getMark());
     }
 
+    /*
+     * this is the method, that lets the calculation magic happen for each Module
+     */
     private double calculateModuleMark(int moduleId) {
         ArrayList<CourseItem> coursesInModule = new ArrayList<>();
 
@@ -198,7 +224,10 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
     }
 
 
-
+    /*
+     * This method retrieves the data from the markField. if the field is empty, we
+     * insert a dummy value
+     */
     private double getMarkFromEditText(EditText editText) {
         if (editText.getText().length() == 0){
             editText.setText("4.0");

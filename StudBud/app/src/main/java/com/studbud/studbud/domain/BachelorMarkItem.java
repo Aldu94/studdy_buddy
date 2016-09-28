@@ -1,8 +1,5 @@
 package com.studbud.studbud.domain;
 
-/**
- * Created by Der Bar.de on 27.09.2016.
- */
 public class BachelorMarkItem {
 
     private double mark;
@@ -11,10 +8,12 @@ public class BachelorMarkItem {
         this.mark = mark;
     }
 
+    // getter method for the mark of the bachelorMarkItem
     public Double getMark(){
         return mark;
     }
 
+    // setter method for the mark of the bachelorMarkItem
     public void setMark(){
         this.mark = mark;
     }

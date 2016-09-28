@@ -22,7 +22,6 @@ public class MarksCalculator extends AppCompatActivity {
     private ListContent lc;
     private int subjectID;
     private User user;
-    private Calculator calculator;
     public double markOne;
     public double markTwo;
     public double markBachelor;
@@ -31,7 +30,10 @@ public class MarksCalculator extends AppCompatActivity {
     private double[] inf01;
     private Database db;
 
-
+    /*
+     * we open the database, setup the content to view in this activity and setup the user
+     * interface
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +42,19 @@ public class MarksCalculator extends AppCompatActivity {
         setupUI();
     }
 
+    /*
+     * the method executes all tasks we have to do when one of the marks activities
+     * call on this activity intent
+     */
     @Override
     protected void onPostResume() {
         super.onPostResume();
         getDataFromBachelorMarkActivity();
     }
 
-
+    /*
+     * we set up the user interface with some textviews
+     */
     private void setupUI() {
         infWiss = (TextView)findViewById(R.id.informationswissenschaft_text_view);
         medienInfo = (TextView)findViewById(R.id.medieninformatik_text_view);
@@ -60,25 +68,37 @@ public class MarksCalculator extends AppCompatActivity {
     }
 
 
-
+    /*
+     * here we define what happens when the button Infwiss is clicked.
+     * we start the activity InfwissMarksActivity
+     */
     public void onInfwissClick(View v) {
         Intent i = new Intent(MarksCalculator.this,InfWissMarksActivity.class);
         startActivity(i);
     }
 
-
+    /*
+     * here we define what happens when the button MedienInfo is clicked.
+     * we start the MedienInfoMarksActivity
+     */
     public void onMedienInfoClick(View v) {
         Intent m = new Intent(MarksCalculator.this,MedienInfoMarksActivity.class);
         startActivity(m);
     }
 
-
+    /*
+     * here we define what happens when the button bachelorWork is clicked.
+     * we start the bachelorMarkActivity
+     */
     public void onBachelorWorkClick(View v) {
         Intent b = new Intent(MarksCalculator.this,BachelorMarkActivity.class);
         b.putExtra("Mark", markBachelor);
         startActivity(b);
     }
 
+    /*
+     * this method collects the data given by the BachelorMarkActivity
+     */
     private void getDataFromBachelorMarkActivity(){
         Bundle bachelorExtras = getIntent().getExtras();
         if(bachelorExtras != null) {
@@ -86,6 +106,9 @@ public class MarksCalculator extends AppCompatActivity {
         }
     }
 
+    /*
+     * this method collects the data given by the MedienInfoMarksActivity
+     */
     private void getDataFromMedienInfoMarkActivity(){
         Intent m = getIntent();
         Bundle medienInfoExtras = m.getExtras();
@@ -94,6 +117,10 @@ public class MarksCalculator extends AppCompatActivity {
 
     }
 
+    /*
+     * this method collects the data that is provided in the extras Bundle from the
+     * activity InfWissMarksActivity
+     */
     private void getDataFromInfWissMarkActivity(){
         Intent i = getIntent();
         Bundle infWissExtras = i.getExtras();

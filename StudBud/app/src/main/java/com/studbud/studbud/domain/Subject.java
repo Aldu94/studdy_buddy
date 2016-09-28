@@ -16,14 +16,17 @@ public class Subject {
         this.modules = modules;
     }
 
+    //constructor
     public Subject(ArrayList<ModuleItem> modules){
         this.modules = modules;
     }
 
+    // getter for the arrayList with moduleItems
     public ArrayList<ModuleItem> getModules() {
         return modules;
     }
 
+    // getter method for the courseItem
     public CourseItem getCourseItem(){
         for (ModuleItem moduleItem : modules){
             this.modules = modules;
@@ -31,6 +34,7 @@ public class Subject {
         return courseItem;
     }
 
+    // method to calculate the mark of the subject according to the weight of the module
     public double calculateSubjectGrade() {
         double sum = 0;
         for (ModuleItem module : getModules()) {

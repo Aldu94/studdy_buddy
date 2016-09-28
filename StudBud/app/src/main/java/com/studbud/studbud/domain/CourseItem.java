@@ -25,51 +25,57 @@ public class CourseItem implements Comparable<CourseItem>{
         this.subject = subject;
     }
 
-    /* gibt dem Nutzer den Namen des CourseItems zurück */
+    // getter method for the name of the courseItem
     public String getName(){
         return name;
     }
 
+    // getter method for the subject of the courseItem
     public MainSubject getSubject(){
         return subject;
     }
 
+    // getter method for the weight of the courseItem
     public double getWeight() {
         return weight;
     }
 
-    /* Wenn der Nutzer dem CourseItem einen Namen geben will, kann er diese Methode aufrufen */
+    // setter method to set the name of the courseItem
     public void setName(String name) {
         this.name = name;
     }
 
-    /* Hier lässt sich die Note des CourseItems speichern, wenn es geändert wurde */
+    // setter method to set the mark of the courseitem
     public void setMark(int mark){
         this.mark = mark;
     }
 
-    /* Die Methode gibt die Note des CourseItem zurück */
+    // getter method for the mark of the courseItem
     public double getMark() {
         return mark;
     }
 
+    // getter method for the module of the courseItem
     public int getModule(){
         return module;
     }
 
+    // setter method for the module of the courseItem
     public void setModule(int module){
         this.module = module;
     }
 
+    // getter method for the submodule of the courseItem
     public int getSubmodule(){
         return submodule;
     }
 
+    // setter method for the submodule of the courseItem
     public void setSubmodule(int submodule){
         this.submodule = submodule;
     }
 
-    /* Mit dieser Methode kann die App die CourseItems anhand der Namen vergleichen. Kann für die Sortierung der CourseItems verwendet werden */
+    // method to compare courseItems in order to be able to sort them within a list
     @Override
     public int compareTo(CourseItem another){
         return getName().compareTo(another.getName());

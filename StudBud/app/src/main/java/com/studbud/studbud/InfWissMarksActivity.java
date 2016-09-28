@@ -47,6 +47,9 @@ public class InfWissMarksActivity extends AppCompatActivity {
     private ArrayList<CourseItem> courses;
     private ArrayList<ModuleItem> modules;
 
+    /*
+     * the method defines what happens when the activity is started
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,10 @@ public class InfWissMarksActivity extends AppCompatActivity {
         onButtonClicked();
     }
 
+    /*
+     * the database will be referenced here so the class methods can interact with the
+     * database
+     */
     private void initDB() {
         db = new Database(InfWissMarksActivity.this);
         courses = new ArrayList<>();
@@ -76,7 +83,10 @@ public class InfWissMarksActivity extends AppCompatActivity {
         Log.d("Courses", "" + courses.size());
     }
 
-
+    /*
+     * here we set up the user interface for activity. in particular we initiate all the textviews
+     * and editText views
+     */
     private void setupUI(){
         inf1_1 = (EditText)findViewById(R.id.inf_1_1_mark);
         inf1_2 = (EditText)findViewById(R.id.inf_1_2_mark);
@@ -107,6 +117,9 @@ public class InfWissMarksActivity extends AppCompatActivity {
         updateModuleMarks();
     }
 
+    /*
+     * This method gets all modules and submodules for multiple Courseitems
+     */
     private CourseItem getCourse(int module, int submodule) {
         for (CourseItem course : courses) {
             if (module == course.getModule() && submodule == course.getSubmodule()) {
@@ -116,7 +129,11 @@ public class InfWissMarksActivity extends AppCompatActivity {
         return null;
     }
 
-
+    /*
+     * Here we can define what the button will actually do. here, the marks will be updated
+     * first and then the new values will be put into the database for the single Coursemarks
+     * and ModuleMarks
+     */
     private void onButtonClicked(){
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +146,10 @@ public class InfWissMarksActivity extends AppCompatActivity {
         });
     }
 
+    /*
+     * in order to visualize the module marks, we update the Texts of the corresponding
+     * module textfields
+     */
     private void updateModuleMarks() {
         markModule1.setText(String.valueOf(calculateModuleMark(1)));
         markModule2.setText(String.valueOf(calculateModuleMark(2)));
@@ -138,6 +159,9 @@ public class InfWissMarksActivity extends AppCompatActivity {
         markModule7.setText(String.valueOf(calculateModuleMark(7)));
     }
 
+    /*
+     * this method sets the courseMarks for each course
+     */
     private void setCourseMarks() {
         inf1_1.setText("" + getCourse(1, 1).getMark());
         inf1_2.setText("" + getCourse(1, 2).getMark());
@@ -156,6 +180,9 @@ public class InfWissMarksActivity extends AppCompatActivity {
         inf7_2.setText("" + getCourse(7, 2).getMark());
     }
 
+    /*
+     * here we update the courseMarks in the database
+     */
     private void updateCourseMarks(){
         db.updateMark(1, 1, getMarkFromEditText(inf1_1), MainSubject.INF);
         db.updateMark(1, 2, getMarkFromEditText(inf1_2), MainSubject.INF);
@@ -174,6 +201,9 @@ public class InfWissMarksActivity extends AppCompatActivity {
         db.updateMark(7, 2, getMarkFromEditText(inf7_2), MainSubject.INF);
     }
 
+    /*
+     * this is the method, that lets the calculation magic happen for each Module
+     */
     private double calculateModuleMark(int moduleId) {
         ArrayList<CourseItem> coursesInModule = new ArrayList<>();
 
@@ -190,7 +220,10 @@ public class InfWissMarksActivity extends AppCompatActivity {
         return module.calculateGrade();
     }
 
-
+    /*
+     * This method retrieves the data from the markField. if the field is empty, we
+     * insert a dummy value
+     */
     private double getMarkFromEditText(EditText editText) {
         if (editText.getText().length() == 0){
             editText.setText("4.0");

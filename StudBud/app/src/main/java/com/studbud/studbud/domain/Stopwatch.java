@@ -1,7 +1,7 @@
 package com.studbud.studbud.domain;
 
 /**
- * Created by Aldu on 26.09.16.
+ * This class is from the following source:
  */
 
 public class Stopwatch {

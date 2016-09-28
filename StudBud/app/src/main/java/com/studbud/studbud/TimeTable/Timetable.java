@@ -11,6 +11,8 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 
+import com.studbud.studbud.GPSLocator;
+import com.studbud.studbud.MainActivity;
 import com.studbud.studbud.R;
 import com.studbud.studbud.Schedule;
 
@@ -26,7 +28,12 @@ public class Timetable extends AppCompatActivity {
     private GridView gridView;
     private String saveDataSeparator = ",";
     private TimetableDataBase db;
+    private GPSLocator gpsL;
 
+    /*
+     * this array is used for the first saving process which will convert the array to a string and
+     * put it into the database
+     */
     private String[] scheduleContent = new String[]{
             "Zeit", "MO", "DI", "MI", "DO", "FR",
             "08:00", " ", " ", " ", " ", " ",
@@ -51,12 +58,16 @@ public class Timetable extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable);
+        //gpsL = new GPSLocator();
         db = new TimetableDataBase(this);
         initiateDb();
         getInfoOfCourseToAdd();
         getSchedule();
     }
 
+    /*
+     * the database is initialized for accessability purpose of other method working on the database
+     */
     private void initiateDb(){
         db.open();
         if(db.countScheduleDbEntries()==0){
@@ -65,6 +76,9 @@ public class Timetable extends AppCompatActivity {
         db.close();
     }
 
+    /*
+     * this method can delete a scheduleDatabase entry according to the id as primary key identifier
+     */
     private void deleteScheduleDbEntries(int id) {
         db.open();
         db.deleteScheduleDbItem(new ScheduleDbItem("", "", id));
@@ -73,10 +87,16 @@ public class Timetable extends AppCompatActivity {
 
     }
 
+    /*
+     * this will put the complete database entries to a list of scheduleDBItems
+     */
     private void showAllData() {
         List<ScheduleDbItem> scheduleDbItemList = db.getAllScheduleDbItems();
     }
 
+    /*
+     * this methods wil return the content of the schedule stored in the database
+     */
     private ScheduleDbItem getSchedule() {
         db.open();
         if (db.countScheduleDbEntries() == 0) {
@@ -96,6 +116,9 @@ public class Timetable extends AppCompatActivity {
 
     }
 
+    /*
+     * the method uses the info from the AddCourseToTimeTable activity to update the timetable
+     */
     private void getInfoOfCourseToAdd() {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -106,11 +129,18 @@ public class Timetable extends AppCompatActivity {
 
     }
 
+    /*
+     * method to split a string from the database into a string array by using a specified
+     * separator. the seprator is also used for converting that array back to a single string
+     */
     private String[] convertDatabaseInfoToStringArray(ScheduleDbItem scheduleDbItem) {
         String[] scheduleData = scheduleDbItem.getContent().split(saveDataSeparator);
         return scheduleData;
     }
 
+    /*
+     * method to update the timetable using the information from the getInfoOfCourseToAdd method
+     */
     public void updateScheduleItem(String updatedInfo, int position) {
         db.open();
         String[] newUpdate = convertDatabaseInfoToStringArray(db.getSchedule());
@@ -119,6 +149,10 @@ public class Timetable extends AppCompatActivity {
         db.close();
     }
 
+    /*
+     * method to setup the user interface with the gridview. the method also sets the
+     * TimeTableGridViewAdapter for the gridview
+     */
     private void setupUI(ScheduleDbItem scheduleDbItem) {
         gridView = (GridView) findViewById(R.id.timetableGridView);
         gridView.setAdapter(new TimetableGridViewAdapter(Timetable.this, scheduleDbItem.getContent().split(saveDataSeparator)));
@@ -131,6 +165,13 @@ public class Timetable extends AppCompatActivity {
         });
     }
 
+    /*
+     * the method will check what happens when we click on a textview in the gridview of the
+     * timetable. If we click on a "forbidden position" it will just notify the user about the
+     * illegal action. if the user clicks on a field in the timetable that can be edited, the
+     * AddCourseToTimeTable activity will be started. the position is also put extra to the intent
+     * in order to link the changes in the textview with the textview in the gridview
+     */
     public void onClick(int position) {
         currentPosition = position;
         Intent i = new Intent(Timetable.this, AddCourseToTimeTable.class);
@@ -154,6 +195,9 @@ public class Timetable extends AppCompatActivity {
         }
     }
 
+    /*
+     * method to convert a string array to a single string by using the specified separator
+     */
     private String convertArrayForDatabase(String[] data) {
         String string = "";
         for (int i = 0; i < data.length; i++) {
