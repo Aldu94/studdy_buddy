@@ -130,15 +130,31 @@ public class MarksCalculator extends AppCompatActivity {
     private void getDataForBachelorMark(){
         DecimalFormat decimal = new DecimalFormat("#.#");
         double bachelornote = 0.0;
+        double mediInfo = Double.parseDouble(medienInfoMark.getText().toString());
+        double infwiss = Double.parseDouble(infWissMark.getText().toString());
+        double bachelor = Double.parseDouble(bachelorWorkMark.getText().toString());
         if(db.getUser().getMainSubject().getName().equals("Informationswissenschaft")){
-            bachelornote += Double.parseDouble(medienInfoMark.getText().toString()) * 0.5;
-            bachelornote += Double.parseDouble(infWissMark.getText().toString()) * 0.3;
-            bachelornote += Double.parseDouble(bachelorWorkMark.getText().toString()) * 0.2;
+            if(mediInfo != 0.0) {
+                bachelornote += mediInfo * 0.3;
+            }
+            if(infwiss != 0.0) {
+                bachelornote += infwiss * 0.5;
+            }
+            if(bachelor != 0.0) {
+                bachelornote += bachelor * 0.2;
+            }
+
             bachelorGradeMark.setText(decimal.format(bachelornote));
         }else{
-            bachelornote += Double.parseDouble(medienInfoMark.getText().toString()) * 0.3;
-            bachelornote += Double.parseDouble(infWissMark.getText().toString()) * 0.5;
-            bachelornote += Double.parseDouble(bachelorWorkMark.getText().toString()) * 0.2;
+            if(mediInfo != 0.0) {
+                bachelornote += mediInfo * 0.5;
+            }
+            if(infwiss != 0.0) {
+                bachelornote += infwiss * 0.3;
+            }
+            if(bachelor != 0.0) {
+                bachelornote += bachelor * 0.2;
+            }
             bachelorGradeMark.setText(decimal.format(bachelornote));
         }
     }

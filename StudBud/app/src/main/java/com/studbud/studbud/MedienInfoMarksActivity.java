@@ -253,29 +253,69 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         return mainsubject;
     }
 
+    private int setDivisorMain(){
+        int divisor = 5;
+        if(calculateModuleMark(1)==0.0){
+            divisor--;
+        }
+        if(calculateModuleMark(3)==0.0){
+            divisor--;
+        }
+        if(calculateModuleMark(4)==0.0){
+            divisor--;
+        }
+        if(calculateModuleMark(5)==0.0){
+            divisor--;
+        }
+        if(calculateModuleMark(10)==0.0){
+            divisor--;
+        }
+        if(divisor == 0){
+            divisor = 1;
+        }
+        return divisor;
+    }
+
+    private int setDivisorSecondary(){
+        int divisor = 4;
+        if(calculateModuleMark(1)==0.0){
+            divisor--;
+        }
+        if(calculateModuleMark(3)==0.0){
+            divisor--;
+        }
+        if(calculateModuleMark(5)==0.0){
+            divisor--;
+        }
+        if(calculateModuleMark(8)==0.0){
+            divisor--;
+        }
+        if(divisor == 0){
+            divisor = 1;
+        }
+        return divisor;
+    }
+
     public double calculateSubjectMark(){
         User user = db.getUser();
         double sum = 0;
         if(!user.getMainSubject().getName().equals("Medieninformatik")){
+            int divisor = setDivisorSecondary();
             sum += calculateModuleMark(1);
-            sum += calculateModuleMark(2);
             sum += calculateModuleMark(3);
             sum += calculateModuleMark(5);
             sum += calculateModuleMark(8);
-            Log.d("Summe: ", " "+sum);
-            sum = sum / 5;
-            Log.d("Summe: ", " "+sum);
+            sum = sum / divisor;
 
         }else {
+            int divisor = setDivisorMain();
             sum += calculateModuleMark(1);
-            sum += calculateModuleMark(2);
             sum += calculateModuleMark(3);
             sum += calculateModuleMark(4);
             sum += calculateModuleMark(5);
             sum += calculateModuleMark(10);
-            Log.d("Summe: ", " "+sum);
-            sum = sum / 6;
-            Log.d("Summe: ", " "+sum);
+            sum = sum / divisor;
+
         }
         db.updateUserMedInfMark(user.getName(), ""+sum);
         return sum;

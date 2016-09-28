@@ -43,6 +43,7 @@
 
     <string name="inf01">INF-M01</string>
     <string name="inf02">INF-M02</string>
+    <string name="inf03">INF-M03</string>
     <string name="inf04">INF-M04</string>
     <string name="inf05">INF-M05</string>
     <string name="inf06">INF-M06</string>
@@ -73,6 +74,11 @@
     <string name="inf2_1">Mathematische Grundlagen</string>
     <string name="inf2_2">Einführung in die Methoden empirischer Forschung</string>
     <string name="inf2_3">Einführung in die Informationslinguistik</string>
+
+    <string name="inf3_1">Programmiersrpache 1</string>
+    <string name="inf3_2">Programmiersprache 2</string>
+    <string name="inf3_3">Algorithmen und Datenstrukturen</string>
+    <string name="inf3_4">Software Engineering-Entwurfsmethoden</string>
 
     <string name="inf4_1">Grundlagen des Information Retrieval</string>
     <string name="inf4_2">Inhaltserschließung / Auszeichnungssprachen</string>
