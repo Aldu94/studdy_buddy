@@ -182,6 +182,7 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         markModule10.setText(String.valueOf(calculateModuleMark(10)));
     }
 
+
     /*
      * this method sets the courseMarks for each course
      */
@@ -203,6 +204,7 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         mei10_2.setText("" + getCourse(10, 2).getMark());
         mei10_3.setText("" + getCourse(10, 3).getMark());
     }
+
 
     /*
      * this is the method, that lets the calculation magic happen for each Module
