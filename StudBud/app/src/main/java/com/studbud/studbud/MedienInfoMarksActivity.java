@@ -4,14 +4,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.studbud.studbud.domain.CourseItem;
 import com.studbud.studbud.domain.Module;
+import com.studbud.studbud.domain.ModuleItem;
+import com.studbud.studbud.domain.Subject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MedienInfoMarksActivity extends AppCompatActivity {
@@ -46,6 +48,7 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
     private Button button;
     private Database db;
     private ArrayList<CourseItem> courses;
+    private ArrayList<ModuleItem> modules;
 
     /*
      * the method defines what happens when the activity is started
@@ -71,8 +74,14 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
                 courses.add(course);
             }
         }
-
-        Log.d("Courses", "" + courses.size());
+        modules = new ArrayList<>();
+        for (ModuleItem module : db.getAllModuleItems()){
+            if (module.getSubject() == MainSubject.MI){
+                modules.add(module);
+            }
+        }
+        Log.d("Courses", "Medi " + courses.size());
+        Log.d("Modules", "Medi " + modules.size());
     }
 
     /*
@@ -142,6 +151,7 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
                 updateCourseMarks();
                 courses = db.getAllCourseItems();
                 updateModuleMarks();
+                calculateSubjectMark();
                 Log.d("Courses: ", "" + courses.size());
             }
         });
@@ -174,12 +184,13 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
      * module textfields
      */
     private void updateModuleMarks(){
-        markModule1.setText(String.valueOf(calculateModuleMark(1)));
-        markModule3.setText(String.valueOf(calculateModuleMark(3)));
-        markModule4.setText(String.valueOf(calculateModuleMark(4)));
-        markModule5.setText(String.valueOf(calculateModuleMark(5)));
-        markModule8.setText(String.valueOf(calculateModuleMark(8)));
-        markModule10.setText(String.valueOf(calculateModuleMark(10)));
+        DecimalFormat decimal = new DecimalFormat("#.#");
+        markModule1.setText(String.valueOf(decimal.format(calculateModuleMark(1))));
+        markModule3.setText(String.valueOf(decimal.format(calculateModuleMark(3))));
+        markModule4.setText(String.valueOf(decimal.format(calculateModuleMark(4))));
+        markModule5.setText(String.valueOf(decimal.format(calculateModuleMark(5))));
+        markModule8.setText(String.valueOf(decimal.format(calculateModuleMark(8))));
+        markModule10.setText(String.valueOf(decimal.format(calculateModuleMark(10))));
     }
 
 
@@ -225,18 +236,49 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         return module.calculateGrade();
     }
 
-
     /*
      * This method retrieves the data from the markField. if the field is empty, we
      * insert a dummy value
      */
     private double getMarkFromEditText(EditText editText) {
         if (editText.getText().length() == 0){
-            editText.setText("4.0");
+            editText.setText("0.0");
         }
 
         return Double.parseDouble(editText.getText().toString());
     }
 
+    private MainSubject getMainSubject(){
+        MainSubject mainsubject = db.getUser().getMainSubject();
+        return mainsubject;
+    }
+
+    public double calculateSubjectMark(){
+        User user = db.getUser();
+        double sum = 0;
+        if(!user.getMainSubject().getName().equals("Medieninformatik")){
+            sum += calculateModuleMark(1);
+            sum += calculateModuleMark(2);
+            sum += calculateModuleMark(3);
+            sum += calculateModuleMark(5);
+            sum += calculateModuleMark(8);
+            Log.d("Summe: ", " "+sum);
+            sum = sum / 5;
+            Log.d("Summe: ", " "+sum);
+
+        }else {
+            sum += calculateModuleMark(1);
+            sum += calculateModuleMark(2);
+            sum += calculateModuleMark(3);
+            sum += calculateModuleMark(4);
+            sum += calculateModuleMark(5);
+            sum += calculateModuleMark(10);
+            Log.d("Summe: ", " "+sum);
+            sum = sum / 6;
+            Log.d("Summe: ", " "+sum);
+        }
+        db.updateUserMedInfMark(user.getName(), ""+sum);
+        return sum;
+    }
 
 }

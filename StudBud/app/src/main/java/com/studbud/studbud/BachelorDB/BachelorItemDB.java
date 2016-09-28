@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.studbud.studbud.MainSubject;
@@ -41,6 +42,9 @@ public class BachelorItemDB {
     /*
      * method to create a bacheloritem with the given values and to store it in the database
      */
+    /*
+     * method to create a bacheloritem with the given values and to store it in the database
+     */
     public BachelorItem createBachelorItem(String name, String mark) {
         open();
         ContentValues scheduleValues = new ContentValues();
@@ -56,7 +60,8 @@ public class BachelorItemDB {
         cursor.close();
         close();
         return bachelorItem;
-    }
+        }
+
 
     /*
      * method to retrieve a specific bacheloritem from the database. in this case, there will be only
@@ -76,7 +81,7 @@ public class BachelorItemDB {
      */
     public int countBachelorItemDbEntries() {
         open();
-        Cursor cursor = db.rawQuery("Select " + dbHelper.COLUMN_ID + " from " + dbHelper.TABLE_BACHELOR_ITEMS, null);
+        Cursor cursor = db.rawQuery("Select * from " + dbHelper.TABLE_BACHELOR_ITEMS, null);
         int count = cursor.getCount();
         Log.d(" BACHELOR_ENTRIES", "Anzahl der Einträge: " + count);
         cursor.close();
@@ -149,4 +154,5 @@ public class BachelorItemDB {
 
         return bachelorItem;
     }
+
 }

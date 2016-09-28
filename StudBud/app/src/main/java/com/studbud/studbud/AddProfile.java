@@ -16,7 +16,11 @@ public class AddProfile extends AppCompatActivity {
     private EditText semester;
     private Spinner mainSubjectSpinner;
     private Button saveButton;
+    private Database db;
 
+    private String user;
+    private int semesternumber;
+    private String mainsubject;
     private ArrayAdapter<CharSequence> spinnerAdapter;
 
 
@@ -24,6 +28,7 @@ public class AddProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_profile);
+        db = new Database(AddProfile.this);
         setupUI();
         onSafeButtonClicked();
     }
@@ -38,8 +43,34 @@ public class AddProfile extends AppCompatActivity {
         saveButton = (Button)findViewById(R.id.save_button);
 
         connectSpinnerAdapter();
+        insertUserData();
     }
 
+    /*private void insertUserData(){
+        Bundle extra = getIntent().getExtras();
+        user = extra.getString("user");
+        semesternumber = extra.getInt("semester");
+        mainsubject = extra.getString("mainsubject");
+
+        name.setText(user);
+        semester.setText(""+semesternumber);
+        if(mainsubject.equals("Informationswissenschaft")){
+            mainSubjectSpinner.setSelection(0);
+        }else {
+            mainSubjectSpinner.setSelection(1);
+        }
+    }*/
+
+    private void insertUserData(){
+        User user = db.getUser();
+        name.setText(user.getName());
+        semester.setText(""+user.getNumberOfSemester());
+        if(user.getMainSubject().getName().equals("Informationswissenschaft")){
+            mainSubjectSpinner.setSelection(0);
+        }else {
+            mainSubjectSpinner.setSelection(1);
+        }
+    }
 
     // method to connect the main subject spinner with the spinner adapter
 
@@ -61,21 +92,33 @@ public class AddProfile extends AppCompatActivity {
             public void onClick(View v) {
                 String userName = getNameInput();
                 int userSemester = getSemesterInput();
-                long userMainSubjectID = getSubjectInput();
-
+                String userMainSubject = getSpinnerInfo();
+                db.updateUser(userName, MainSubject.fromString(userMainSubject), userSemester);
                 Intent intent = new Intent(AddProfile.this, Profile.class);
-                intent.putExtra("username", userName);
-                intent.putExtra("semester", userSemester);
-                intent.putExtra("subjectID", userMainSubjectID);
+                //intent.putExtra("username", userName);
+                //intent.putExtra("semester", userSemester);
+                //intent.putExtra("subjectID", userMainSubjectID);
                 startActivity(intent);
+                finish();
             }
         });
     }
 
+    // method to convert the info from the Mainsubject spinner to a string with the mainsubject
+    private String getSpinnerInfo(){
+        if(mainSubjectSpinner.getSelectedItemPosition()==0){
+            return "Informationswissenschaft";
+        }else{
+            return "Medieninformatik";
+        }
 
+    }
     // method to get the user input for the name
 
     private String getNameInput(){
+        if(name.getText().toString().equals("")){
+            return "Name";
+        }
         return name.getText().toString();
     }
 
@@ -83,6 +126,9 @@ public class AddProfile extends AppCompatActivity {
     // method to get the user input for the semester
 
     private int getSemesterInput() {
+        if(semester.getText().toString().equals("")){
+            return 0;
+        }
         return Integer.parseInt(semester.getText().toString());
     }
 

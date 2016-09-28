@@ -42,8 +42,13 @@ public class Profile extends AppCompatActivity {
             semesterView.setText(String.valueOf(userSemester));
             MainSubject userMainSubject = MainSubject.values()[(int)extras.getLong("subjectID")];
             mainSubjectView.setText(userMainSubject.getName());
-            User user = new User(userName,userSemester, userMainSubject);
-            db.addUserToDb(user);
+            db.open();
+            db.updateUser(userName, userMainSubject, userSemester);
+        }else{
+            User user = db.getUser();
+            nameView.setText(user.getName());
+            semesterView.setText(""+user.getNumberOfSemester());
+            mainSubjectView.setText(user.getMainSubject().getName());
         }
 
     }
@@ -69,7 +74,12 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Profile.this, AddProfile.class);
+                User user = db.getUser();
+                i.putExtra("user", user.getName());
+                i.putExtra("semester", user.getNumberOfSemester());
+                i.putExtra("mainsubject", user.getMainSubject().getName());
                 startActivity(i);
+                finish();
             }
         });
     }

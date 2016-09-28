@@ -8,7 +8,7 @@ public class BachelorItem {
     private long id;
     private Double mark;
 
-    public BachelorItem(String name, long id, Double mark) {
+    public BachelorItem(String name, Long id, Double mark) {
         this.name = name;
         this.mark = mark;
         this.id = id;

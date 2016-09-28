@@ -1,5 +1,8 @@
 package com.studbud.studbud.domain;
 
+import com.studbud.studbud.MainSubject;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -35,11 +38,12 @@ public class Subject {
     }
 
     // method to calculate the mark of the subject according to the weight of the module
-    public double calculateSubjectGrade() {
+    public double calculateSubjectGrade(ArrayList<ModuleItem> modules) {
         double sum = 0;
-        for (ModuleItem module : getModules()) {
+        double counter = modules.size();
+        for (ModuleItem module : modules) {
             sum += module.getMark() * module.getWeight();
         }
-        return sum;
+        return sum/counter;
     }
 }

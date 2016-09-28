@@ -27,7 +27,7 @@ public class BachelorMarkActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bachelor_mark);
-        db = new BachelorItemDB(this);
+        db = new BachelorItemDB(BachelorMarkActivity.this);
         setupUI();
         onSafeButtonClick();
     }

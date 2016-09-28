@@ -86,9 +86,8 @@ public class MainActivity extends AppCompatActivity {
         if (settings.getBoolean("my_first_time", true)) {
             //the app is being launched for first time, do something
             Log.d("Comments", "First time");
-
             // first time task
-
+            db.addUserToDb(new User("Dummy", 0, MainSubject.fromString("Medieninformatik")));
             // record the fact that the app has been started at least once
             settings.edit().putBoolean("my_first_time", false).commit();
         }

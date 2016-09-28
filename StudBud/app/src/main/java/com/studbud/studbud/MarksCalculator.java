@@ -9,26 +9,33 @@ import android.widget.Button;
 
 import com.studbud.studbud.BachelorDB.BachelorItemDB;
 
+import java.text.DecimalFormat;
+
 public class MarksCalculator extends AppCompatActivity {
 
 
     private TextView infWiss;
     private TextView medienInfo;
     private TextView bachelorWork;
+    private TextView bachelorGrade;
 
     private TextView infWissMark;
     private TextView medienInfoMark;
     private TextView bachelorWorkMark;
+    private TextView bachelorGradeMark;
+
     private ListContent lc;
     private int subjectID;
     private User user;
     public double markOne;
     public double markTwo;
     public double markBachelor;
+    public double markBachelorGrade;
     private static final String bachelorMark = "bachelorMark";
     private Button calculateButton;
     private double[] inf01;
     private Database db;
+    private BachelorItemDB bDb;
 
     /*
      * we open the database, setup the content to view in this activity and setup the user
@@ -39,6 +46,7 @@ public class MarksCalculator extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_markscalculator);
         db = new Database(MarksCalculator.this);
+        bDb = new BachelorItemDB(MarksCalculator.this);
         setupUI();
     }
 
@@ -50,6 +58,9 @@ public class MarksCalculator extends AppCompatActivity {
     protected void onPostResume() {
         super.onPostResume();
         getDataFromBachelorMarkActivity();
+        getDataFromMedienInfoMarkActivity();
+        getDataFromInfWissMarkActivity();
+        getDataForBachelorMark();
     }
 
     /*
@@ -59,15 +70,22 @@ public class MarksCalculator extends AppCompatActivity {
         infWiss = (TextView)findViewById(R.id.informationswissenschaft_text_view);
         medienInfo = (TextView)findViewById(R.id.medieninformatik_text_view);
         bachelorWork = (TextView)findViewById(R.id.bachelorarbeit_text_view);
+        bachelorGrade = (TextView)findViewById(R.id.bachelornote_text_view);
 
         infWissMark = (TextView)findViewById(R.id.informationswissenschaft_mark);
         medienInfoMark = (TextView)findViewById(R.id.medieninformatik_mark);
         bachelorWorkMark = (TextView)findViewById(R.id.bachelorarbeit_mark);
+        bachelorGradeMark = (TextView)findViewById(R.id.bachelornote_mark);
 
 
     }
 
-
+    private void getData(){
+        getDataFromBachelorMarkActivity();
+        getDataFromInfWissMarkActivity();
+        getDataFromMedienInfoMarkActivity();
+        getDataForBachelorMark();
+    }
     /*
      * here we define what happens when the button Infwiss is clicked.
      * we start the activity InfwissMarksActivity
@@ -100,21 +118,37 @@ public class MarksCalculator extends AppCompatActivity {
      * this method collects the data given by the BachelorMarkActivity
      */
     private void getDataFromBachelorMarkActivity(){
-        Bundle bachelorExtras = getIntent().getExtras();
-        if(bachelorExtras != null) {
-            bachelorWorkMark.setText(String.valueOf(bachelorExtras.getDouble("Mark")));
+        DecimalFormat decimal = new DecimalFormat("#.#");
+        bDb.open();
+        bachelorWorkMark.setText(decimal.format(bDb.getBachelorItem().getMark()));
+        bDb.close();
+    }
+
+    /*
+     * this method collects the data shown in the TextField bachelormark
+     */
+    private void getDataForBachelorMark(){
+        DecimalFormat decimal = new DecimalFormat("#.#");
+        double bachelornote = 0.0;
+        if(db.getUser().getMainSubject().getName().equals("Informationswissenschaft")){
+            bachelornote += Double.parseDouble(medienInfoMark.getText().toString()) * 0.5;
+            bachelornote += Double.parseDouble(infWissMark.getText().toString()) * 0.3;
+            bachelornote += Double.parseDouble(bachelorWorkMark.getText().toString()) * 0.2;
+            bachelorGradeMark.setText(decimal.format(bachelornote));
+        }else{
+            bachelornote += Double.parseDouble(medienInfoMark.getText().toString()) * 0.3;
+            bachelornote += Double.parseDouble(infWissMark.getText().toString()) * 0.5;
+            bachelornote += Double.parseDouble(bachelorWorkMark.getText().toString()) * 0.2;
+            bachelorGradeMark.setText(decimal.format(bachelornote));
         }
     }
 
     /*
-     * this method collects the data given by the MedienInfoMarksActivity
+     * this method collects the data shown in the TextField medienInfoMark
      */
     private void getDataFromMedienInfoMarkActivity(){
-        Intent m = getIntent();
-        Bundle medienInfoExtras = m.getExtras();
-       // double miMarkData = m.getDoubleExtra("",);
-        //medienInfoMark.setText(String.valueOf(miMarkData));
-
+        DecimalFormat decimal = new DecimalFormat("#.#");
+        medienInfoMark.setText(decimal.format(db.getUserMedInfMark()));
     }
 
     /*
@@ -122,8 +156,8 @@ public class MarksCalculator extends AppCompatActivity {
      * activity InfWissMarksActivity
      */
     private void getDataFromInfWissMarkActivity(){
-        Intent i = getIntent();
-        Bundle infWissExtras = i.getExtras();
+        DecimalFormat decimal = new DecimalFormat("#.#");
+        infWissMark.setText(decimal.format(db.getUserInfwissMark()));
     }
 }
 

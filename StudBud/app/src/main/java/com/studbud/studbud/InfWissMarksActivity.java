@@ -13,6 +13,7 @@ import com.studbud.studbud.domain.Module;
 import com.studbud.studbud.domain.ModuleItem;
 import com.studbud.studbud.domain.Subject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class InfWissMarksActivity extends AppCompatActivity {
@@ -66,7 +67,7 @@ public class InfWissMarksActivity extends AppCompatActivity {
     private void initDB() {
         db = new Database(InfWissMarksActivity.this);
         courses = new ArrayList<>();
-        Log.d("DEBUG: ", "Database getAllCourseItems() angefragt");
+        Log.d("InfWissMarksActivity: ", "Database getAllCourseItems() angefragt");
         for (CourseItem course : db.getAllCourseItems()) {
             if (course.getSubject() == MainSubject.INF) {
                 courses.add(course);
@@ -80,7 +81,8 @@ public class InfWissMarksActivity extends AppCompatActivity {
             }
         }
 
-        Log.d("Courses", "" + courses.size());
+        Log.d("Courses", "Infwiss" + courses.size());
+        Log.d("Modules", "Infwiss " + modules.size());
     }
 
     /*
@@ -146,17 +148,20 @@ public class InfWissMarksActivity extends AppCompatActivity {
         });
     }
 
+    //private double calculateSubjectNote
+
     /*
      * in order to visualize the module marks, we update the Texts of the corresponding
      * module textfields
      */
     private void updateModuleMarks() {
-        markModule1.setText(String.valueOf(calculateModuleMark(1)));
-        markModule2.setText(String.valueOf(calculateModuleMark(2)));
-        markModule4.setText(String.valueOf(calculateModuleMark(4)));
-        markModule5.setText(String.valueOf(calculateModuleMark(5)));
-        markModule6.setText(String.valueOf(calculateModuleMark(6)));
-        markModule7.setText(String.valueOf(calculateModuleMark(7)));
+        DecimalFormat decimal = new DecimalFormat("#.#");
+        markModule1.setText(String.valueOf(decimal.format(calculateModuleMark(1))));
+        markModule2.setText(String.valueOf(decimal.format(calculateModuleMark(2))));
+        markModule4.setText(String.valueOf(decimal.format(calculateModuleMark(4))));
+        markModule5.setText(String.valueOf(decimal.format(calculateModuleMark(5))));
+        markModule6.setText(String.valueOf(decimal.format(calculateModuleMark(6))));
+        markModule7.setText(String.valueOf(decimal.format(calculateModuleMark(7))));
     }
 
     /*
@@ -226,7 +231,7 @@ public class InfWissMarksActivity extends AppCompatActivity {
      */
     private double getMarkFromEditText(EditText editText) {
         if (editText.getText().length() == 0){
-            editText.setText("4.0");
+            editText.setText("0.0");
         }
 
         return Double.parseDouble(editText.getText().toString());
@@ -238,19 +243,57 @@ public class InfWissMarksActivity extends AppCompatActivity {
         return Double.parseDouble(textView.getText().toString());
     }
 
+    private MainSubject getMainSubject(){
+        MainSubject mainsubject = db.getUser().getMainSubject();
+        return mainsubject;
+    }
 
     public double calculateSubjectMark(){
-        ArrayList<ModuleItem> modulesInSubject = new ArrayList<>();
+        User user = db.getUser();
+        double sum = 0;
+        if(!user.getMainSubject().getName().equals("Informtionswissenschaft")){
+            sum += calculateModuleMark(1);
+            sum += calculateModuleMark(2);
+            sum += calculateModuleMark(3);
+            sum += calculateModuleMark(4);
+            sum += calculateModuleMark(5);
+            sum += calculateModuleMark(6);
+            sum += calculateModuleMark(7);
+            Log.d("Summe: ", " "+sum);
+            sum = sum / 7;
+            Log.d("Summe: ", " "+sum);
 
-        for (ModuleItem module : modules){
-            if(module.getSubject() == MainSubject.INF){
-                modulesInSubject.add(module);
+        }else {
+            sum += calculateModuleMark(1);
+            sum += calculateModuleMark(2);
+            if(calculateModuleMark(4) == 0.0){
+                sum += calculateModuleMark(5);
+                sum += calculateModuleMark(6);
+                sum += calculateModuleMark(7);
+                sum /= 5;
+                return sum;
+            }else if(calculateModuleMark(5) == 0.0){
+                sum += calculateModuleMark(5);
+                sum += calculateModuleMark(6);
+                sum += calculateModuleMark(7);
+                sum /= 5;
+                return sum;
+            }else if(calculateModuleMark(6) == 0.0){
+                sum += calculateModuleMark(5);
+                sum += calculateModuleMark(6);
+                sum += calculateModuleMark(7);
+                sum /= 5;
+                return sum;
+            }else if(calculateModuleMark(7) == 0.0){
+                sum += calculateModuleMark(4);
+                sum += calculateModuleMark(5);
+                sum += calculateModuleMark(6);
+                sum /= 5;
+                return sum;
             }
         }
-
-        Subject subject = new Subject(modulesInSubject);
-
-        return subject.calculateSubjectGrade();
+        db.updateUserMedInfMark(user.getName(), ""+sum);
+        return sum;
     }
 
 }
