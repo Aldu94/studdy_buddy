@@ -13,6 +13,7 @@ import com.studbud.studbud.R;
 
 /*
  * this adapter is used to setup the timetable in the TimeTable activity
+ * Source: http://stackoverflow.com/questions/35257327/android-grid-view-order-and-alignment-mess-up-on-scrolling
  */
 public class TimetableGridViewAdapter extends BaseAdapter {
     private Context context;
@@ -27,14 +28,17 @@ public class TimetableGridViewAdapter extends BaseAdapter {
     /*
      * according to the information stored in the string array scheduleItems,
      * we initialize the gridview with the textviews and set the information from the array as text
+     *
      */
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
 
         View gridView;
 
         if(convertView == null){
-            gridView = new View(context);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
             gridView = inflater.inflate(R.layout.timetable_item, null);
             TextView textView = (TextView) gridView.findViewById(R.id.timetable_button);
             textView.setText(scheduleItems[position]);

@@ -1,5 +1,6 @@
 package com.studbud.studbud.TimeTable;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ public class Timetable extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         //gpsL = new GPSLocator();
         db = new TimetableDataBase(this);
         initiateDb();

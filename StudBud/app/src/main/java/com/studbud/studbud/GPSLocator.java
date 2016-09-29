@@ -1,56 +1,97 @@
 package com.studbud.studbud;
 
-import android.Manifest;
-import android.Manifest.permission;
+
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.util.Log;
+import android.support.v4.content.ContextCompat;
 
-import com.studbud.studbud.domain.Stopwatch;
-
-import java.security.Timestamp;
-import java.util.Timer;
-
-public class GPSLocator extends MainActivity implements android.location.LocationListener {
+public class GPSLocator extends Profile implements android.location.LocationListener {
 
     private final Context context;
     private LocationManager locManager;
-    private Stopwatch timer;
+
+    private static final long UPDATE_INTERVAL_ONE_SECOND = 1000;
+    private static final long UPDATE_INTERVAL = UPDATE_INTERVAL_ONE_SECOND *10;
+    private static final long MIN_DISTANCE = 0;
+
+    Location location;
+    private boolean isGPSEnabled;
+
 
     public GPSLocator(Context context) {
         this.context = context;
     }
 
     /*
-     * here we can put in our evaluation function which checks how close the user is to
-     * the university campus. The timer will count up until the user has went too far away
-     * from the center of the campus, so the points collection be stopped
+     * Here we will check, if the user has already granted access to the locationservice. As for
+     * newer APIs there needs to be a permissioncheck inserted, we have added the a statement to check
+     * for the used API as well.
+     *
+     * Source of the function: http://stackoverflow.com/questions/32491960/android-check-permission-for-locationmanager
      */
-    @Override
-    public void onLocationChanged(Location location) {
-        if (location != null) {
-            Log.e("Längengrad : ", "" + location.getLatitude());
-            Log.e("Breitengrad: ", "" + location.getLongitude());
-            double lat1 = 48.998583;
-            double lng1 = 12.094805;
-            double lat2 = location.getLatitude();
-            double lng2 = location.getLongitude();
+    @TargetApi(23)
+    public Location getLocation(Context context) {
+        // Here we have the above mentioned permissioncheck
+        if (Build.VERSION.SDK_INT >= 23 &&
+                ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            Log.i("Distance", "" + distance(lat1, lng1, lat2, lng2));
+            return null;
+        } else {
+            try {
+                locManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
 
-            if (distance(lat1, lng1, lat2, lng2) < 0.5) {
-                timer.start();
-            } else {
-                timer.stop();
+                isGPSEnabled = locManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+                if (!isGPSEnabled) {
+
+                } else {
+                    if (isGPSEnabled) {
+                        if (location == null) {
+                            locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, UPDATE_INTERVAL, MIN_DISTANCE, this);
+                            if (locManager != null) {
+                                location = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                                if (location != null) {
+                                    checkForCampusLocation(location);
+                                }
+                            }
+                        }
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
+        return location;
+    }
+    /*
+     * here we can put in our evaluation function which checks how close the user is to
+     * the university campus. If he is close enough, this will set the bollean in the Profile
+     * class true
+     */
 
-        long time = timer.getElapsedTimeSecs();
+    public void checkForCampusLocation(Location location) {
+        if (location != null) {
+            double lat1 = 48.99821192628251;
+            double lng1 = 12.095339521329151;
+            double lat2 = location.getLatitude();
+            double lng2 = location.getLongitude();
+            if (distance(lat1, lng1, lat2, lng2) < 500) {
+                setIsOnCampus(true);
 
+            } else {
+                setIsOnCampus(false);
+
+            }
+
+        }
     }
 
     /*
@@ -58,11 +99,10 @@ public class GPSLocator extends MainActivity implements android.location.Locatio
      * the last known location and the current location
      */
     private double distance(double lat1, double lng1, double lat2, double lng2) {
+        double earthRadius = 6371e3;
 
-        double earthRadius = 6371;
-
-        double dLat = Math.toRadians(lat2-lat1);
-        double dLng = Math.toRadians(lng2-lng1);
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLng = Math.toRadians(lng2 - lng1);
 
         double sindLat = Math.sin(dLat / 2);
         double sindLng = Math.sin(dLng / 2);
@@ -70,41 +110,33 @@ public class GPSLocator extends MainActivity implements android.location.Locatio
         double a = Math.pow(sindLat, 2) + Math.pow(sindLng, 2)
                 * Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2));
 
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         double dist = earthRadius * c;
 
         return dist;
     }
 
-    /*public void getLocation(){
-        try{
-            locManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
-        }
-    }*/
+    //autoimplemented methods - not used
+    @Override
+    public void onLocationChanged(Location location) {
 
-    /*public void updateLocation() {
-        GPSLocator gpsl = new GPSLocator();
-        LocationManager myLocator = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        if(ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            myLocator.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, gpsl);
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION}, 0);
-        }
-
-    }*/
+    }
+    //autoimplemented methods - not used
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
 
     }
 
+    //autoimplemented methods - not used
     @Override
     public void onProviderEnabled(String provider) {
-
     }
 
+    //autoimplemented methods - not used
     @Override
     public void onProviderDisabled(String provider) {
-
+        Intent i = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivity(i);
     }
 }

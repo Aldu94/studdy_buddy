@@ -17,6 +17,7 @@
         android:id="@+id/timetableGridView"
         android:numColumns="6"
         android:gravity="center"
+        android:scrollbars="vertical"
         android:columnWidth="100dp"
         android:stretchMode="columnWidth"
         android:fontFamily="sans-serif">

@@ -12,13 +12,15 @@ public class User {
     private String name;
     private MainSubject mainSubject;
     private int numberOfSemester;
+    private int score;
     /*
      * standard constructor of the class to initiate the variables
      */
-    public User(String name, int numberOfSemester, MainSubject mainSubject) {
+    public User(String name, int numberOfSemester, MainSubject mainSubject, int score) {
         this.name = name;
         this.mainSubject = mainSubject;
         this.numberOfSemester = numberOfSemester;
+        this.score = score;
     }
 
 
@@ -44,6 +46,13 @@ public class User {
         return mainSubject;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score){
+        this.score = score;
+    }
 
     /*
      * This method returns the semester the user is currently in

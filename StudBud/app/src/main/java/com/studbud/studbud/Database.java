@@ -22,7 +22,7 @@ public class Database {
      * These statements contain the Name of the database as well as the database version
      */
     private static final String DATABASE_NAME = "courseItems40.db";
-    private static final int DATABASE_VERSION = 45;
+    private static final int DATABASE_VERSION = 47;
 
     /*
      * The name of the table as well as some selection arrays are defined here
@@ -43,6 +43,8 @@ public class Database {
     private static final String KEY_SUBJECT = "subject";
     public static final String KEY_MARK_INFWISS = "infwissmark";
     public static final String KEY_MARK_MEDINF = "medinfmark";
+    public static final String KEY_SCORE = "score";
+    public static final String KEY_LAST_SCORE_DATE = "scoredate";
 
     /*
      * Here we set some references for the databaseHelper and the SQLiteDatabase for less typing
@@ -131,10 +133,11 @@ public class Database {
         String name = userCursor.getString(userCursor.getColumnIndex(KEY_USER));
         String subject = userCursor.getString(userCursor.getColumnIndex(KEY_SUBJECT));
         int mark = userCursor.getInt(userCursor.getColumnIndex(KEY_MARK));
+        int score = userCursor.getInt(userCursor.getColumnIndex(KEY_SCORE));
 
         userCursor.close();
         close();
-        User user = new User(name, mark, MainSubject.fromString(subject));
+        User user = new User(name, mark, MainSubject.fromString(subject), score);
         return user;
     }
 
@@ -157,6 +160,7 @@ public class Database {
         newUser.put(KEY_MARK, user.getNumberOfSemester());
         newUser.put(KEY_MARK_MEDINF, "0.0");
         newUser.put(KEY_MARK_INFWISS, "0.0");
+        newUser.put(KEY_SCORE, user.getScore());
 
         open();
         db.insertWithOnConflict(DATABASE_TABLE, null, newUser, SQLiteDatabase.CONFLICT_REPLACE);
@@ -196,6 +200,26 @@ public class Database {
         Log.d("User-Database", "neue Note für Fach Inwiss für User " + user + " eingetragen");
     }
 
+    public void updateUserScore(String user, String score){
+        open();
+        String scoreUpdate = "UPDATE " + DATABASE_TABLE + " SET score='" + score + "' WHERE user= '" + user + "';";
+        db.execSQL(scoreUpdate);
+        close();
+        Log.d("Score", "Neuer Score: " +score + "für "+ user + "!");
+    }
+
+    public String getUserScore(){
+        open();
+
+        Cursor scoreCursor = db.rawQuery("select * from " + DATABASE_TABLE + " where " + KEY_USER + " is not null", null);
+        scoreCursor.moveToFirst();
+        String score = scoreCursor.getString(scoreCursor.getColumnIndex(KEY_SCORE));
+
+        scoreCursor.close();
+        close();
+        return score;
+    }
+
     public double getUserInfwissMark(){
         open();
 
@@ -206,6 +230,25 @@ public class Database {
         userCursor.close();
         close();
         return InfwissMark;
+    }
+
+    public String getScoreDate(){
+        open();
+
+        Cursor userCursor = db.rawQuery("select * from " + DATABASE_TABLE + " where " + KEY_USER + " is not null", null );
+        userCursor.moveToFirst();
+        String scoreDate = userCursor.getString(userCursor.getColumnIndex(KEY_LAST_SCORE_DATE));
+
+        userCursor.close();
+        close();
+        return scoreDate;
+    }
+
+    public void setScoreDate(String user, String scoredate){
+        open();
+        String scoreUpdate = "UPDATE " + DATABASE_TABLE + " SET scoredate='" + scoredate + "' WHERE user= '" + user + "';";
+        db.execSQL(scoreUpdate);
+        close();
     }
 
     public double getUserMedInfMark(){
@@ -511,7 +554,8 @@ public class Database {
          */
         private static final String DATABASE_CREATE = "create table "
                 + DATABASE_TABLE + " (" + KEY_ID + " integer primary key autoincrement, " + KEY_USER + " text," + KEY_MODULE + " text," + KEY_SUBMODULE + " text," +
-                KEY_NAME + " text," + KEY_MARK + " text," + KEY_WEIGHT + " text," + KEY_SUBJECT + " text," + KEY_MARK_MEDINF + " text," + KEY_MARK_INFWISS +" text);";
+                KEY_NAME + " text," + KEY_MARK + " text," + KEY_WEIGHT + " text," + KEY_SUBJECT + " text," + KEY_MARK_MEDINF + " text," + KEY_MARK_INFWISS + " text," +
+                KEY_SCORE + " text," + KEY_LAST_SCORE_DATE + " text);";
 
         public CourseDBOpenHelper(Context context, String dbname, SQLiteDatabase.CursorFactory factory, int version){
             super(context, dbname, factory, version);

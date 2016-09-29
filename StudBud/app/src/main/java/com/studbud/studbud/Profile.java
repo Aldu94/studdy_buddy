@@ -1,11 +1,14 @@
 package com.studbud.studbud;
 
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Profile extends AppCompatActivity {
 
@@ -13,6 +16,15 @@ public class Profile extends AppCompatActivity {
     private TextView semesterView;
     private TextView mainSubjectView;
     private ImageButton newProfileButton;
+    private ImageButton collectPointsButton;
+    private GPSLocator locator;
+    private TextView scoreView;
+    private int score;
+    public static boolean isOnCampus = false;
+    private static final int scoreAmount = 5;
+
+    String currentDay = Calendar.YEAR + " " + Calendar.MONTH + " " + Calendar.DAY_OF_MONTH;
+
 
     private Database db;
 
@@ -22,12 +34,16 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         db = new Database(this);
+        locator = new GPSLocator(this);
         setupUI();
         onNewProfileClicked();
+        onCollectPointsClicked();
         getDataFromAddedProfile();
     }
 
-
+    public void setIsOnCampus(boolean boole){
+        this.isOnCampus = boole;
+    }
     // method to read data from the AddProfile-activity
     // (create user object and safe it in database)
 
@@ -49,6 +65,7 @@ public class Profile extends AppCompatActivity {
             nameView.setText(user.getName());
             semesterView.setText(""+user.getNumberOfSemester());
             mainSubjectView.setText(user.getMainSubject().getName());
+            scoreView.setText(""+user.getScore());
         }
 
     }
@@ -62,7 +79,8 @@ public class Profile extends AppCompatActivity {
         nameView = (TextView)findViewById(R.id.profile_name);
         semesterView = (TextView)findViewById(R.id.profile_semester);
         mainSubjectView = (TextView)findViewById(R.id.profile_main_subject);
-
+        scoreView = (TextView)findViewById(R.id.profile_score);
+        collectPointsButton = (ImageButton)findViewById(R.id.collect_points);
     }
 
 
@@ -80,6 +98,41 @@ public class Profile extends AppCompatActivity {
                 i.putExtra("mainsubject", user.getMainSubject().getName());
                 startActivity(i);
                 finish();
+            }
+        });
+    }
+
+    /*
+     * Here we can check if the User is on the University campus (for this app, we use
+     * the location of University Regensburg) and if he already has collected points on this day
+     */
+    private boolean checkForAvailablePoints() {
+        Log.d("Location", ""+isOnCampus);
+        if(!db.getScoreDate().equals(currentDay) &&isOnCampus){
+            Toast.makeText(Profile.this, "There you go, "+ scoreAmount + " Points!",Toast.LENGTH_SHORT).show();
+            return true;
+        }else {
+            Toast.makeText(Profile.this, "Already collected today!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
+    /*
+     * This is the Listener to our little Point-Selector Button. Have fun!
+     */
+    private void onCollectPointsClicked() {
+        collectPointsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                locator.getLocation(Profile.this);
+                if (checkForAvailablePoints()) {
+                    score = Integer.parseInt(db.getUserScore());
+                    score += scoreAmount;
+                    db.setScoreDate(db.getUser().getName(), currentDay);
+                    db.updateUserScore(db.getUser().getName(), String.valueOf(score));
+                    scoreView.setText(db.getUserScore());
+                }
+
             }
         });
     }

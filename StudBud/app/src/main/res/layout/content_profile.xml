@@ -27,6 +27,16 @@
     android:src="@drawable/plus"
     android:background="#00ffffff"/>
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/collect_points"
+        app:layout_marginTopPercent = "85%"
+        app:layout_heightPercent = "25%"
+        app:layout_widthPercent = "25%"
+        app:layout_marginRightPercent = "85%"
+        android:src="@drawable/points"
+        android:background="#00ffffff"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

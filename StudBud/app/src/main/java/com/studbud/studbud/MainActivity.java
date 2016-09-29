@@ -4,9 +4,7 @@ import android.Manifest;
 import android.Manifest.permission;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private int score = 0;
 
     private Database db;
-    private GPSLocator locator;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,40 +39,13 @@ public class MainActivity extends AppCompatActivity {
         onCalculatorClicked();
         onProfileClicked();
         onTimetableClicked();
-        updateLocation();
         db = new Database(this);
-        //locator = new GPSLocator();
+
+        //updateLocation();
         checkFirstOpen();
-        collectGamePoints();
+
 
     }
-    /*
-    private void showUser(String data){
-       String[] userData = db.updateUser(data);
-        for(String member: userData){
-            Log.i("UserData: ",member);
-        }
-
-    }*/
-
-    /*private void showArray(){
-    private void checkForUser(String data){
-        if(db.checkForExistingUser(data) == true){
-            Log.i("Note: ", "User exists!");
-        }else{
-            Log.i("Note: ", "User not found!");
-        }
-
-    }
-    private void showArray(){
-        for(CourseItem member: db.getAllCourseItems()){
-            Log.i("Test ", "Name: "+ member.getName()+" ID: "+ member.getStatus()+" Module: "+member.getModule());
-        }
-    }*/
-     /*for(User member: db.getUser()){
-            Log.i("User ", "User: "+member.getName());
-        }*/
-
 
     // Check the first opening after the installation of the app
     // then create the course set, otherwise not
@@ -87,48 +58,15 @@ public class MainActivity extends AppCompatActivity {
             //the app is being launched for first time, do something
             Log.d("Comments", "First time");
             // first time task
-            db.addUserToDb(new User("Dummy", 0, MainSubject.fromString("Medieninformatik")));
+            db.addUserToDb(new User("Dummy", 0, MainSubject.fromString("Medieninformatik"), 0));
+            //set ScoreDate
+            String currentDay = Calendar.YEAR + " " + Calendar.MONTH + " " + (Calendar.DAY_OF_MONTH-1);
+            db.setScoreDate(db.getUser().getName(), currentDay);
             // record the fact that the app has been started at least once
             settings.edit().putBoolean("my_first_time", false).commit();
         }
     }
 
-
-    /*
-     * Here we can get an update of the location of the device by using GPS data
-     * In order to be allowed to do so we have to pass the permission check
-     */
-    private void updateLocation(){
-        if(!hasPermission(permission.ACCESS_FINE_LOCATION)){
-            ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION}, 12);
-        }
-    }
-
-    /*
-     * if this boolean turns out true, the application has the permission to use the sensor
-     */
-    private boolean hasPermission(String perm) {
-        if (VERSION.SDK_INT >= VERSION_CODES.M) {
-            return(PackageManager.PERMISSION_GRANTED==checkSelfPermission(perm));
-        }
-        return false;
-    }
-
-    /*
-     * this method handles the data from the GPS sensor and provides a point collecting system
-     * for the score in the profile activity
-     */
-   private void collectGamePoints(){
-        Log.i("MainActivity", "asking for GPS permission!");
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            requestGpsPermission();
-            //locator.onLocationChanged();
-
-        }
-        else{
-            Log.i("MainActivity", "GPS permission granted");
-        }
-    }
 
     /*
      * this method will request the permission from the user with a dialog in order to
