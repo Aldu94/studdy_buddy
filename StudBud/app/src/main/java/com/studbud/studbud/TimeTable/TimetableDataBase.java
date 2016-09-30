@@ -71,7 +71,7 @@ public class TimetableDataBase {
      * method to count the amount of scheduleItems stored in the database
      */
     public int countScheduleDbEntries(){
-        Cursor cursor = db.rawQuery("Select "+ ScheduleDbHelper.COLUMN_ID+ " from " + ScheduleDbHelper.TABLE_SCHEDULE_ITEMS, null);
+        Cursor cursor = db.rawQuery("Select * from " + ScheduleDbHelper.TABLE_SCHEDULE_ITEMS, null);
         int count = cursor.getCount();
         return count;
     }

@@ -68,6 +68,7 @@ public class Timetable extends AppCompatActivity {
 
         db = new TimetableDataBase(this);
         getInfoOfCourseToAdd();
+        getSchedule();
         db.open();
         tgva = new TimetableGridViewAdapter(this, db.getSchedule().getContent().split(saveDataSeparator));
         db.close();
