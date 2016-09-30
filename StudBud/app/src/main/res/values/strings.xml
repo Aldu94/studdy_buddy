@@ -16,6 +16,8 @@
     <string name="title_profile_button">Profile</string>
     <string name="title_timetable_button">Timetable</string>
 
+    <string name="clear_timetable">Clear Timetable</string>
+
 
     <string name="title_course_title">Course title</string>
     <string name="title_start_time">Start time</string>

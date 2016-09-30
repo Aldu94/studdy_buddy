@@ -94,6 +94,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
     <EditText
@@ -109,6 +110,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
 
@@ -205,6 +207,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
     <EditText
@@ -220,6 +223,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
     <EditText
@@ -235,160 +239,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:backgroundTint="#ffffff"
-        android:textColor="#ffffff"/>
-
-
-    <!--
-
-   MODULE INF-M03
-
-   -->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:id="@+id/module_inf_03_header"
-        android:text="@string/inf03"
-        android:fontFamily="sans-serif"
-        android:layout_below="@+id/inf_2_3_title"
-        app:layout_widthPercent="70%"
-        app:layout_heightPercent="7%"
-        app:layout_marginTopPercent="5%"
-        android:gravity="center"
-        android:textColor="#ffffff"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/module_inf_03_mark"
-        android:layout_below="@+id/inf_2_3_mark"
-        app:layout_widthPercent="25%"
-        app:layout_heightPercent="7%"
-        android:fontFamily="sans-serif"
-        app:layout_marginTopPercent="5%"
-        app:layout_marginLeftPercent="75%"
-        android:gravity="center"
-        android:textColor="#ffffff"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inf_3_1_title"
-        android:text="@string/inf3_1"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:layout_below="@+id/module_inf_03_header"
-        android:fontFamily="sans-serif"
-        app:layout_widthPercent="70%"
-        app:layout_heightPercent="12%"
-        app:layout_marginTopPercent="3%"
-        android:gravity="center"
-        android:textColor="#ffffff"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inf_3_2_title"
-        android:text="@string/inf3_2"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:layout_below="@+id/inf_3_1_title"
-        app:layout_widthPercent="70%"
-        app:layout_heightPercent="12%"
-        android:fontFamily="sans-serif"
-        app:layout_marginTopPercent="3%"
-        android:gravity="center"
-        android:textColor="#ffffff"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inf_3_3_title"
-        android:text="@string/inf3_3"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:layout_below="@+id/inf_3_2_title"
-        app:layout_widthPercent="70%"
-        app:layout_heightPercent="12%"
-        android:fontFamily="sans-serif"
-        app:layout_marginTopPercent="3%"
-        android:gravity="center"
-        android:textColor="#ffffff"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inf_3_4_title"
-        android:text="@string/inf3_4"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:layout_below="@+id/inf_3_3_title"
-        app:layout_widthPercent="70%"
-        app:layout_heightPercent="12%"
-        android:fontFamily="sans-serif"
-        app:layout_marginTopPercent="3%"
-        android:gravity="center"
-        android:textColor="#ffffff"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inf_3_1_mark"
-        android:textSize="14sp"
-        android:layout_below="@+id/module_inf_03_mark"
-        app:layout_widthPercent="25%"
-        app:layout_heightPercent="12%"
-        app:layout_marginTopPercent="3%"
-        android:fontFamily="sans-serif"
-        app:layout_marginLeftPercent="75%"
-        android:gravity="center"
-        android:inputType="numberDecimal"
-        android:backgroundTint="#ffffff"
-        android:textColor="#ffffff"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inf_3_2_mark"
-        android:textSize="14sp"
-        android:layout_below="@+id/inf_3_1_mark"
-        app:layout_widthPercent="25%"
-        app:layout_heightPercent="12%"
-        android:fontFamily="sans-serif"
-        app:layout_marginTopPercent="3%"
-        app:layout_marginLeftPercent="75%"
-        android:gravity="center"
-        android:inputType="numberDecimal"
-        android:backgroundTint="#ffffff"
-        android:textColor="#ffffff"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inf_3_3_mark"
-        android:textSize="14sp"
-        android:layout_below="@+id/inf_3_2_mark"
-        app:layout_widthPercent="25%"
-        app:layout_heightPercent="12%"
-        android:fontFamily="sans-serif"
-        app:layout_marginTopPercent="3%"
-        app:layout_marginLeftPercent="75%"
-        android:gravity="center"
-        android:inputType="numberDecimal"
-        android:backgroundTint="#ffffff"
-        android:textColor="#ffffff"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inf_3_4_mark"
-        android:textSize="14sp"
-        android:layout_below="@+id/inf_3_3_mark"
-        app:layout_widthPercent="25%"
-        app:layout_heightPercent="12%"
-        android:fontFamily="sans-serif"
-        app:layout_marginTopPercent="3%"
-        app:layout_marginLeftPercent="75%"
-        android:gravity="center"
-        android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
 
@@ -406,7 +257,7 @@
         android:id="@+id/module_inf_04_header"
         android:text="@string/inf04"
         android:fontFamily="sans-serif"
-        android:layout_below="@+id/inf_3_4_title"
+        android:layout_below="@+id/inf_2_3_title"
         app:layout_widthPercent="70%"
         app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
@@ -418,7 +269,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:id="@+id/module_inf_04_mark"
-        android:layout_below="@+id/inf_3_4_mark"
+        android:layout_below="@+id/inf_2_3_mark"
         app:layout_widthPercent="25%"
         app:layout_heightPercent="7%"
         app:layout_marginTopPercent="5%"
@@ -483,6 +334,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
     <EditText
@@ -498,6 +350,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
     <EditText
@@ -513,6 +366,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
 
@@ -594,6 +448,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
     <EditText
@@ -609,6 +464,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
 
@@ -705,6 +561,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
     <EditText
@@ -720,6 +577,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
     <EditText
@@ -735,6 +593,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
 
@@ -817,6 +676,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
     <EditText
@@ -832,6 +692,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:backgroundTint="#ffffff"
         android:textColor="#ffffff"/>
 

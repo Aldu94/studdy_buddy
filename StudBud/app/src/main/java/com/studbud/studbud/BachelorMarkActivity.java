@@ -16,7 +16,6 @@ public class BachelorMarkActivity extends AppCompatActivity {
     private Button safeButton;
     private BachelorItemDB db;
 
-    private double finalBachelorWorkMark;
     private final String bachelorName = "bachelorMark";
 
     /*
@@ -49,14 +48,20 @@ public class BachelorMarkActivity extends AppCompatActivity {
      * this method will parse the input of the user in the editText field
      */
     private void getUserInput(){
-        String mark = bachelorMark.getText().toString();
-        if(!mark.isEmpty()) {
-            finalBachelorWorkMark = Double.parseDouble(mark);
-            db.open();
-            db.updateBachelorItem(db.getBachelorItem().getId(), mark);
-            db.close();
+        if(bachelorMark.getText().toString().length() == 0){
+            bachelorMark.setText("0.0");
         }
-    }
+        double mark = Double.parseDouble(bachelorMark.getText().toString());
+        if(mark < 1 ){
+            bachelorMark.setText("0.0");
+        }
+        if(mark > 4){
+            bachelorMark.setText("4.0");
+        }
+        db.open();
+        db.updateBachelorItem(db.getBachelorItem().getId(), bachelorMark.getText().toString());
+        db.close();
+        }
 
     /*
      * Here we define what happens when the user clicks the save button.
@@ -67,9 +72,6 @@ public class BachelorMarkActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getUserInput();
-                Intent intent = new Intent(BachelorMarkActivity.this, MarksCalculator.class);
-                intent.putExtra("Mark",finalBachelorWorkMark);
-                startActivity(intent);
                 finish();
             }
         });

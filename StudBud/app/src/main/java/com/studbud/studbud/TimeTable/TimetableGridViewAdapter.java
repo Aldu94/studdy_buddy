@@ -49,6 +49,10 @@ public class TimetableGridViewAdapter extends BaseAdapter {
         return gridView;
     }
 
+    //getter method for the Data of the gridview
+    public String[] getData(){
+        return scheduleItems;
+    }
 
     // method to get the number of strings in the scheduleItems array
     @Override

@@ -94,6 +94,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:fontFamily="sans-serif"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
@@ -109,6 +110,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:fontFamily="sans-serif"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
@@ -206,6 +208,7 @@
         android:gravity="center"
         android:fontFamily="sans-serif"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
     <EditText
@@ -220,6 +223,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:fontFamily="sans-serif"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
@@ -235,6 +239,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:fontFamily="sans-serif"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
@@ -331,6 +336,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
     <EditText
@@ -346,6 +352,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
     <EditText
@@ -361,6 +368,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
 
@@ -416,18 +424,18 @@
         android:textColor="#ffffff"/>
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/mei_5_2_title"
-    android:text="@string/mei5_2"
-    android:textSize="14sp"
-    android:textAlignment="center"
-    android:layout_below="@+id/mei_5_1_title"
-    app:layout_widthPercent="70%"
-    android:fontFamily="sans-serif"
-    app:layout_heightPercent="12%"
-    app:layout_marginTopPercent="3%"
-    android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mei_5_2_title"
+        android:text="@string/mei5_2"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/mei_5_1_title"
+        app:layout_widthPercent="70%"
+        android:fontFamily="sans-serif"
+        app:layout_heightPercent="12%"
+        app:layout_marginTopPercent="3%"
+        android:gravity="center"
         android:textColor="#ffffff"/>
     <TextView
         android:layout_width="wrap_content"
@@ -456,6 +464,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
     <EditText
@@ -471,6 +480,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
     <EditText
@@ -486,6 +496,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
 
@@ -569,6 +580,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
     <EditText
@@ -584,6 +596,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
 
@@ -683,6 +696,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"/>
     <EditText
@@ -698,6 +712,7 @@
         android:gravity="center"
         android:fontFamily="sans-serif"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"
         />
@@ -714,6 +729,7 @@
         app:layout_marginLeftPercent="75%"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:maxLength="3"
         android:textColor="#ffffff"
         android:backgroundTint="#ffffff"
         />

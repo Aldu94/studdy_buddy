@@ -23,10 +23,6 @@ public class InfWissMarksActivity extends AppCompatActivity {
     private EditText inf2_1;
     private EditText inf2_2;
     private EditText inf2_3;
-    private EditText inf3_1;
-    private EditText inf3_2;
-    private EditText inf3_3;
-    private EditText inf3_4;
     private EditText inf4_1;
     private EditText inf4_2;
     private EditText inf4_3;
@@ -41,7 +37,6 @@ public class InfWissMarksActivity extends AppCompatActivity {
 
     private TextView markModule1;
     private TextView markModule2;
-    private TextView markModule3;
     private TextView markModule4;
     private TextView markModule5;
     private TextView markModule6;
@@ -72,7 +67,6 @@ public class InfWissMarksActivity extends AppCompatActivity {
     private void initDB() {
         db = new Database(InfWissMarksActivity.this);
         courses = new ArrayList<>();
-        Log.d("InfWissMarksActivity: ", "Database getAllCourseItems() angefragt");
         for (CourseItem course : db.getAllCourseItems()) {
             if (course.getSubject() == MainSubject.INF) {
                 courses.add(course);
@@ -85,9 +79,6 @@ public class InfWissMarksActivity extends AppCompatActivity {
                 modules.add(module);
             }
         }
-
-        Log.d("Courses", "Infwiss" + courses.size());
-        Log.d("Modules", "Infwiss " + modules.size());
     }
 
     /*
@@ -97,27 +88,27 @@ public class InfWissMarksActivity extends AppCompatActivity {
     private void setupUI(){
         inf1_1 = (EditText)findViewById(R.id.inf_1_1_mark);
         inf1_2 = (EditText)findViewById(R.id.inf_1_2_mark);
+
         inf2_1 = (EditText)findViewById(R.id.inf_2_1_mark);
         inf2_2 = (EditText)findViewById(R.id.inf_2_2_mark);
         inf2_3 = (EditText)findViewById(R.id.inf_2_3_mark);
-        inf3_1 = (EditText)findViewById(R.id.inf_3_1_mark);
-        inf3_2 = (EditText)findViewById(R.id.inf_3_2_mark);
-        inf3_3 = (EditText)findViewById(R.id.inf_3_3_mark);
-        inf3_4 = (EditText)findViewById(R.id.inf_3_4_mark);
+
         inf4_1 = (EditText)findViewById(R.id.inf_4_1_mark);
         inf4_2 = (EditText)findViewById(R.id.inf_4_2_mark);
         inf4_3 = (EditText)findViewById(R.id.inf_4_3_mark);
+
         inf5_1 = (EditText)findViewById(R.id.inf_5_1_mark);
         inf5_2 = (EditText)findViewById(R.id.inf_5_2_mark);
+
         inf6_1 = (EditText)findViewById(R.id.inf_6_1_mark);
         inf6_2 = (EditText)findViewById(R.id.inf_6_2_mark);
         inf6_3 = (EditText)findViewById(R.id.inf_6_3_mark);
+
         inf7_1 = (EditText)findViewById(R.id.inf_7_1_mark);
         inf7_2 = (EditText)findViewById(R.id.inf_7_2_mark);
 
         markModule1 = (TextView)findViewById(R.id.module_inf_01_mark);
         markModule2 = (TextView)findViewById(R.id.module_inf_02_mark);
-        markModule3 = (TextView)findViewById(R.id.module_inf_03_mark);
         markModule4 = (TextView)findViewById(R.id.module_inf_04_mark);
         markModule5 = (TextView)findViewById(R.id.module_inf_05_mark);
         markModule6 = (TextView)findViewById(R.id.module_inf_06_mark);
@@ -154,7 +145,6 @@ public class InfWissMarksActivity extends AppCompatActivity {
                 courses = db.getAllCourseItems();
                 updateModuleMarks();
                 calculateSubjectMark();
-                Log.d("Courses: ", "" + courses.size());
             }
         });
     }
@@ -167,13 +157,36 @@ public class InfWissMarksActivity extends AppCompatActivity {
      */
     private void updateModuleMarks() {
         DecimalFormat decimal = new DecimalFormat("#.#");
-        markModule1.setText(String.valueOf(decimal.format(calculateModuleMark(1))));
-        markModule2.setText(String.valueOf(decimal.format(calculateModuleMark(2))));
-        markModule3.setText(String.valueOf(decimal.format(calculateModuleMark(3))));
-        markModule4.setText(String.valueOf(decimal.format(calculateModuleMark(4))));
-        markModule5.setText(String.valueOf(decimal.format(calculateModuleMark(5))));
-        markModule6.setText(String.valueOf(decimal.format(calculateModuleMark(6))));
-        markModule7.setText(String.valueOf(decimal.format(calculateModuleMark(7))));
+        if(Double.parseDouble(inf1_1.getText().toString()) != 0 && Double.parseDouble(inf1_2.getText().toString()) !=0) {
+            markModule1.setText(String.valueOf(decimal.format(calculateModuleMark(1))));
+        }else{
+            markModule1.setText("0.0");
+        }
+        if(Double.parseDouble(inf2_1.getText().toString()) != 0 && Double.parseDouble(inf2_2.getText().toString()) !=0) {
+            markModule2.setText(String.valueOf(decimal.format(calculateModuleMark(2))));
+        }else{
+            markModule2.setText("0.0");
+        }
+        if(Double.parseDouble(inf4_1.getText().toString()) != 0 && Double.parseDouble(inf4_2.getText().toString()) !=0 && Double.parseDouble(inf4_3.getText().toString()) != 0) {
+            markModule4.setText(String.valueOf(decimal.format(calculateModuleMark(4))));
+        }else{
+            markModule4.setText("0.0");
+        }
+        if(Double.parseDouble(inf5_1.getText().toString()) != 0 && Double.parseDouble(inf5_2.getText().toString()) !=0) {
+            markModule5.setText(String.valueOf(decimal.format(calculateModuleMark(5))));
+        }else{
+            markModule5.setText("0.0");
+        }
+        if(Double.parseDouble(inf6_1.getText().toString()) != 0 && Double.parseDouble(inf6_2.getText().toString()) !=0 && Double.parseDouble(inf6_3.getText().toString()) != 0) {
+            markModule6.setText(String.valueOf(decimal.format(calculateModuleMark(6))));
+        }else{
+            markModule6.setText("0.0");
+        }
+        if(Double.parseDouble(inf7_2.getText().toString()) !=0) {
+            markModule7.setText(String.valueOf(decimal.format(calculateModuleMark(7))));
+        }else{
+            markModule7.setText("0.0");
+        }
     }
 
     /*
@@ -186,11 +199,6 @@ public class InfWissMarksActivity extends AppCompatActivity {
         inf2_1.setText("" + getCourse(2, 1).getMark());
         inf2_2.setText("" + getCourse(2, 2).getMark());
         inf2_3.setText("" + getCourse(2, 3).getMark());
-
-        inf3_1.setText("" + getCourse(3, 1).getMark());
-        inf3_2.setText("" + getCourse(3, 2).getMark());
-        inf3_3.setText("" + getCourse(3, 3).getMark());
-        inf3_4.setText("" + getCourse(3, 4).getMark());
 
         inf4_1.setText("" + getCourse(4, 1).getMark());
         inf4_2.setText("" + getCourse(4, 2).getMark());
@@ -217,11 +225,6 @@ public class InfWissMarksActivity extends AppCompatActivity {
         db.updateMark(2, 1, getMarkFromEditText(inf2_1), MainSubject.INF);
         db.updateMark(2, 2, getMarkFromEditText(inf2_2), MainSubject.INF);
         db.updateMark(2, 3, getMarkFromEditText(inf2_3), MainSubject.INF);
-
-        db.updateMark(3, 1, getMarkFromEditText(inf3_1), MainSubject.INF);
-        db.updateMark(3, 2, getMarkFromEditText(inf3_2), MainSubject.INF);
-        db.updateMark(3, 3, getMarkFromEditText(inf3_3), MainSubject.INF);
-        db.updateMark(3, 4, getMarkFromEditText(inf3_4), MainSubject.INF);
 
         db.updateMark(4, 1, getMarkFromEditText(inf4_1), MainSubject.INF);
         db.updateMark(4, 2, getMarkFromEditText(inf4_2), MainSubject.INF);
@@ -264,43 +267,41 @@ public class InfWissMarksActivity extends AppCompatActivity {
     private double getMarkFromEditText(EditText editText) {
         if (editText.getText().length() == 0){
             editText.setText("0.0");
+            return Double.parseDouble(editText.getText().toString());
+        }
+        if(Double.parseDouble(editText.getText().toString()) > 4){
+            editText.setText("4.0");
+        }
+        if(Double.parseDouble(editText.getText().toString()) < 1){
+            editText.setText("0.0");
         }
 
         return Double.parseDouble(editText.getText().toString());
     }
 
-    private double getMarkFromTextView(TextView textView){
-        double [] moduleMarksArray = new double[5];
-
-        return Double.parseDouble(textView.getText().toString());
-    }
-
-    private MainSubject getMainSubject(){
-        MainSubject mainsubject = db.getUser().getMainSubject();
-        return mainsubject;
-    }
-
+    /*
+     * Counts the Modules that are not yet finished to exclude them from the final calculation
+     * by adding 1 to a counter for each unfinished Module. This method is for InformationScience
+     * as the MainSubject
+     */
     private int setDivisorMain(){
-        int divisor = 7;
-        if(calculateModuleMark(1)==0.0){
+        int divisor = 6;
+        if(Double.parseDouble(markModule1.getText().toString())==0){
             divisor--;
         }
-        if(calculateModuleMark(2)==0.0){
+        if(Double.parseDouble(markModule2.getText().toString())==0){
             divisor--;
         }
-        if(calculateModuleMark(3)==0.0){
+        if(Double.parseDouble(markModule4.getText().toString())==0){
             divisor--;
         }
-        if(calculateModuleMark(4)==0.0){
+        if(Double.parseDouble(markModule5.getText().toString())==0){
             divisor--;
         }
-        if(calculateModuleMark(5)==0.0){
+        if(Double.parseDouble(markModule6.getText().toString())==0){
             divisor--;
         }
-        if(calculateModuleMark(6)==0.0){
-            divisor--;
-        }
-        if(calculateModuleMark(7)==0.0){
+        if(Double.parseDouble(markModule7.getText().toString())==0){
             divisor--;
         }
         if(divisor == 0){
@@ -309,41 +310,100 @@ public class InfWissMarksActivity extends AppCompatActivity {
         return divisor;
     }
 
+    /*
+     * Counts the Modules that are not yet finished to exclude them from the final calculation
+     * by adding 1 to a counter for each unfinished Module. This method is for InformationScience
+     * as Second MainSubject
+     */
     private int setDivisorSecondary(){
         int divisor = 5;
-        if(calculateModuleMark(1) == 0.0){
+        if(Double.parseDouble(markModule1.getText().toString())==0){
             divisor--;
         }
-        if(calculateModuleMark(2) == 0.0){
+        if(Double.parseDouble(markModule2.getText().toString())==0){
             divisor--;
         }
-        if(calculateModuleMark(4) == 0.0 && calculateModuleMark(5) == 0.0 && calculateModuleMark(6) == 0.0 && calculateModuleMark(7) == 0.0) {
+        if(Double.parseDouble(markModule4.getText().toString())==0 && Double.parseDouble(markModule5.getText().toString())==0 && Double.parseDouble(markModule6.getText().toString())==0 && Double.parseDouble(markModule7.getText().toString())==0) {
             divisor -= 3;
             if (divisor == 0) {
                 divisor = 1;
             }
-            Log.d("InfwissCalcInner", " "+divisor);
+            Log.d("InfwissCalc", " Module 4-7 sind 0 "+divisor);
             return divisor;
-        }
-        if(calculateModuleMark(4) == 0.0){
-            divisor--;
-        }
-        if(calculateModuleMark(5) == 0.0){
-            divisor--;
-        }
-        if(calculateModuleMark(6) == 0.0){
-            divisor--;
-        }
-        if(calculateModuleMark(7) == 0.0){
-            divisor--;
-        }
-        if(divisor <= 0){
-            divisor = 1;
+        }else{
+            if(Double.parseDouble(markModule4.getText().toString())==0){
+                if(Double.parseDouble(markModule5.getText().toString()) == 0) {
+                    divisor--;
+                }
+                if(Double.parseDouble(markModule6.getText().toString()) == 0) {
+                    divisor--;
+                }
+                if(Double.parseDouble(markModule7.getText().toString()) == 0) {
+                    divisor--;
+                    if (divisor == 0) {
+                        divisor = 1;
+                    }
+                }
+                Log.d("InfwissCalc", "Modul 4 ist 0 " +divisor);
+                return divisor;
+            }
+            if(Double.parseDouble(markModule5.getText().toString()) == 0){
+                if(Double.parseDouble(markModule4.getText().toString()) == 0) {
+                    divisor--;
+                }
+                if(Double.parseDouble(markModule6.getText().toString()) == 0) {
+                    divisor--;
+                }
+                if(Double.parseDouble(markModule7.getText().toString()) == 0) {
+                    divisor--;
+                    if (divisor == 0) {
+                        divisor = 1;
+                    }
+                }
+                Log.d("InfwissCalc", "Modul 5 ist 0 " +divisor);
+                return divisor;
+            }
+            if(Double.parseDouble(markModule6.getText().toString()) == 0){
+                if(Double.parseDouble(markModule4.getText().toString()) == 0) {
+                    divisor--;
+                }
+                if(Double.parseDouble(markModule5.getText().toString()) == 0) {
+                    divisor--;
+                }
+                if(Double.parseDouble(markModule7.getText().toString()) == 0) {
+                    divisor--;
+                    if (divisor == 0) {
+                        divisor = 1;
+                    }
+                }
+                Log.d("InfwissCalc", "Modul 6 ist 0 " +divisor);
+                return divisor;
+            }
+            if(Double.parseDouble(markModule7.getText().toString()) == 0){
+                if(Double.parseDouble(markModule4.getText().toString()) == 0) {
+                    divisor--;
+                }
+                if(Double.parseDouble(markModule5.getText().toString()) == 0) {
+                    divisor--;
+                }
+                if(Double.parseDouble(markModule6.getText().toString()) == 0) {
+                    divisor--;
+                    if (divisor == 0) {
+                        divisor = 1;
+                    }
+                }
+                Log.d("InfwissCalc", "Modul 7 ist 0 " +divisor);
+                return divisor;
+            }
         }
         Log.d("InfwissCalc", " "+ divisor);
         return divisor;
     }
 
+    /*
+     * Here we calculate the mark of the subject, depending on which modules are finished
+     * and which mainSubject the User actually has set in his Profile
+     */
     public double calculateSubjectMark(){
         User user = db.getUser();
         double sum = 0;
@@ -351,49 +411,95 @@ public class InfWissMarksActivity extends AppCompatActivity {
         if(user.getMainSubject().getName().equals("Informationswissenschaft")){
             Log.d("Subject", " Informationswissenschaft");
             int divisor = setDivisorMain();
-            sum += calculateModuleMark(1);
-            sum += calculateModuleMark(2);
-            sum += calculateModuleMark(3);
-            sum += calculateModuleMark(4);
-            sum += calculateModuleMark(5);
-            sum += calculateModuleMark(6);
-            sum += calculateModuleMark(7);
-            Log.d("Summe: ", " "+sum);
+            if(Double.parseDouble(markModule1.getText().toString()) != 0){
+                sum += Double.parseDouble(markModule1.getText().toString());
+            }
+            if(Double.parseDouble(markModule2.getText().toString()) != 0){
+                sum += Double.parseDouble(markModule2.getText().toString());
+            }
+            if(Double.parseDouble(markModule4.getText().toString()) != 0){
+                sum += Double.parseDouble(markModule4.getText().toString());
+            }
+            if(Double.parseDouble(markModule5.getText().toString()) != 0){
+                sum += Double.parseDouble(markModule5.getText().toString());
+            }
+            if(Double.parseDouble(markModule6.getText().toString()) != 0){
+                sum += Double.parseDouble(markModule6.getText().toString());
+            }
+            if(Double.parseDouble(markModule7.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule7.getText().toString());
+            }
             sum = sum / divisor;
-            Log.d("Summe: ", " "+sum);
-
+            Log.d("InfwissCalc", "Hauptfach "+divisor);
+            db.updateUserInfwissMark(user.getName(), ""+sum);
+            return sum;
         }else {
             Log.d("Subject", " Medieninformatik");
             int divisor = setDivisorSecondary();
-            sum += calculateModuleMark(1);
-            sum += calculateModuleMark(2);
-            if(calculateModuleMark(4) == 0.0){
-                sum += calculateModuleMark(5);
-                sum += calculateModuleMark(6);
-                sum += calculateModuleMark(7);
+            if(Double.parseDouble(markModule1.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule1.getText().toString());
+            }
+            if(Double.parseDouble(markModule2.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule2.getText().toString());
+            }
+            if(Double.parseDouble(markModule4.getText().toString()) == 0) {
+                if(Double.parseDouble(markModule5.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule5.getText().toString());
+                }
+                if(Double.parseDouble(markModule6.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule6.getText().toString());
+                }
+                if(Double.parseDouble(markModule7.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule7.getText().toString());
+                }
                 sum /= divisor;
-                db.updateUserMedInfMark(user.getName(), ""+sum);
+                db.updateUserInfwissMark(user.getName(), ""+sum);
+                Log.d("InfwissCalc", "Modul 4 ist 0 " +divisor + " Note: "+ sum);
                 return sum;
-            }else if(calculateModuleMark(5) == 0.0){
-                sum += calculateModuleMark(5);
-                sum += calculateModuleMark(6);
-                sum += calculateModuleMark(7);
+            }
+            if(Double.parseDouble(markModule5.getText().toString()) == 0) {
+                if(Double.parseDouble(markModule4.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule4.getText().toString());
+                }
+                if(Double.parseDouble(markModule6.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule6.getText().toString());
+                }
+                if(Double.parseDouble(markModule7.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule7.getText().toString());
+                }
                 sum /= divisor;
                 db.updateUserMedInfMark(user.getName(), ""+sum);
+                Log.d("InfwissCalc", "Modul 5 ist 0" + divisor + " Note: " + sum);
                 return sum;
-            }else if(calculateModuleMark(6) == 0.0){
-                sum += calculateModuleMark(5);
-                sum += calculateModuleMark(6);
-                sum += calculateModuleMark(7);
+            }
+            if(Double.parseDouble(markModule6.getText().toString()) == 0) {
+                if(Double.parseDouble(markModule4.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule4.getText().toString());
+                }
+                if(Double.parseDouble(markModule5.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule5.getText().toString());
+                }
+                if(Double.parseDouble(markModule7.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule7.getText().toString());
+                }
                 sum /= divisor;
-                db.updateUserMedInfMark(user.getName(), ""+sum);
+                db.updateUserInfwissMark(user.getName(), ""+sum);
+                Log.d("InfwissCalc", "Modul 6 ist 0" + divisor + "Note: " +sum);
                 return sum;
-            }else if(calculateModuleMark(7) == 0.0){
-                sum += calculateModuleMark(4);
-                sum += calculateModuleMark(5);
-                sum += calculateModuleMark(6);
+            }
+            if(Double.parseDouble(markModule7.getText().toString()) == 0) {
+                if(Double.parseDouble(markModule4.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule4.getText().toString());
+                }
+                if(Double.parseDouble(markModule5.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule5.getText().toString());
+                }
+                if(Double.parseDouble(markModule6.getText().toString()) != 0) {
+                    sum += Double.parseDouble(markModule6.getText().toString());
+                }
                 sum /= divisor;
-                db.updateUserMedInfMark(user.getName(), ""+sum);
+                db.updateUserInfwissMark(user.getName(), ""+sum);
+                Log.d("InfwissCalc", "Modul 7 ist 0" + divisor + "Note: " + (sum/divisor));
                 return sum;
             }
         }

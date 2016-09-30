@@ -1,6 +1,8 @@
 package com.studbud.studbud;
 
 
+import android.Manifest;
+import android.Manifest.permission;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +11,10 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
+import android.widget.Toast;
 
 public class GPSLocator extends Profile implements android.location.LocationListener {
 
@@ -36,13 +41,11 @@ public class GPSLocator extends Profile implements android.location.LocationList
      * Source of the function: http://stackoverflow.com/questions/32491960/android-check-permission-for-locationmanager
      */
     @TargetApi(23)
-    public Location getLocation(Context context) {
+    public void getLocation(Context context) {
         // Here we have the above mentioned permissioncheck
         if (Build.VERSION.SDK_INT >= 23 &&
                 ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            return null;
         } else {
             try {
                 locManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
@@ -69,7 +72,6 @@ public class GPSLocator extends Profile implements android.location.LocationList
                 e.printStackTrace();
             }
         }
-        return location;
     }
     /*
      * here we can put in our evaluation function which checks how close the user is to
@@ -83,16 +85,14 @@ public class GPSLocator extends Profile implements android.location.LocationList
             double lng1 = 12.095339521329151;
             double lat2 = location.getLatitude();
             double lng2 = location.getLongitude();
-            if (distance(lat1, lng1, lat2, lng2) < 500) {
+            if (distance(lat1, lng1, lat2, lng2) < 300) {
                 setIsOnCampus(true);
-
             } else {
                 setIsOnCampus(false);
-
             }
-
         }
     }
+
 
     /*
      * Here we calculate the distance using the latitude and longitude of
@@ -117,10 +117,10 @@ public class GPSLocator extends Profile implements android.location.LocationList
         return dist;
     }
 
-    //autoimplemented methods - not used
+    // method is called when new Location arrived
     @Override
     public void onLocationChanged(Location location) {
-
+        checkForCampusLocation(location);
     }
     //autoimplemented methods - not used
     @Override

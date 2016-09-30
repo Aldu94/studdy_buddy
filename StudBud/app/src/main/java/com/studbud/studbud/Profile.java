@@ -1,8 +1,12 @@
 package com.studbud.studbud;
 
+import android.Manifest;
+import android.Manifest.permission;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -41,12 +45,13 @@ public class Profile extends AppCompatActivity {
         getDataFromAddedProfile();
     }
 
+    //method to set the boolean isOnCampus, so this activity can be notified by the GPSLocator
     public void setIsOnCampus(boolean boole){
         this.isOnCampus = boole;
     }
+
     // method to read data from the AddProfile-activity
     // (create user object and safe it in database)
-
     private void getDataFromAddedProfile(){
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -102,18 +107,22 @@ public class Profile extends AppCompatActivity {
         });
     }
 
+
     /*
      * Here we can check if the User is on the University campus (for this app, we use
      * the location of University Regensburg) and if he already has collected points on this day
      */
     private boolean checkForAvailablePoints() {
-        Log.d("Location", ""+isOnCampus);
-        if(!db.getScoreDate().equals(currentDay) &&isOnCampus){
-            Toast.makeText(Profile.this, "There you go, "+ scoreAmount + " Points!",Toast.LENGTH_SHORT).show();
-            return true;
-        }else {
-            Toast.makeText(Profile.this, "Already collected today!", Toast.LENGTH_SHORT).show();
+        if (!isOnCampus) {
+            Toast.makeText(Profile.this, "Du musst näher zur Bib!", Toast.LENGTH_SHORT).show();
             return false;
+        } else {
+            if (!db.getScoreDate().equals(currentDay)) {
+                return true;
+            } else {
+                Toast.makeText(Profile.this, "Punkte gibt es erst morgen wieder!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
     }
 
@@ -128,6 +137,7 @@ public class Profile extends AppCompatActivity {
                 if (checkForAvailablePoints()) {
                     score = Integer.parseInt(db.getUserScore());
                     score += scoreAmount;
+                    Toast.makeText(Profile.this, "Du hast " + scoreAmount + " Punkte verdient!", Toast.LENGTH_SHORT).show();
                     db.setScoreDate(db.getUser().getName(), currentDay);
                     db.updateUserScore(db.getUser().getName(), String.valueOf(score));
                     scoreView.setText(db.getUserScore());

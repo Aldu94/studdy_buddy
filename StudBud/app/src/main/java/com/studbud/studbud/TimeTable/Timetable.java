@@ -1,6 +1,9 @@
 package com.studbud.studbud.TimeTable;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +15,8 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 
-import com.studbud.studbud.GPSLocator;
-import com.studbud.studbud.MainActivity;
+
+
 import com.studbud.studbud.R;
 import com.studbud.studbud.Schedule;
 
@@ -29,14 +32,14 @@ public class Timetable extends AppCompatActivity {
     private GridView gridView;
     private String saveDataSeparator = ",";
     private TimetableDataBase db;
-    private GPSLocator gpsL;
+    private TimetableGridViewAdapter tgva;
 
     /*
      * this array is used for the first saving process which will convert the array to a string and
      * put it into the database
      */
     private String[] scheduleContent = new String[]{
-            "Zeit", "MO", "DI", "MI", "DO", "FR",
+            "CLEARTABLE", "MO", "DI", "MI", "DO", "FR",
             "08:00", " ", " ", " ", " ", " ",
             "09:00", " ", " ", " ", " ", " ",
             "10:00", " ", " ", " ", " ", " ",
@@ -48,9 +51,11 @@ public class Timetable extends AppCompatActivity {
             "16:00", " ", " ", " ", " ", " ",
             "17:00", " ", " ", " ", " ", " ",
             "18:00", " ", " ", " ", " ", " ",
-            "19:00", " ", " ", " ", " ", " ",
-            "20:00", " ", " ", " ", " ", " "};
+            "19:00", " ", " ", " ", " ", " "
+            };
 
+    //This string is used to know if the user actually klicked on a field in the timetable or
+    // on one of the column and row titles
     private final String[] forbiddenPositions = new String[]{
             "0", "1", "2", "3", "4", "5", "6", "12", "18", "24", "30", "36", "42", "48", "54", "60", "66", "72", "78", "84"};
 
@@ -60,10 +65,14 @@ public class Timetable extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        //gpsL = new GPSLocator();
+
         db = new TimetableDataBase(this);
-        initiateDb();
         getInfoOfCourseToAdd();
+        db.open();
+        tgva = new TimetableGridViewAdapter(this, db.getSchedule().getContent().split(saveDataSeparator));
+        db.close();
+        initiateDb();
+
         getSchedule();
     }
 
@@ -157,8 +166,8 @@ public class Timetable extends AppCompatActivity {
      */
     private void setupUI(ScheduleDbItem scheduleDbItem) {
         gridView = (GridView) findViewById(R.id.timetableGridView);
-        gridView.setAdapter(new TimetableGridViewAdapter(Timetable.this, scheduleDbItem.getContent().split(saveDataSeparator)));
-
+        //gridView.setAdapter(new TimetableGridViewAdapter(Timetable.this, scheduleDbItem.getContent().split(saveDataSeparator)));
+        gridView.setAdapter(tgva);
         gridView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -178,23 +187,61 @@ public class Timetable extends AppCompatActivity {
         currentPosition = position;
         Intent i = new Intent(Timetable.this, AddCourseToTimeTable.class);
         int note = position;
-        if (Arrays.asList(forbiddenPositions).contains("" + position)) {
-            Toast.makeText(this, "geschütztes Feld!", Toast.LENGTH_SHORT).show();
+        if (currentPosition == 0) {
+            showDialog(this);
         } else {
-            db.open();
-            String info = convertDatabaseInfoToStringArray(db.getSchedule())[position];
-            db.close();
-            i.putExtra("Position", note);
-            if (info.equals(" ")) {
-                Log.d("TIMETABLE: ", "String ist leerzeichen");
-                i.putExtra("Info", info);
+            if (Arrays.asList(forbiddenPositions).contains("" + position)) {
+                Toast.makeText(this, "geschütztes Feld!", Toast.LENGTH_SHORT).show();
             } else {
-                Log.d("TIMETABLE: ", "String ist kein leerzeichen");
-                i.putExtra("Info", info);
+                db.open();
+                String info = convertDatabaseInfoToStringArray(db.getSchedule())[position];
+                db.close();
+                i.putExtra("Position", note);
+                if (info.equals(" ")) {
+                    Log.d("TIMETABLE: ", "String ist leerzeichen");
+                    i.putExtra("Info", info);
+                } else {
+                    Log.d("TIMETABLE: ", "String ist kein leerzeichen");
+                    i.putExtra("Info", info);
+                }
+                startActivity(i);
+                finish();
             }
-            startActivity(i);
-            finish();
         }
+    }
+
+    /*
+     * This method will show an alertDialog when the user klicks on the CLEAR Button in the top left
+     * corner of the gridView
+     * Source: http://stackoverflow.com/questions/2115758/how-do-i-display-an-alert-dialog-on-android
+     */
+    public void showDialog(Context context) {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setMessage("Do you want to reset the Timetable?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        db.open();
+                        db.updateScheduleDbItem(db.getSchedule().getId(), convertArrayForDatabase(scheduleContent));
+                        db.close();
+                        tgva.notifyDataSetChanged();
+                        finish();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     /*

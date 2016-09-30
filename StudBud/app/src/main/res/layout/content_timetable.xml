@@ -8,16 +8,17 @@
     tools:context=".TimeTable.Timetable"
     tools:ignore="MergeRootFrame"
     android:screenOrientation="landscape"
+    android:scrollbars="horizontal"
     android:backgroundTint="#2196f3"
     android:background="#000000">
     <GridView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/timetableGridView"
         android:numColumns="6"
         android:gravity="center"
-        android:scrollbars="vertical"
+
         android:columnWidth="100dp"
         android:stretchMode="columnWidth"
         android:fontFamily="sans-serif">

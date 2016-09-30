@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.studbud.studbud.domain.CourseItem;
 import com.studbud.studbud.domain.Module;
@@ -178,19 +179,42 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         db.updateMark(10, 2, getMarkFromEditText(mei10_2), MainSubject.MI);
         db.updateMark(10, 3, getMarkFromEditText(mei10_3), MainSubject.MI);
     }
-
     /*
      * in order to visualize the module marks, we update the Texts of the corresponding
      * module textfields
      */
     private void updateModuleMarks(){
         DecimalFormat decimal = new DecimalFormat("#.#");
-        markModule1.setText(String.valueOf(decimal.format(calculateModuleMark(1))));
-        markModule3.setText(String.valueOf(decimal.format(calculateModuleMark(3))));
-        markModule4.setText(String.valueOf(decimal.format(calculateModuleMark(4))));
-        markModule5.setText(String.valueOf(decimal.format(calculateModuleMark(5))));
-        markModule8.setText(String.valueOf(decimal.format(calculateModuleMark(8))));
-        markModule10.setText(String.valueOf(decimal.format(calculateModuleMark(10))));
+        if(Double.parseDouble(mei1_1.getText().toString()) != 0 && Double.parseDouble(mei1_2.getText().toString()) !=0) {
+            markModule1.setText(String.valueOf(decimal.format(calculateModuleMark(1))));
+        }else{
+            markModule1.setText("0.0");
+        }
+        if(Double.parseDouble(mei3_1.getText().toString()) != 0 && Double.parseDouble(mei3_2.getText().toString()) !=0 && Double.parseDouble(mei3_3.getText().toString()) != 0) {
+            markModule3.setText(String.valueOf(decimal.format(calculateModuleMark(3))));
+        }else{
+            markModule3.setText("0.0");
+        }
+        if(Double.parseDouble(mei4_1.getText().toString()) != 0 && Double.parseDouble(mei4_2.getText().toString()) !=0 && Double.parseDouble(mei4_3.getText().toString()) != 0) {
+            markModule4.setText(String.valueOf(decimal.format(calculateModuleMark(4))));
+        }else{
+            markModule4.setText("0.0");
+        }
+        if(Double.parseDouble(mei5_1.getText().toString()) != 0 && Double.parseDouble(mei5_2.getText().toString()) !=0 && Double.parseDouble(mei5_3.getText().toString()) != 0) {
+            markModule5.setText(String.valueOf(decimal.format(calculateModuleMark(5))));
+        }else{
+            markModule5.setText("0.0");
+        }
+        if(Double.parseDouble(mei8_1.getText().toString()) != 0 && Double.parseDouble(mei8_2.getText().toString()) !=0) {
+            markModule8.setText(String.valueOf(decimal.format(calculateModuleMark(8))));
+        }else{
+            markModule8.setText("0.0");
+        }
+        if(Double.parseDouble(mei10_3.getText().toString()) !=0) {
+            markModule10.setText(String.valueOf(decimal.format(calculateModuleMark(10))));
+        }else{
+            markModule10.setText("0.0");
+        }
     }
 
 
@@ -243,31 +267,37 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
     private double getMarkFromEditText(EditText editText) {
         if (editText.getText().length() == 0){
             editText.setText("0.0");
+            return Double.parseDouble(editText.getText().toString());
         }
-
+        if (Double.parseDouble(editText.getText().toString()) < 1){
+            editText.setText("0.0");
+        }
+        if (Double.parseDouble(editText.getText().toString()) > 4){
+            editText.setText("4.0");
+        }
         return Double.parseDouble(editText.getText().toString());
     }
 
-    private MainSubject getMainSubject(){
-        MainSubject mainsubject = db.getUser().getMainSubject();
-        return mainsubject;
-    }
-
+    /*
+     * Counts the Modules that are not yet finished to exclude them from the final calculation
+     * by adding 1 to a counter for each unfinished Module. This method is for Media Informatics
+     * as the MainSubject
+     */
     private int setDivisorMain(){
         int divisor = 5;
-        if(calculateModuleMark(1)==0.0){
+        if(Double.parseDouble(markModule1.getText().toString()) == 0) {
             divisor--;
         }
-        if(calculateModuleMark(3)==0.0){
+        if(Double.parseDouble(markModule3.getText().toString()) == 0) {
             divisor--;
         }
-        if(calculateModuleMark(4)==0.0){
+        if(Double.parseDouble(markModule4.getText().toString()) == 0) {
             divisor--;
         }
-        if(calculateModuleMark(5)==0.0){
+        if(Double.parseDouble(markModule5.getText().toString()) == 0) {
             divisor--;
         }
-        if(calculateModuleMark(10)==0.0){
+        if(Double.parseDouble(markModule10.getText().toString()) == 0) {
             divisor--;
         }
         if(divisor == 0){
@@ -276,18 +306,23 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         return divisor;
     }
 
+    /*
+     * Counts the Modules that are not yet finished to exclude them from the final calculation
+     * by adding 1 to a counter for each unfinished Module. This method is for Media Informatics
+     * as Second MainSubject
+     */
     private int setDivisorSecondary(){
         int divisor = 4;
-        if(calculateModuleMark(1)==0.0){
+        if(Double.parseDouble(markModule1.getText().toString()) == 0){
             divisor--;
         }
-        if(calculateModuleMark(3)==0.0){
+        if(Double.parseDouble(markModule3.getText().toString()) == 0){
             divisor--;
         }
-        if(calculateModuleMark(5)==0.0){
+        if(Double.parseDouble(markModule5.getText().toString()) == 0){
             divisor--;
         }
-        if(calculateModuleMark(8)==0.0){
+        if(Double.parseDouble(markModule8.getText().toString()) == 0){
             divisor--;
         }
         if(divisor == 0){
@@ -295,26 +330,49 @@ public class MedienInfoMarksActivity extends AppCompatActivity {
         }
         return divisor;
     }
-
+    /*
+     * Here we calculate the mark of the subject, depending on which modules are finished
+     * and which mainSubject the User actually has set in his Profile
+     */
     public double calculateSubjectMark(){
         User user = db.getUser();
         double sum = 0;
         if(!user.getMainSubject().getName().equals("Medieninformatik")){
             int divisor = setDivisorSecondary();
-            sum += calculateModuleMark(1);
-            sum += calculateModuleMark(3);
-            sum += calculateModuleMark(5);
-            sum += calculateModuleMark(8);
+            if(Double.parseDouble(markModule1.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule1.getText().toString());
+            }
+            if(Double.parseDouble(markModule3.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule3.getText().toString());
+            }
+            if(Double.parseDouble(markModule5.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule5.getText().toString());
+            }
+            if(Double.parseDouble(markModule8.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule8.getText().toString());
+            }
             sum = sum / divisor;
+            Log.d("MedinfCalc", ""+divisor);
 
         }else {
             int divisor = setDivisorMain();
-            sum += calculateModuleMark(1);
-            sum += calculateModuleMark(3);
-            sum += calculateModuleMark(4);
-            sum += calculateModuleMark(5);
-            sum += calculateModuleMark(10);
+            if(Double.parseDouble(markModule1.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule1.getText().toString());
+            }
+            if(Double.parseDouble(markModule3.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule3.getText().toString());
+            }
+            if(Double.parseDouble(markModule4.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule4.getText().toString());
+            }
+            if(Double.parseDouble(markModule5.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule5.getText().toString());
+            }
+            if(Double.parseDouble(markModule10.getText().toString()) != 0) {
+                sum += Double.parseDouble(markModule10.getText().toString());
+            }
             sum = sum / divisor;
+            Log.d("MedinfCalc", ""+divisor);
 
         }
         db.updateUserMedInfMark(user.getName(), ""+sum);

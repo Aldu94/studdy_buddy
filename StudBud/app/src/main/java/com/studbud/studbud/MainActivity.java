@@ -64,9 +64,10 @@ public class MainActivity extends AppCompatActivity {
             db.setScoreDate(db.getUser().getName(), currentDay);
             // record the fact that the app has been started at least once
             settings.edit().putBoolean("my_first_time", false).commit();
+            //ask User if the Gaming Funktion can be used
+            requestGpsPermission();
         }
     }
-
 
     /*
      * this method will request the permission from the user with a dialog in order to

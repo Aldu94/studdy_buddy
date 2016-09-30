@@ -15,7 +15,9 @@ import com.studbud.studbud.domain.ModuleItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+/*
+ * The Database is taken from the android course at the University of Regensburg in the SS 2015
+ */
 public class Database {
 
     /*
@@ -74,50 +76,11 @@ public class Database {
         }
     }
 
-
-
     /*
      * This method allows other classes to close the Database
      */
     public void close() {
         db.close();
-    }
-
-    /*
-     * Adds a courseItem to the Database and fills the rows with the values
-     * of the courseItem
-     */
-    public long addCourseItem(CourseItem item, String user) {
-        ContentValues newCourseValue = new ContentValues();
-
-        newCourseValue.put(KEY_NAME, item.getName());
-        newCourseValue.put(KEY_MODULE, item.getModule());
-        newCourseValue.put(KEY_SUBMODULE, item.getSubmodule());
-        newCourseValue.put(KEY_MARK, item.getMark());
-        newCourseValue.put(KEY_SUBJECT, item.getSubject().getName());
-        open();
-        //db.insertWithOnConflict(DATABASE_TABLE, null, newCourseValue, SQLiteDatabase.CONFLICT_REPLACE);
-        return db.insert(DATABASE_TABLE,null,newCourseValue);
-        //close();
-    }
-
-
-
-    /*
-     * Check if an Entry in the specified Database column already exists andreturns
-     * true if this is the case
-     */
-    public boolean checkForExistingEntry(String dbField, String fieldValue){
-        open();
-        String Query = "Select * from " + DATABASE_TABLE + " where " + dbField + " = " + fieldValue;
-        Cursor cursor = db.rawQuery(Query, null);
-        if(cursor.getCount() <= 0){
-            cursor.close();
-            return false;
-        }
-        cursor.close();
-        close();
-        return true;
     }
 
 
@@ -142,14 +105,6 @@ public class Database {
     }
 
     /*
-    * This method will search the database and return the row, where the specified User is located
-    */
-    private Cursor findUserData(String userName){
-        Cursor usCurs = db.rawQuery("select * from " + DATABASE_TABLE + " where " + KEY_USER + " IS NOT NULL", null);
-        return usCurs;
-    }
-
-    /*
      * With this method, we can add a user object to the database
      */
     public void addUserToDb(User user) {
@@ -169,17 +124,6 @@ public class Database {
     }
 
     /*
-     * With this method, the number of UserEntries in the database is returned
-     */
-    private int countUserEntries(){
-        Cursor cursor = db.rawQuery("Select " + KEY_USER + " from " + DATABASE_TABLE + " where " +  KEY_USER + " IS NOT NULL", null);
-        int count = cursor.getCount();
-        Log.d("User-Database", "Anzahl der User: " + count);
-        cursor.close();
-        return count;
-    }
-
-    /*
      * This method will update the values of the specified user
      */
     public void updateUser(String user, MainSubject mainSubject, int semesterCount){
@@ -192,6 +136,9 @@ public class Database {
         Log.d("User-Database", "User: " + user + " " + " Werte überschrieben");
     }
 
+    /*
+     * method to save a new InfwissMark value to the database
+     */
     public void updateUserInfwissMark(String user, String infwissmark) {
         open();
         String sqlUpdate = "UPDATE " + DATABASE_TABLE + " SET infwissmark='" + infwissmark + "' WHERE user= '" + user + "';";
@@ -200,6 +147,9 @@ public class Database {
         Log.d("User-Database", "neue Note für Fach Inwiss für User " + user + " eingetragen");
     }
 
+    /*
+     * method to save a new Userscore value to the database for the Faming Function
+     */
     public void updateUserScore(String user, String score){
         open();
         String scoreUpdate = "UPDATE " + DATABASE_TABLE + " SET score='" + score + "' WHERE user= '" + user + "';";
@@ -208,6 +158,9 @@ public class Database {
         Log.d("Score", "Neuer Score: " +score + "für "+ user + "!");
     }
 
+    /*
+     * method to retrieve the Userscore value from the Database
+     */
     public String getUserScore(){
         open();
 
@@ -220,6 +173,9 @@ public class Database {
         return score;
     }
 
+    /*
+     * method to retrieve the InfwissMark value from the database
+     */
     public double getUserInfwissMark(){
         open();
 
@@ -232,6 +188,9 @@ public class Database {
         return InfwissMark;
     }
 
+    /*
+     * method to get a the last date when the score was increased
+     */
     public String getScoreDate(){
         open();
 
@@ -244,6 +203,9 @@ public class Database {
         return scoreDate;
     }
 
+    /*
+     * method to save a the last date when the score was increased
+     */
     public void setScoreDate(String user, String scoredate){
         open();
         String scoreUpdate = "UPDATE " + DATABASE_TABLE + " SET scoredate='" + scoredate + "' WHERE user= '" + user + "';";
@@ -251,6 +213,9 @@ public class Database {
         close();
     }
 
+    /*
+     * method to retrieve the MedInfMark value from the database
+     */
     public double getUserMedInfMark(){
         open();
 
@@ -263,22 +228,15 @@ public class Database {
         return medInfMark;
     }
 
+    /*
+     * method to save the InfwissMark value to the database
+     */
     public void updateUserMedInfMark(String user, String medinfomark){
         open();
         String sqlUpdate = "UPDATE " + DATABASE_TABLE + " SET medinfmark='" + medinfomark + "' WHERE user= '" + user + "';";
         db.execSQL(sqlUpdate);
         close();
         Log.d("User-Database", "neue Note für Fach medinfo für User " + user + " eingetragen");
-    }
-
-    /*
-     * This method is defined in order to update the name of a given CourseItem
-     */
-    public void updateCourseName(CourseItem item, String name){
-        open();
-        String sqlUpdate = "UPDATE "+DATABASE_TABLE+ " SET name='"+ name + "',  WHERE name=" +KEY_NAME +";";
-        db.execSQL(sqlUpdate);
-        close();
     }
 
     /*
@@ -317,18 +275,12 @@ public class Database {
                 items.add(new ModuleItem(name, module, mark, weight, MainSubject.fromString(subject)));
             }while (cursor.moveToNext());
         }
+        cursor.close();
+        close();
         return items;
     }
 
-    public void listEntries(){
-        open();
-        Cursor cursor = db.rawQuery("SELECT * FROM " +DATABASE_TABLE, null);
-        while(cursor.moveToNext()){
-            Log.d("Databasetable", cursor.getString(cursor.getColumnIndex(KEY_NAME)) + " " + cursor.getString(cursor.getColumnIndex(KEY_MARK)));
-        }
-        cursor.close();
-        close();
-    }
+
     /*
      * This method collects all CourseItem values from the Database and creates a CourseItem for
      * each set of values which is then stored in an ArrayList for easier access
@@ -359,25 +311,12 @@ public class Database {
                 Log.d("DATABASE: ", "added new CourseItem: " + name + " to String "+MainSubject.fromString(subject).getName());
             } while (cursor.moveToNext());
         }
+        cursor.close();
+        close();
         return items;
+
     }
 
-    /*
-     * This method checks, if a User with the given name is already inside the Database
-     */
-    public boolean checkForExistingUser(String userName){
-        open();
-        String query = "Select * from " + DATABASE_TABLE + " where " + KEY_NAME + " = '" + userName + "'";
-        Cursor bCursor = db.rawQuery(query, null);
-            if(bCursor.getCount() <= 0){
-                bCursor.close();
-                close();
-                return false;
-            }
-        bCursor.close();
-        close();
-        return true;
-    }
 
     /*
      * With this method, we can save a Course item to the Database. It also has a checkfunktion
@@ -406,35 +345,12 @@ public class Database {
     }
 
     /*
-     * This method can add a whole set of CourseItems from an ArrayList to the Database at once
-     */
-    private void addSetToDb(ArrayList<CourseItem> set){
-        for(CourseItem item: set){
-         //       addCourseItem(item, .getName());
-        }
-    }
-
-    /*
      * This method allows to delete a particular CourseItem
      */
     public long deleteCourseItem(String courseItemID) {
         String whereClause = KEY_ID + " = '" + courseItemID;
         db.delete(DATABASE_TABLE, whereClause, null);
         return 0;
-    }
-
-    /*
-     * This method counts all entries of the Database
-     */
-    public int getNumberOfImages(){
-        open();
-        String countQuery = "Select * FROM " + DATABASE_TABLE;
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        int x = cursor.getCount();
-        cursor.close();
-        close();
-        return x;
     }
 
     /*
@@ -445,7 +361,7 @@ public class Database {
     }
 
     /*
-     * Another method to count all entries of the Database
+     * method to count all entries of the Database
      */
     public int countDataBaseEntries() {
         open();
@@ -503,12 +419,6 @@ public class Database {
                         new CourseItem("Mathematische Grundlagen", 2, 1, 0, 0.5,MainSubject.INF),
                         new CourseItem("Empirische Forschung", 2, 2, 0, 0.5,MainSubject.INF),
                         new CourseItem("Einführung in die Informationslinguistik", 2, 3, 4, 0.0,MainSubject.INF)
-                ))),
-                new Module("INF-M03", new ArrayList<CourseItem>(Arrays.asList(
-                        new CourseItem("Java", 3, 1, 0, 0.0,MainSubject.INF),
-                        new CourseItem("C#", 3, 2, 0, 0.0,MainSubject.INF),
-                        new CourseItem("Algorithmen und Datenstrukturen", 3, 3, 0, 0.5,MainSubject.INF),
-                        new CourseItem("Software Engineering-Entwurfsmethoden", 3, 4, 0, 0.5,MainSubject.INF)
                 ))),
                 new Module("INF-M04", new ArrayList<CourseItem>(Arrays.asList(
                         new CourseItem("Information Retrieval", 4, 1, 0, 0.25,MainSubject.INF),
