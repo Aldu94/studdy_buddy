@@ -8,7 +8,7 @@ import android.util.Log;
 public class ScheduleDbHelper extends SQLiteOpenHelper {
     public static final String LOG = ScheduleDbHelper.class.getSimpleName();
 
-    public static final String DATABASE_NAME = "scheduleItems.db";
+    public static final String DATABASE_NAME = "scheduleItems1.db";
     public static final int DB_VERSION = 1;
 
     public static final String TABLE_SCHEDULE_ITEMS = "schedule_items";

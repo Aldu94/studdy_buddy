@@ -22,7 +22,7 @@ import com.studbud.studbud.domain.ScheduleItem;
  * the android course exercises no. 5
  */
 public class ScheduleDatabase {
-    private static final String DATABASE_NAME = "scheduleList.db";
+    private static final String DATABASE_NAME = "scheduleList1.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_TABLE = "scheduleItems";

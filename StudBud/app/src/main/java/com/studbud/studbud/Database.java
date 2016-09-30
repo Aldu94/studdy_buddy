@@ -23,7 +23,7 @@ public class Database {
     /*
      * These statements contain the Name of the database as well as the database version
      */
-    private static final String DATABASE_NAME = "courseItems40.db";
+    private static final String DATABASE_NAME = "courseItemDB.db";
     private static final int DATABASE_VERSION = 47;
 
     /*
